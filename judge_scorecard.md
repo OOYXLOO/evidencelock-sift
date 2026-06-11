@@ -21,8 +21,8 @@ This scorecard maps the public EvidenceLock package to the FIND EVIL judging cri
 - Confirmed finding `F-001` maps to event `windows_triage_events:1024` and tool call `cmd-0003`.
 - Confirmed finding `F-002` maps to event `windows_triage_events:2048` and tool call `cmd-0004`.
 - `verify-manifest` returns `{"ok": true}` for the published report set.
-- `tools/judge_smoke_test.py` returns `{"ok": true}` only after checking the rejected draft, corrected verifier, generated trace, and manifest.
-- The smoke test includes a negative-control case where unsupported `F-001` is downgraded to `unresolved`.
+- `tools/judge_smoke_test.py` returns `{"ok": true}` only after checking the rejected draft, corrected verifier, generated trace, manifest, and exact `F-001`/`F-002` evidence/tool IDs.
+- The smoke test includes a negative-control case where unsupported `F-001` is downgraded to `unresolved` with no evidence refs or tool refs, and its manifest is verified.
 - `docs/sift_compatibility_runbook.md` states what is proven now and what would be required for a future live SIFT run.
 - `reports/agent_trace.md` annotates each execution-log tool call without claiming external LLM/API usage.
 - Regression tests cover unsupported confirmed claims, evidence path escapes, tampered outputs, unsafe manifest paths, and MCP-style verifier tools.

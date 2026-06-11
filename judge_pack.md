@@ -49,8 +49,8 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 - The corrected report has 2 confirmed findings, 2/2 expected behaviors found, and 0 final verifier issues.
 - The before/after claim table shows exactly what changed between the rejected draft and accepted report.
 - `docs/judge_scorecard.md` maps the package to autonomous execution quality, IR accuracy, depth, constraint implementation, audit trail quality, and usability.
-- `tools/judge_smoke_test.py` returns JSON with `ok: true` only when the rejected draft, corrected verifier, manifest check, and generated outputs all match expectations.
-- The smoke test also requires `negative_control_downgrades_to_unresolved: true`, proving no-evidence cases fail closed instead of becoming false positives.
+- `tools/judge_smoke_test.py` returns JSON with `ok: true` only when the rejected draft, corrected verifier, manifest check, generated outputs, and exact finding-to-evidence/tool IDs all match expectations.
+- The smoke test also requires `negative_control_downgrades_to_unresolved: true` and `negative_manifest_ok: true`, proving no-evidence cases fail closed instead of becoming false positives.
 - `docs/sift_compatibility_runbook.md` gives the exact non-claiming path from normalized EVTX exports to SIFT/Sleuth Kit wrapper evidence.
 - `reports/agent_trace.md` annotates each tool call and makes clear that the deterministic local demo uses no external LLM call or API key.
 - Confirmed finding `F-001` maps to MITRE `T1059.001` and cites event `windows_triage_events:1024` plus tool call `cmd-0003`.

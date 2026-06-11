@@ -19,7 +19,7 @@ Expected result:
 - Final verifier issues remain `0`.
 - False positives remain `0`.
 - The benign logon is counted as a true negative.
-- The smoke test only returns `ok: true` when this downgrade behavior is present.
+- The smoke test only returns `ok: true` when this downgrade behavior is present and the negative-control manifest verifies cleanly.
 
 ## Run It
 
@@ -30,4 +30,4 @@ python -m evidencelock_sift.cli verify-manifest --manifest reports-negative/inte
 python tools/judge_smoke_test.py
 ```
 
-The smoke test includes `negative_control_downgrades_to_unresolved: true` in its JSON checks.
+The smoke test includes `negative_control_downgrades_to_unresolved: true` and `negative_manifest_ok: true` in its JSON checks, plus a `negative_control` object showing `F-001` as `unresolved` with empty evidence and tool references.
