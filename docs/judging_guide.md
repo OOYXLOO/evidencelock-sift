@@ -9,6 +9,7 @@ EvidenceLock SIFT is designed as verifier-first DFIR automation: the agent can m
 | Autonomous execution | `src/evidencelock_sift/agent/loop.py` runs the full plan, collect, draft, verify, correct, and report loop with one command. |
 | Incident-response accuracy | `reports/accuracy_report.md` shows the first verifier failure and the final zero-issue verification state. |
 | Fast triage review | `reports/timeline_report.md` gives a timestamp-sorted view of the suspicious process, service install, and benign logon events. |
+| Analyst handoff quality | `reports/analyst_handoff.md` maps confirmed findings to MITRE techniques, evidence IDs, tool-call IDs, priority, and response actions. |
 | Constraint enforcement | `src/evidencelock_sift/agent/verifier.py` rejects confirmed findings without evidence/tool references; `run_case` rejects case-manifest evidence paths that escape the case directory. |
 | Typed tool boundary | `docs/mcp_tool_schema.json` exposes the MCP-style tool contract, including `extract_event_evidence` and `verify_report_claims`. |
 | Audit trail quality | `reports/execution_log.jsonl` records evidence hashing, parsing, searches, and both verifier iterations with command IDs. |
@@ -36,11 +37,12 @@ Finding `F-001` is the best quick trace for judges:
 3. Show `docs/proof-card.svg`: one confirmed finding traced to evidence, command, verifier result, and hash.
 4. Show `docs/accuracy-card.svg`: 3 draft verifier issues, 0 final verifier issues, 2/2 expected behaviors, and 4 bypass checks.
 5. Show `reports/timeline_report.md`: timestamp-sorted event triage.
-6. Show `execution_log.jsonl`: hash, parse, search, failed verifier pass, successful verifier pass.
-7. Show `investigation_report.md`: each confirmed finding has evidence and tool-call references.
-8. Show `integrity_manifest.json`: input and output hashes make tampering visible.
-9. Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`.
-10. Close with `python -m unittest discover -s tests -v`.
+6. Show `reports/analyst_handoff.md`: MITRE mapping, priority, and analyst response actions.
+7. Show `execution_log.jsonl`: hash, parse, search, failed verifier pass, successful verifier pass.
+8. Show `investigation_report.md`: each confirmed finding has evidence and tool-call references.
+9. Show `integrity_manifest.json`: input and output hashes make tampering visible.
+10. Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`.
+11. Close with `python -m unittest discover -s tests -v`.
 
 ## Limitations and Failure Modes
 

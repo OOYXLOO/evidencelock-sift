@@ -27,6 +27,7 @@ The demo implements a complete vertical slice:
 - runs a verifier that rejects unsupported confirmed findings
 - corrects the report by attaching exact evidence IDs and tool-call IDs
 - emits `investigation_report.md`, `investigation_report.json`, `accuracy_report.md`, `timeline_report.md`, `execution_log.jsonl`, and `integrity_manifest.json`
+- emits `analyst_handoff.md` with MITRE mapping, priority, and concrete response actions for each confirmed finding
 
 The first draft intentionally fails verification. The final report only keeps confirmed findings when they include evidence references and reproducible tool references.
 
@@ -60,6 +61,7 @@ Another challenge was keeping the demo honest without redistributing third-party
 - The execution log shows the failed first verification pass and the successful corrected pass.
 - The accuracy report includes a metrics table, before/after claim table, and bypass tests for unsupported claims, path escapes, tampered reports, and unsafe manifest paths.
 - The timeline report gives judges a timestamp-sorted triage view before they inspect the full report.
+- The analyst handoff converts confirmed findings into MITRE-mapped response actions, so the output is useful to a responder after verification.
 - The integrity manifest records SHA-256 hashes for the input evidence file and generated outputs.
 - The `verify-manifest` CLI command checks that evidence and output hashes still match and returns `"ok": true` for the published report set.
 - The proof-card visual gives judges a one-screen trace from finding to evidence, tool call, verifier correction, and integrity hash.
@@ -87,6 +89,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
 - `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
 - `reports/timeline_report.md`: timestamp-sorted event timeline for fast triage review.
+- `reports/analyst_handoff.md`: MITRE, priority, evidence, tool-call, and response-action handoff.
 - `reports/integrity_manifest.json`: SHA-256 hashes for the input evidence file and generated outputs.
 
 ## Links
@@ -106,6 +109,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - Accuracy report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/accuracy_report.md
 - Investigation report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/investigation_report.md
 - Timeline report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/timeline_report.md
+- Analyst handoff: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/analyst_handoff.md
 - Integrity manifest: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/integrity_manifest.json
 - Architecture diagram: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.svg
 

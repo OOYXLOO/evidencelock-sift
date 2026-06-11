@@ -26,8 +26,12 @@
       "sha256": "8d39e3c8a453ed91d27a0d85d84bdba1727e6c62d7ab6f1b59281db7071579be"
     },
     {
+      "path": "analyst_handoff.md",
+      "sha256": "65d706920c7f4b16a3e598a7455a84854bf33eac6d7761d1b825d813c99bf646"
+    },
+    {
       "path": "execution_log.jsonl",
-      "sha256": "584aab04eee50a791a9b45aac1472774a28a6d1f0862b759e84395203bb55b26"
+      "sha256": "2a13ec1f27101779ad7edf07fa278b52111f0746550496648a7c70ba71fc4b6b"
     }
   ]
 }

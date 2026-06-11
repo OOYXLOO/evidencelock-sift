@@ -180,6 +180,7 @@ def run_case(case_path: Path, out_dir: Path) -> InvestigationReport:
     _write_report(report, out_dir)
     _write_accuracy_report(case, findings, first_issues, final_issues, out_dir)
     _write_timeline_report(case["case_id"], events, out_dir)
+    _write_analyst_handoff(report, out_dir)
     _write_integrity_manifest(case["case_id"], artifact, event_label, out_dir)
     return report
 
@@ -309,12 +310,89 @@ def _write_timeline_report(case_id: str, events, out_dir: Path) -> None:
         )
     (out_dir / "timeline_report.md").write_text("\n".join(lines), encoding="utf-8")
 
+def _response_actions(finding: Finding) -> list[str]:
+    if "T1059.001" in finding.mitre_techniques:
+        return [
+            "Collect the parent document, child PowerShell command line, script block logs, and related process tree.",
+            "Search the host and neighboring endpoints for the encoded command, parent process hash, and destination indicators.",
+            "If the command decodes to payload retrieval or credential access, isolate the host before collecting volatile evidence.",
+        ]
+    if "T1543.003" in finding.mitre_techniques:
+        return [
+            "Export the service configuration, binary path, service account, creation time, and current service state.",
+            "Hash and preserve the referenced service binary before removal; compare it against known-good baselines.",
+            "Check persistence scope by searching for matching service names and temp-path binaries across the environment.",
+        ]
+    return [
+        "Preserve referenced evidence before remediation.",
+        "Expand collection around the cited timestamp and host.",
+        "Downgrade the finding if additional evidence contradicts the current support.",
+    ]
+
+def _write_analyst_handoff(report: InvestigationReport, out_dir: Path) -> None:
+    confirmed = [finding for finding in report.findings if finding.status == "confirmed"]
+    lines = [
+        "# Analyst Handoff",
+        "",
+        f"Case ID: `{report.case_id}`",
+        f"Confirmed findings ready for analyst review: `{len(confirmed)}`",
+        "",
+        "## Triage Summary",
+        "",
+        "| Finding | MITRE | Confidence | Primary evidence | Tool call | Priority |",
+        "| --- | --- | ---: | --- | --- | --- |",
+    ]
+    for finding in confirmed:
+        evidence = finding.evidence_refs[0] if finding.evidence_refs else None
+        tool = finding.tool_refs[0] if finding.tool_refs else None
+        priority = "High" if finding.confidence >= 0.72 else "Medium"
+        evidence_text = (
+            f"`{evidence.evidence_id}` at `{evidence.timestamp}`"
+            if evidence
+            else "`missing`"
+        )
+        tool_text = f"`{tool.command_id}` `{tool.tool_name}`" if tool else "`missing`"
+        mitre = ", ".join(finding.mitre_techniques) or "none"
+        lines.append(
+            f"| `{finding.finding_id}` {finding.title} | `{mitre}` | `{finding.confidence:.2f}` | {evidence_text} | {tool_text} | {priority} |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Recommended Response Actions",
+            "",
+        ]
+    )
+    for finding in confirmed:
+        lines.extend(
+            [
+                f"### {finding.finding_id}: {finding.title}",
+                "",
+                f"- Current status: `{finding.status}` with verifier-backed evidence and tool references.",
+                f"- Analyst stance: treat as `{finding.status}` until new evidence disproves or downgrades it.",
+            ]
+        )
+        for action in _response_actions(finding):
+            lines.append(f"- {action}")
+        lines.append("")
+    lines.extend(
+        [
+            "## Verification Boundary",
+            "",
+            "- This handoff is generated from the corrected report, not the rejected first draft.",
+            "- Every confirmed item above must remain traceable to `reports/investigation_report.md`, `reports/execution_log.jsonl`, and `reports/integrity_manifest.json`.",
+            "- If a future analyst adds claims without evidence refs and tool refs, the verifier should reject or downgrade them before publication.",
+        ]
+    )
+    (out_dir / "analyst_handoff.md").write_text("\n".join(lines), encoding="utf-8")
+
 def _write_integrity_manifest(case_id: str, artifact, event_label: str, out_dir: Path) -> None:
     output_names = [
         "investigation_report.md",
         "investigation_report.json",
         "accuracy_report.md",
         "timeline_report.md",
+        "analyst_handoff.md",
         "execution_log.jsonl",
     ]
     manifest = {
