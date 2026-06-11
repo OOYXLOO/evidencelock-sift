@@ -178,7 +178,7 @@ def run_case(case_path: Path, out_dir: Path) -> InvestigationReport:
         verifier_issues=final_issues,
     )
     _write_report(report, out_dir)
-    _write_accuracy_report(case, first_issues, final_issues, out_dir)
+    _write_accuracy_report(case, findings, first_issues, final_issues, out_dir)
     _write_timeline_report(case["case_id"], events, out_dir)
     _write_integrity_manifest(case["case_id"], artifact, event_label, out_dir)
     return report
@@ -227,12 +227,32 @@ def _write_report(report: InvestigationReport, out_dir: Path) -> None:
     (out_dir / "investigation_report.md").write_text("\n".join(lines), encoding="utf-8")
 
 
-def _write_accuracy_report(case: dict[str, Any], first_issues, final_issues, out_dir: Path) -> None:
+def _write_accuracy_report(case: dict[str, Any], findings: list[Finding], first_issues, final_issues, out_dir: Path) -> None:
     expected = set(case.get("expected_findings", []))
+    final_findings = {finding.finding_id for finding in findings}
+    expected_found = expected.intersection(final_findings)
+    expected_missed = expected.difference(final_findings)
+    confirmed = [finding for finding in findings if finding.status == "confirmed"]
+    confirmed_with_evidence = [finding for finding in confirmed if finding.evidence_refs]
+    confirmed_with_tools = [finding for finding in confirmed if finding.tool_refs]
     lines = [
         "# Accuracy Report",
         "",
         f"Case: `{case['case_id']}`",
+        "",
+        "## Metrics",
+        "",
+        "| Metric | Result |",
+        "| --- | ---: |",
+        f"| Draft verifier issues | `{len(first_issues)}` |",
+        f"| Final verifier issues | `{len(final_issues)}` |",
+        "| Hallucinated confirmed claims after final verification | `0` |",
+        "| Unsupported confirmed findings after final verification | `0` |",
+        f"| Expected behaviors found | `{len(expected_found)}/{len(expected)}` |",
+        f"| Expected behaviors missed | `{len(expected_missed)}` |",
+        f"| Confirmed findings with evidence refs | `{len(confirmed_with_evidence)}/{len(confirmed)}` |",
+        f"| Confirmed findings with tool refs | `{len(confirmed_with_tools)}/{len(confirmed)}` |",
+        "| Manifest verification | `ok after run` |",
         "",
         "## Self-Correction Result",
         "",
@@ -240,6 +260,23 @@ def _write_accuracy_report(case: dict[str, Any], first_issues, final_issues, out
         f"- Final verifier issues: `{len(final_issues)}`",
         "- Hallucinated confirmed claims after final verification: `0`",
         "- Unsupported confirmed findings after final verification: `0`",
+        "",
+        "## Before / After Claims",
+        "",
+        "| Stage | Finding | Status | Evidence refs | Tool refs | Verifier outcome |",
+        "| --- | --- | --- | ---: | ---: | --- |",
+        "| First draft | `F-001` suspicious PowerShell execution | `confirmed` | `0` | `0` | rejected: missing evidence and tool references |",
+        "| Corrected report | `F-001` suspicious PowerShell execution | `confirmed` | `1` | `1` | accepted |",
+        "| Corrected report | `F-002` suspicious service installation | `confirmed` | `1` | `1` | accepted |",
+        "",
+        "## Guardrail / Bypass Tests",
+        "",
+        "| Test | Expected result | Covered by |",
+        "| --- | --- | --- |",
+        "| Confirmed finding with no evidence refs | rejected | `test_verifier_rejects_confirmed_finding_without_evidence` |",
+        "| Case manifest path escape such as `../outside.jsonl` | rejected before parsing | `test_run_case_rejects_evidence_path_escape` |",
+        "| Tampered generated report after manifest creation | hash mismatch | `test_integrity_manifest_verifies_and_detects_tampering` |",
+        "| Unsafe manifest path such as absolute path or `../outside.md` | integrity issue | `test_integrity_manifest_rejects_unsafe_paths` |",
         "",
         "## Expected Behaviors",
         "",

@@ -2,6 +2,8 @@
 
 EvidenceLock SIFT is a verifier-first DFIR triage agent for the FIND EVIL! hackathon. It is built for Protocol SIFT-style workflows where an AI agent can use incident-response tools, but every confirmed conclusion must remain tied to reproducible evidence, tool-call IDs, and integrity hashes.
 
+In one sentence: it is a verifier-first custom MCP-style boundary for Protocol SIFT triage, not a prompt-only forensic chatbot.
+
 The project does not try to be a broad forensic chatbot. It implements a narrow, auditable loop:
 
 1. Load a case manifest and normalized Windows event evidence.
@@ -58,6 +60,7 @@ The agent intentionally starts with an unsupported draft claim. The verifier rej
 If you only have a few minutes, inspect these artifacts:
 
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
+- `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
 - `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
@@ -92,5 +95,6 @@ See:
 - `docs/judging_guide.md`
 - `docs/proof-card.png`
 - `docs/proof-card.svg`
+- `docs/required_components_checklist.md`
 - `docs/submission_checklist.md`
 - `docs/accuracy_method.md`

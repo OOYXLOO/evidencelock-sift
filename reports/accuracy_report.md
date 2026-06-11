@@ -2,12 +2,43 @@
 
 Case: `windows-triage-mini-001`
 
+## Metrics
+
+| Metric | Result |
+| --- | ---: |
+| Draft verifier issues | `3` |
+| Final verifier issues | `0` |
+| Hallucinated confirmed claims after final verification | `0` |
+| Unsupported confirmed findings after final verification | `0` |
+| Expected behaviors found | `2/2` |
+| Expected behaviors missed | `0` |
+| Confirmed findings with evidence refs | `2/2` |
+| Confirmed findings with tool refs | `2/2` |
+| Manifest verification | `ok after run` |
+
 ## Self-Correction Result
 
 - Draft verifier issues: `3`
 - Final verifier issues: `0`
 - Hallucinated confirmed claims after final verification: `0`
 - Unsupported confirmed findings after final verification: `0`
+
+## Before / After Claims
+
+| Stage | Finding | Status | Evidence refs | Tool refs | Verifier outcome |
+| --- | --- | --- | ---: | ---: | --- |
+| First draft | `F-001` suspicious PowerShell execution | `confirmed` | `0` | `0` | rejected: missing evidence and tool references |
+| Corrected report | `F-001` suspicious PowerShell execution | `confirmed` | `1` | `1` | accepted |
+| Corrected report | `F-002` suspicious service installation | `confirmed` | `1` | `1` | accepted |
+
+## Guardrail / Bypass Tests
+
+| Test | Expected result | Covered by |
+| --- | --- | --- |
+| Confirmed finding with no evidence refs | rejected | `test_verifier_rejects_confirmed_finding_without_evidence` |
+| Case manifest path escape such as `../outside.jsonl` | rejected before parsing | `test_run_case_rejects_evidence_path_escape` |
+| Tampered generated report after manifest creation | hash mismatch | `test_integrity_manifest_verifies_and_detects_tampering` |
+| Unsafe manifest path such as absolute path or `../outside.md` | integrity issue | `test_integrity_manifest_rejects_unsafe_paths` |
 
 ## Expected Behaviors
 

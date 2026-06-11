@@ -6,7 +6,7 @@ EvidenceLock SIFT: Verifier-First Protocol SIFT Triage
 
 ## Tagline
 
-Autonomous SIFT triage that proves every confirmed finding with evidence references, tool-call logs, and integrity hashes.
+Verifier-first custom MCP-style boundary for Protocol SIFT triage: every confirmed finding must prove itself with evidence refs, tool-call logs, verifier correction, and integrity hashes.
 
 ## Built With
 
@@ -15,6 +15,8 @@ Python, Protocol SIFT design pattern, Model Context Protocol-style typed tools, 
 ## What It Does
 
 EvidenceLock SIFT is a defensive incident-response agent pattern for SANS SIFT / Protocol SIFT workflows. It lets an agent move quickly through evidence collection and report drafting, but it blocks the dangerous part: confident conclusions that are not tied to reproducible evidence.
+
+Judge fast path: run one command, watch the first verifier pass reject an unsafe confirmed claim, inspect the corrected pass, then verify the report hashes with the integrity manifest.
 
 The demo implements a complete vertical slice:
 
@@ -56,6 +58,7 @@ Another challenge was keeping the demo honest without redistributing third-party
 - The final report has two confirmed findings and zero final verifier issues.
 - Every confirmed finding has an evidence ID, event record number, timestamp, and tool-call reference.
 - The execution log shows the failed first verification pass and the successful corrected pass.
+- The accuracy report includes a metrics table, before/after claim table, and bypass tests for unsupported claims, path escapes, tampered reports, and unsafe manifest paths.
 - The timeline report gives judges a timestamp-sorted triage view before they inspect the full report.
 - The integrity manifest records SHA-256 hashes for the input evidence file and generated outputs.
 - The `verify-manifest` CLI command checks that evidence and output hashes still match and returns `"ok": true` for the published report set.
@@ -78,6 +81,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 ## Judge Fast Path
 
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
+- `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
 - `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
@@ -90,6 +94,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Devpost field pack: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/devpost_field_pack.md
+- Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
 - Proof card: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.svg
 - Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
