@@ -89,6 +89,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
 - `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks.
 - `docs/fail_closed_negative_control.md`: negative-control case proving unsupported claims downgrade to unresolved.
+- `docs/sift_compatibility_runbook.md`: non-claiming SIFT/Sleuth Kit migration path.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `docs/accuracy-card.png`: visual metrics and guardrail/bypass-test summary.
@@ -110,6 +111,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - Devpost field pack: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/devpost_field_pack.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
 - Fail-closed negative control: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/fail_closed_negative_control.md
+- SIFT compatibility runbook: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/sift_compatibility_runbook.md
 - MCP-style tool schema: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/mcp_tool_schema.json
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
 - Accuracy card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-card.png

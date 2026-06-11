@@ -16,10 +16,11 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 6. Run the smoke test: `python tools/judge_smoke_test.py`.
 7. Check the before/after claim verification table: [`docs/claim_verification_table.md`](claim_verification_table.md).
 8. Check the negative-control downgrade: [`docs/fail_closed_negative_control.md`](fail_closed_negative_control.md).
-9. Read the annotated agent trace: [`reports/agent_trace.md`](../reports/agent_trace.md).
-10. Read the final report: [`reports/investigation_report.md`](../reports/investigation_report.md).
-11. Read the responder handoff: [`reports/analyst_handoff.md`](../reports/analyst_handoff.md).
-12. Verify integrity: `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`
+9. Check the SIFT compatibility runbook: [`docs/sift_compatibility_runbook.md`](sift_compatibility_runbook.md).
+10. Read the annotated agent trace: [`reports/agent_trace.md`](../reports/agent_trace.md).
+11. Read the final report: [`reports/investigation_report.md`](../reports/investigation_report.md).
+12. Read the responder handoff: [`reports/analyst_handoff.md`](../reports/analyst_handoff.md).
+13. Verify integrity: `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`
 
 ## FIND EVIL Requirements Map
 
@@ -31,6 +32,7 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 | Dataset description | [`docs/dataset.md`](dataset.md) | Ready |
 | Public dataset / benchmark appendix | [`docs/public_dataset_benchmark_appendix.md`](public_dataset_benchmark_appendix.md) | Ready |
 | Fail-closed negative control | [`docs/fail_closed_negative_control.md`](fail_closed_negative_control.md) | Ready |
+| SIFT compatibility runbook | [`docs/sift_compatibility_runbook.md`](sift_compatibility_runbook.md) | Ready |
 | Judging criteria scorecard | [`docs/judge_scorecard.md`](judge_scorecard.md) | Ready |
 | Accuracy/evaluation | [`reports/accuracy_report.md`](../reports/accuracy_report.md), [`docs/accuracy_method.md`](accuracy_method.md) | Ready |
 | Before/after claim verification | [`docs/claim_verification_table.md`](claim_verification_table.md) | Ready |
@@ -49,6 +51,7 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 - `docs/judge_scorecard.md` maps the package to autonomous execution quality, IR accuracy, depth, constraint implementation, audit trail quality, and usability.
 - `tools/judge_smoke_test.py` returns JSON with `ok: true` only when the rejected draft, corrected verifier, manifest check, and generated outputs all match expectations.
 - The smoke test also requires `negative_control_downgrades_to_unresolved: true`, proving no-evidence cases fail closed instead of becoming false positives.
+- `docs/sift_compatibility_runbook.md` gives the exact non-claiming path from normalized EVTX exports to SIFT/Sleuth Kit wrapper evidence.
 - `reports/agent_trace.md` annotates each tool call and makes clear that the deterministic local demo uses no external LLM call or API key.
 - Confirmed finding `F-001` maps to MITRE `T1059.001` and cites event `windows_triage_events:1024` plus tool call `cmd-0003`.
 - Confirmed finding `F-002` maps to MITRE `T1543.003` and cites event `windows_triage_events:2048` plus tool call `cmd-0004`.

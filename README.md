@@ -48,6 +48,8 @@ EvidenceLock is designed to sit beside Protocol SIFT as a custom MCP-style tool 
 
 The current implementation runs without external dependencies for the demo. On a SIFT workstation it can be extended to call tools such as `EvtxECmd`, `mmls`, `fls`, `istat`, and `icat` through the same typed wrapper pattern.
 
+See `docs/sift_compatibility_runbook.md` for the non-claiming migration path from this public vertical slice to SIFT-derived evidence and Sleuth Kit wrappers.
+
 ## Demo Scenario
 
 The included synthetic Windows triage case contains three normalized events:
@@ -68,6 +70,7 @@ If you only have a few minutes, inspect these artifacts:
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
 - `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks.
 - `docs/fail_closed_negative_control.md`: negative-control case proving unsupported draft claims downgrade to unresolved.
+- `docs/sift_compatibility_runbook.md`: non-claiming path for SIFT, EvtxECmd, Sleuth Kit, and Protocol SIFT-style MCP usage.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `docs/accuracy-card.png`: visual metrics and guardrail/bypass-test summary.
@@ -111,6 +114,7 @@ See:
 - `docs/judge_pack.md`
 - `docs/judge_scorecard.md`
 - `docs/fail_closed_negative_control.md`
+- `docs/sift_compatibility_runbook.md`
 - `docs/mcp_tool_schema.json`
 - `docs/proof-card.png`
 - `docs/proof-card.svg`
