@@ -253,6 +253,8 @@ class EvidenceLockTests(unittest.TestCase):
             "raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/execution_log.jsonl",
             "raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/integrity_manifest.json",
             "github.com/OOYXLOO/evidencelock-sift/blob/main/reports/investigation_report.md",
+            "exact finding proof traces",
+            "proof_trace",
             "proof-card.png",
             "accuracy-card.png",
         ]:
@@ -272,7 +274,18 @@ class EvidenceLockTests(unittest.TestCase):
         self.assertTrue(payload["ok"])
         self.assertTrue(payload["checks"]["manifest_ok"])
         self.assertTrue(payload["checks"]["agent_trace_hashed"])
+        self.assertTrue(payload["checks"]["f001_trace_matches_expected_ids"])
+        self.assertTrue(payload["checks"]["f002_trace_matches_expected_ids"])
+        self.assertTrue(payload["checks"]["negative_manifest_ok"])
         self.assertTrue(payload["checks"]["negative_control_downgrades_to_unresolved"])
+        self.assertEqual(
+            payload["proof_trace"]["F-001"]["evidence_ids"],
+            ["windows_triage_events:1024"],
+        )
+        self.assertEqual(payload["proof_trace"]["F-001"]["tool_call_ids"], ["cmd-0003"])
+        self.assertEqual(payload["negative_control"]["status"], "unresolved")
+        self.assertEqual(payload["negative_control"]["evidence_ids"], [])
+        self.assertEqual(payload["negative_control"]["tool_call_ids"], [])
 
 if __name__ == "__main__":
     unittest.main()

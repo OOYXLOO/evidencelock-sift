@@ -68,7 +68,7 @@ If you only have a few minutes, inspect these artifacts:
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
-- `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks.
+- `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks, finding-to-evidence/tool proof trace, and negative-control status.
 - `docs/fail_closed_negative_control.md`: negative-control case proving unsupported draft claims downgrade to unresolved.
 - `docs/sift_compatibility_runbook.md`: non-claiming path for SIFT, EvtxECmd, Sleuth Kit, and Protocol SIFT-style MCP usage.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.

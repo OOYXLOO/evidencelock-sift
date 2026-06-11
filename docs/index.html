@@ -50,7 +50,7 @@
     <section class="metrics" aria-label="Demo metrics">
       <div class="tile"><strong>3</strong><span>draft verifier issues caught</span></div>
       <div class="tile"><strong>0</strong><span>final verifier issues</span></div>
-      <div class="tile"><strong>2/2</strong><span>expected behaviors found</span></div>
+      <div class="tile"><strong>2</strong><span>exact finding proof traces</span></div>
       <div class="tile"><strong>4</strong><span>guardrail and bypass checks</span></div>
     </section>
 
@@ -87,12 +87,12 @@
       </div>
       <div class="panel">
         <h2>Fail-Closed Control</h2>
-        <p>A negative-control mini-case proves that unsupported draft `F-001` downgrades to `unresolved` instead of becoming a false positive.</p>
+        <p>A negative-control mini-case proves that unsupported draft `F-001` downgrades to `unresolved` instead of becoming a false positive, with no evidence refs or tool refs.</p>
         <p><a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/fail_closed_negative_control.md">Open the negative control</a></p>
       </div>
       <div class="panel">
         <h2>Reproduce Locally</h2>
-        <p>Clone the repo and run the verifier.</p>
+        <p>Clone the repo and run the verifier. The smoke test prints a `proof_trace` that locks each confirmed finding to its evidence ID and tool-call ID.</p>
         <code class="command">git clone https://github.com/OOYXLOO/evidencelock-sift
 cd evidencelock-sift
 $env:PYTHONPATH="src"
