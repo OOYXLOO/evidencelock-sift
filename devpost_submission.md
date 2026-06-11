@@ -2,7 +2,7 @@
 
 ## Project Name
 
-EvidenceLock SIFT: Verifier-First DFIR Triage
+EvidenceLock SIFT: Verifier-First Protocol SIFT Triage
 
 ## Tagline
 
@@ -86,6 +86,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - Repository: https://github.com/OOYXLOO/evidencelock-sift
 - Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
+- Devpost field pack: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/devpost_field_pack.md
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
 - Proof card: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.svg
 - Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
