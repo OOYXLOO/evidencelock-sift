@@ -56,6 +56,7 @@ class EvidenceLockTests(unittest.TestCase):
             accuracy_md = tmp_path / "accuracy_report.md"
             execution_log = tmp_path / "execution_log.jsonl"
             integrity_manifest = tmp_path / "integrity_manifest.json"
+            timeline_report = tmp_path / "timeline_report.md"
 
             self.assertEqual(len(report.findings), 2)
             self.assertEqual(report.verifier_issues, [])
@@ -63,9 +64,14 @@ class EvidenceLockTests(unittest.TestCase):
             self.assertTrue(accuracy_md.exists())
             self.assertTrue(execution_log.exists())
             self.assertTrue(integrity_manifest.exists())
+            self.assertTrue(timeline_report.exists())
             self.assertIn(
                 "Verifier rejected the first draft",
                 report_md.read_text(encoding="utf-8"),
+            )
+            self.assertIn(
+                "windows_triage_events:1024",
+                timeline_report.read_text(encoding="utf-8"),
             )
             self.assertIn(
                 "Draft verifier issues: `3`",
@@ -75,6 +81,7 @@ class EvidenceLockTests(unittest.TestCase):
             self.assertEqual(manifest["case_id"], "windows-triage-mini-001")
             self.assertEqual(manifest["evidence"][0]["sha256"], hash_evidence(EVENTS).sha256)
             self.assertIn("investigation_report.md", {entry["path"] for entry in manifest["outputs"]})
+            self.assertIn("timeline_report.md", {entry["path"] for entry in manifest["outputs"]})
 
     def test_integrity_manifest_verifies_and_detects_tampering(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

@@ -178,6 +178,7 @@ def run_case(case_path: Path, out_dir: Path) -> InvestigationReport:
     )
     _write_report(report, out_dir)
     _write_accuracy_report(case, first_issues, final_issues, out_dir)
+    _write_timeline_report(case["case_id"], events, out_dir)
     _write_integrity_manifest(case["case_id"], artifact, event_label, out_dir)
     return report
 
@@ -254,11 +255,28 @@ def _write_accuracy_report(case: dict[str, Any], first_issues, final_issues, out
     )
     (out_dir / "accuracy_report.md").write_text("\n".join(lines), encoding="utf-8")
 
+def _write_timeline_report(case_id: str, events, out_dir: Path) -> None:
+    lines = [
+        "# Timeline Report",
+        "",
+        f"Case: `{case_id}`",
+        "",
+        "| Timestamp | Event ID | Evidence ID | Host | Summary |",
+        "| --- | --- | --- | --- | --- |",
+    ]
+    for event in sorted(events, key=lambda item: (item.timestamp, item.record_number)):
+        message = event.message.replace("|", "\\|")
+        lines.append(
+            f"| `{event.timestamp}` | `{event.event_id}` | `{event.evidence_id}` | `{event.host}` | {message} |"
+        )
+    (out_dir / "timeline_report.md").write_text("\n".join(lines), encoding="utf-8")
+
 def _write_integrity_manifest(case_id: str, artifact, event_label: str, out_dir: Path) -> None:
     output_names = [
         "investigation_report.md",
         "investigation_report.json",
         "accuracy_report.md",
+        "timeline_report.md",
         "execution_log.jsonl",
     ]
     manifest = {

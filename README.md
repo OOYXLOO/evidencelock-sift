@@ -32,6 +32,7 @@ Generated outputs:
 - `reports/investigation_report.md`
 - `reports/investigation_report.json`
 - `reports/accuracy_report.md`
+- `reports/timeline_report.md`
 - `reports/execution_log.jsonl`
 - `reports/integrity_manifest.json`
 - `docs/demo-video/evidencelock-sift-demo.webm`
@@ -60,6 +61,7 @@ If you only have a few minutes, inspect these artifacts:
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
 - `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
+- `reports/timeline_report.md`: timestamp-sorted event timeline for fast triage review.
 - `reports/integrity_manifest.json`: SHA-256 hashes for the input evidence file and generated outputs.
 - `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`: verifies the evidence and output hashes still match.
 
