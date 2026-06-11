@@ -8,7 +8,7 @@ EvidenceLock SIFT: Verifier-First Protocol SIFT Triage
 
 ## Tagline
 
-Autonomous SIFT triage that proves every confirmed finding with evidence refs, tool-call logs, verifier corrections, and integrity hashes.
+Verifier-first custom MCP-style boundary for Protocol SIFT triage: every confirmed finding must prove itself with evidence refs, tool-call logs, verifier correction, and integrity hashes.
 
 ## Built With
 
@@ -21,6 +21,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
 - Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
+- Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
 - Investigation report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/investigation_report.md
 - Timeline report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/timeline_report.md
 - Execution log: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/execution_log.jsonl
@@ -35,6 +36,8 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 
 EvidenceLock SIFT is a verifier-first incident-response agent pattern for SANS SIFT / Protocol SIFT workflows. It lets an agent move quickly through evidence collection and report drafting, but blocks the dangerous part: confident conclusions that are not tied to reproducible evidence.
 
+Judge fast path: run one command, watch the first verifier pass reject an unsafe confirmed claim, inspect the corrected pass, then verify the report hashes with the integrity manifest.
+
 The demo runs a complete vertical slice: hash evidence, parse/search normalized Windows event records, draft findings, reject unsupported confirmed claims, repair the report with evidence IDs and tool-call IDs, and emit an investigation report, timeline report, accuracy report, execution log, and integrity manifest.
 
 ## Judging Hook
@@ -48,6 +51,7 @@ The first report draft intentionally fails verification. The final report only k
 - Public artifacts are judge-verifiable: reports, execution logs, integrity manifest, proof card, architecture diagram, and tests.
 - Demo path runs with the Python standard library, so judges can reproduce the vertical slice quickly.
 - Integrity can be checked with `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`, which returns `"ok": true` when evidence and report hashes still match.
+- Accuracy evidence includes a metrics table, before/after claim table, and bypass tests for unsupported claims, path escapes, tampered reports, and unsafe manifest paths.
 
 ## Final Submit Checks
 
