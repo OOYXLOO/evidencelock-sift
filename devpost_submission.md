@@ -83,6 +83,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
+- `docs/accuracy-card.png`: visual metrics and guardrail/bypass-test summary.
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
 - `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
 - `reports/timeline_report.md`: timestamp-sorted event timeline for fast triage review.
@@ -97,7 +98,9 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
 - MCP-style tool schema: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/mcp_tool_schema.json
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
+- Accuracy card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-card.png
 - Proof card: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.svg
+- Accuracy card: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-card.svg
 - Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
 - Devpost gallery assets: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/devpost_gallery_assets.md
 - Accuracy report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/accuracy_report.md

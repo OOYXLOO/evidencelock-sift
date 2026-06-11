@@ -8,10 +8,13 @@ Use these assets in this order when the Devpost project draft is available:
 2. `docs/architecture.png` or `docs/architecture.svg`
    - Second image.
    - Shows trust boundaries between evidence, typed DFIR tools, the agent loop, verifier, and reports.
-3. `reports/investigation_report.md`
-   - Use as a screenshot or linked artifact.
+3. `docs/accuracy-card.png` or `docs/accuracy-card.svg`
+   - Third image.
+   - Shows draft verifier issues, final verifier issues, expected behavior coverage, trace coverage, and bypass tests.
+4. `reports/investigation_report.md`
+   - Use as a linked artifact.
    - Shows the final finding format with evidence refs and tool refs.
-4. `reports/execution_log.jsonl`
+5. `reports/execution_log.jsonl`
    - Use as a screenshot or linked artifact.
    - Shows command IDs for hash, parse, search, failed verification, and successful verification.
 

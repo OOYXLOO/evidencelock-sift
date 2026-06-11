@@ -15,7 +15,7 @@ EvidenceLock SIFT is designed as verifier-first DFIR automation: the agent can m
 | Chain of custody | `reports/integrity_manifest.json` records the input evidence hash and hashes of generated reports/logs. |
 | Tamper check | `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` verifies the hashes still match and rejects unsafe absolute or escaping manifest paths. |
 | Usability | `README.md` includes a standard-library quickstart and the demo uses a small reproducible Windows triage case. |
-| Fast visual review | `docs/proof-card.svg` gives a one-screen trace from finding to evidence, tool call, verifier correction, and integrity hash. |
+| Fast visual review | `docs/proof-card.svg` gives a one-screen trace from finding to evidence, tool call, verifier correction, and integrity hash; `docs/accuracy-card.svg` summarizes metrics and bypass tests. |
 
 ## Proof Card
 
@@ -34,12 +34,13 @@ Finding `F-001` is the best quick trace for judges:
 1. Open with the risk: AI DFIR is fast, but unverified findings can be dangerous.
 2. Run `python -m evidencelock_sift.cli run-case --case examples/cases/windows_triage_case.json --out reports`.
 3. Show `docs/proof-card.svg`: one confirmed finding traced to evidence, command, verifier result, and hash.
-4. Show `reports/timeline_report.md`: timestamp-sorted event triage.
-5. Show `execution_log.jsonl`: hash, parse, search, failed verifier pass, successful verifier pass.
-6. Show `investigation_report.md`: each confirmed finding has evidence and tool-call references.
-7. Show `integrity_manifest.json`: input and output hashes make tampering visible.
-8. Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`.
-9. Close with `python -m unittest discover -s tests -v`.
+4. Show `docs/accuracy-card.svg`: 3 draft verifier issues, 0 final verifier issues, 2/2 expected behaviors, and 4 bypass checks.
+5. Show `reports/timeline_report.md`: timestamp-sorted event triage.
+6. Show `execution_log.jsonl`: hash, parse, search, failed verifier pass, successful verifier pass.
+7. Show `investigation_report.md`: each confirmed finding has evidence and tool-call references.
+8. Show `integrity_manifest.json`: input and output hashes make tampering visible.
+9. Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`.
+10. Close with `python -m unittest discover -s tests -v`.
 
 ## Limitations and Failure Modes
 
