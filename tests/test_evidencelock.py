@@ -205,10 +205,14 @@ class EvidenceLockTests(unittest.TestCase):
             "EvidenceLock SIFT Judge Hub",
             "claim_verification_table.md",
             "public_dataset_benchmark_appendix.md",
+            "raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/execution_log.jsonl",
+            "raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/integrity_manifest.json",
+            "github.com/OOYXLOO/evidencelock-sift/blob/main/reports/investigation_report.md",
             "proof-card.png",
             "accuracy-card.png",
         ]:
             self.assertIn(fragment, judge_hub)
+        self.assertNotIn("../reports/", judge_hub)
 
 if __name__ == "__main__":
     unittest.main()
