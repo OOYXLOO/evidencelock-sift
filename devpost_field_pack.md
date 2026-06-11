@@ -46,10 +46,12 @@ The first report draft intentionally fails verification. The final report only k
 - Designed to fail closed: missing evidence downgrades or rejects a finding instead of inventing certainty.
 - Public artifacts are judge-verifiable: reports, execution logs, integrity manifest, proof card, architecture diagram, and tests.
 - Demo path runs with the Python standard library, so judges can reproduce the vertical slice quickly.
+- Integrity can be checked with `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`, which returns `"ok": true` when evidence and report hashes still match.
 
 ## Final Submit Checks
 
 - Confirm Devpost project belongs to FIND EVIL, not another hackathon.
 - Upload `proof-card.png` first and `architecture.png` second.
+- Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` after any report regeneration.
 - Use the hosted video field only if Devpost accepts the raw GitHub WebM; otherwise upload the WebM to a supported video host first.
 - Do not add API keys, private logs, real incident data, payout details, tax data, KYC data, or private account information.

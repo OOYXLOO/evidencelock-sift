@@ -57,6 +57,7 @@ Another challenge was keeping the demo honest without redistributing third-party
 - Every confirmed finding has an evidence ID, event record number, timestamp, and tool-call reference.
 - The execution log shows the failed first verification pass and the successful corrected pass.
 - The integrity manifest records SHA-256 hashes for the input evidence file and generated outputs.
+- The `verify-manifest` CLI command checks that evidence and output hashes still match and returns `"ok": true` for the published report set.
 - The proof-card visual gives judges a one-screen trace from finding to evidence, tool call, verifier correction, and integrity hash.
 - The project runs with the Python standard library for the demo path.
 - The repository includes tests, reports, dataset documentation, architecture diagram, and a generated WebM demo asset.
