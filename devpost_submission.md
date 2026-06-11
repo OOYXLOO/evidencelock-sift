@@ -2,15 +2,15 @@
 
 ## Project Name
 
-EvidenceLock SIFT
+EvidenceLock SIFT: Verifier-First DFIR Triage
 
 ## Tagline
 
-Self-correcting DFIR agent tools for Protocol SIFT that refuse unsupported confirmed findings.
+Autonomous SIFT triage that proves every confirmed finding with evidence references, tool-call logs, and integrity hashes.
 
 ## Built With
 
-Python, Protocol SIFT design pattern, Model Context Protocol-style typed tools, Windows event triage, Sleuth Kit wrapper pattern, HTML/CSS demo recording, browser MediaRecorder.
+Python, Protocol SIFT design pattern, Model Context Protocol-style typed tools, Windows event triage, SHA-256 integrity manifest, Sleuth Kit wrapper pattern, HTML/CSS demo recording, browser MediaRecorder.
 
 ## What It Does
 
@@ -24,7 +24,7 @@ The demo implements a complete vertical slice:
 - drafts an investigation report
 - runs a verifier that rejects unsupported confirmed findings
 - corrects the report by attaching exact evidence IDs and tool-call IDs
-- emits `investigation_report.md`, `investigation_report.json`, `accuracy_report.md`, and `execution_log.jsonl`
+- emits `investigation_report.md`, `investigation_report.json`, `accuracy_report.md`, `execution_log.jsonl`, and `integrity_manifest.json`
 
 The first draft intentionally fails verification. The final report only keeps confirmed findings when they include evidence references and reproducible tool references.
 
@@ -56,6 +56,7 @@ Another challenge was keeping the demo honest without redistributing third-party
 - The final report has two confirmed findings and zero final verifier issues.
 - Every confirmed finding has an evidence ID, event record number, timestamp, and tool-call reference.
 - The execution log shows the failed first verification pass and the successful corrected pass.
+- The integrity manifest records SHA-256 hashes for the input evidence file and generated outputs.
 - The project runs with the Python standard library for the demo path.
 - The repository includes tests, reports, dataset documentation, architecture diagram, and a generated WebM demo asset.
 
@@ -71,12 +72,21 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - Add a larger public benchmark from EVTX-ATTACK-SAMPLES or NIST CFReDS.
 - Add report export templates compatible with Protocol SIFT case reporting.
 
+## Judge Fast Path
+
+- `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
+- `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
+- `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
+- `reports/integrity_manifest.json`: SHA-256 hashes for the input evidence file and generated outputs.
+
 ## Links
 
 - Repository: https://github.com/OOYXLOO/evidencelock-sift
 - Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
+- Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Accuracy report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/accuracy_report.md
 - Investigation report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/investigation_report.md
+- Integrity manifest: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/integrity_manifest.json
 - Architecture diagram: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.svg
 
 ## Final Submission Reminder

@@ -1,0 +1,42 @@
+# FIND EVIL Judging Guide
+
+EvidenceLock SIFT is designed as verifier-first DFIR automation: the agent can move quickly, but a confirmed finding must prove itself with evidence references, tool-call references, and report integrity hashes.
+
+## Judging Matrix
+
+| FIND EVIL signal | EvidenceLock artifact |
+| --- | --- |
+| Autonomous execution | `src/evidencelock_sift/agent/loop.py` runs the full plan, collect, draft, verify, correct, and report loop with one command. |
+| Incident-response accuracy | `reports/accuracy_report.md` shows the first verifier failure and the final zero-issue verification state. |
+| Constraint enforcement | `src/evidencelock_sift/agent/verifier.py` rejects confirmed findings without evidence references or tool references. |
+| Audit trail quality | `reports/execution_log.jsonl` records evidence hashing, parsing, searches, and both verifier iterations with command IDs. |
+| Chain of custody | `reports/integrity_manifest.json` records the input evidence hash and hashes of generated reports/logs. |
+| Usability | `README.md` includes a standard-library quickstart and the demo uses a small reproducible Windows triage case. |
+
+## Proof Card
+
+Finding `F-001` is the best quick trace for judges:
+
+- Claim: suspicious PowerShell encoded-command execution from a document process.
+- Report location: `reports/investigation_report.md`, finding `F-001`.
+- Evidence reference: `windows_triage_events:1024`, record `1024`, timestamp `2026-06-01T10:04:31Z`.
+- Tool reference: `cmd-0003`, `search_events`, args `{"contains": "encodedcommand", "event_ids": ["4688"]}`.
+- Audit log: `reports/execution_log.jsonl` records `cmd-0003` returning `windows_triage_events:1024`.
+- Self-correction: `cmd-0005` rejects the first draft because it has no evidence or tool references; `cmd-0006` verifies the corrected report with zero issues.
+- Integrity check: `reports/integrity_manifest.json` records the SHA-256 of the evidence file and generated outputs.
+
+## Demo Video Plan
+
+1. Open with the risk: AI DFIR is fast, but unverified findings can be dangerous.
+2. Run `python -m evidencelock_sift.cli run-case --case examples/cases/windows_triage_case.json --out reports`.
+3. Show `execution_log.jsonl`: hash, parse, search, failed verifier pass, successful verifier pass.
+4. Show `investigation_report.md`: each confirmed finding has evidence and tool-call references.
+5. Show `integrity_manifest.json`: input and output hashes make tampering visible.
+6. Close with `python -m unittest discover -s tests -v`.
+
+## Limitations and Failure Modes
+
+- The included data is a synthetic normalized Windows mini-case, not a full public disk image.
+- The demo path focuses on EVTX-style event triage; SIFT/Sleuth Kit wrappers are included as an extension pattern, not a full disk-forensics pipeline.
+- The verifier proves report support, not absolute incident truth. If evidence is missing, the correct behavior is to downgrade or reject the finding rather than invent certainty.
+- The project intentionally chooses a narrow vertical slice because traceability and correctness matter more than a broad chatbot surface for this challenge.
