@@ -12,6 +12,7 @@ EvidenceLock SIFT is designed as verifier-first DFIR automation: the agent can m
 | Audit trail quality | `reports/execution_log.jsonl` records evidence hashing, parsing, searches, and both verifier iterations with command IDs. |
 | Chain of custody | `reports/integrity_manifest.json` records the input evidence hash and hashes of generated reports/logs. |
 | Usability | `README.md` includes a standard-library quickstart and the demo uses a small reproducible Windows triage case. |
+| Fast visual review | `docs/proof-card.svg` gives a one-screen trace from finding to evidence, tool call, verifier correction, and integrity hash. |
 
 ## Proof Card
 
@@ -29,10 +30,11 @@ Finding `F-001` is the best quick trace for judges:
 
 1. Open with the risk: AI DFIR is fast, but unverified findings can be dangerous.
 2. Run `python -m evidencelock_sift.cli run-case --case examples/cases/windows_triage_case.json --out reports`.
-3. Show `execution_log.jsonl`: hash, parse, search, failed verifier pass, successful verifier pass.
-4. Show `investigation_report.md`: each confirmed finding has evidence and tool-call references.
-5. Show `integrity_manifest.json`: input and output hashes make tampering visible.
-6. Close with `python -m unittest discover -s tests -v`.
+3. Show `docs/proof-card.svg`: one confirmed finding traced to evidence, command, verifier result, and hash.
+4. Show `execution_log.jsonl`: hash, parse, search, failed verifier pass, successful verifier pass.
+5. Show `investigation_report.md`: each confirmed finding has evidence and tool-call references.
+6. Show `integrity_manifest.json`: input and output hashes make tampering visible.
+7. Close with `python -m unittest discover -s tests -v`.
 
 ## Limitations and Failure Modes
 

@@ -5,6 +5,8 @@
 - [x] README present.
 - [x] MIT license present.
 - [x] Architecture diagram present.
+- [x] Proof-card visual present.
+- [x] Devpost gallery asset guide present.
 - [x] Dataset documentation present.
 - [x] Accuracy report present.
 - [x] Execution log present.

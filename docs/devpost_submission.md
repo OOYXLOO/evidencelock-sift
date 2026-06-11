@@ -57,6 +57,7 @@ Another challenge was keeping the demo honest without redistributing third-party
 - Every confirmed finding has an evidence ID, event record number, timestamp, and tool-call reference.
 - The execution log shows the failed first verification pass and the successful corrected pass.
 - The integrity manifest records SHA-256 hashes for the input evidence file and generated outputs.
+- The proof-card visual gives judges a one-screen trace from finding to evidence, tool call, verifier correction, and integrity hash.
 - The project runs with the Python standard library for the demo path.
 - The repository includes tests, reports, dataset documentation, architecture diagram, and a generated WebM demo asset.
 
@@ -75,6 +76,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 ## Judge Fast Path
 
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
+- `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
 - `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
 - `reports/integrity_manifest.json`: SHA-256 hashes for the input evidence file and generated outputs.
@@ -84,6 +86,10 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - Repository: https://github.com/OOYXLOO/evidencelock-sift
 - Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
+- Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
+- Proof card: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.svg
+- Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
+- Devpost gallery assets: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/devpost_gallery_assets.md
 - Accuracy report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/accuracy_report.md
 - Investigation report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/investigation_report.md
 - Integrity manifest: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/integrity_manifest.json

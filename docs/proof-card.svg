@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="EvidenceLock SIFT proof card">
+  <rect width="1280" height="720" fill="#f8fafc"/>
+  <style>
+    .title{font-family:Arial,sans-serif;font-size:42px;font-weight:700;fill:#111827}
+    .subtitle{font-family:Arial,sans-serif;font-size:21px;fill:#475569}
+    .label{font-family:Arial,sans-serif;font-size:18px;font-weight:700;fill:#0f172a}
+    .body{font-family:Arial,sans-serif;font-size:18px;fill:#1f2937}
+    .mono{font-family:Consolas,monospace;font-size:17px;fill:#0f172a}
+    .small{font-family:Arial,sans-serif;font-size:15px;fill:#475569}
+    .card{fill:#ffffff;stroke:#cbd5e1;stroke-width:2;rx:8}
+    .alert{fill:#fff7ed;stroke:#ea580c;stroke-width:3;rx:8}
+    .ok{fill:#ecfdf5;stroke:#059669;stroke-width:3;rx:8}
+    .arrow{stroke:#334155;stroke-width:3;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text x="56" y="72" class="title">EvidenceLock SIFT Proof Card</text>
+  <text x="56" y="108" class="subtitle">Find evil, then prove it: every confirmed finding links to evidence, tool calls, verifier results, and integrity hashes.</text>
+
+  <rect x="56" y="150" width="335" height="165" class="card"/>
+  <text x="82" y="190" class="label">1. Confirmed finding</text>
+  <text x="82" y="225" class="body">F-001 Suspicious PowerShell</text>
+  <text x="82" y="254" class="mono">status: confirmed</text>
+  <text x="82" y="282" class="mono">MITRE: T1059.001</text>
+
+  <rect x="472" y="150" width="335" height="165" class="card"/>
+  <text x="498" y="190" class="label">2. Evidence reference</text>
+  <text x="498" y="225" class="mono">windows_triage_events:1024</text>
+  <text x="498" y="254" class="mono">record: 1024</text>
+  <text x="498" y="282" class="mono">time: 2026-06-01T10:04:31Z</text>
+
+  <rect x="889" y="150" width="335" height="165" class="card"/>
+  <text x="915" y="190" class="label">3. Tool-call reference</text>
+  <text x="915" y="225" class="mono">cmd-0003 search_events</text>
+  <text x="915" y="254" class="mono">event_ids: [4688]</text>
+  <text x="915" y="282" class="mono">contains: encodedcommand</text>
+
+  <line x1="391" y1="232" x2="472" y2="232" class="arrow"/>
+  <line x1="807" y1="232" x2="889" y2="232" class="arrow"/>
+
+  <rect x="56" y="395" width="545" height="150" class="alert"/>
+  <text x="88" y="436" class="label">4. Verifier catches unsafe confidence</text>
+  <text x="88" y="472" class="mono">cmd-0005 verify_report_claims</text>
+  <text x="88" y="501" class="body">First draft failed: no evidence_refs and no tool_refs.</text>
+  <text x="88" y="527" class="body">MITRE-mapped confirmed claim lacked evidence.</text>
+
+  <rect x="679" y="395" width="545" height="150" class="ok"/>
+  <text x="711" y="436" class="label">5. Corrected report passes</text>
+  <text x="711" y="472" class="mono">cmd-0006 verify_report_claims</text>
+  <text x="711" y="501" class="body">Final report has 2 confirmed findings and 0 verifier issues.</text>
+
+  <line x1="601" y1="470" x2="679" y2="470" class="arrow"/>
+
+  <rect x="56" y="594" width="1168" height="70" class="card"/>
+  <text x="82" y="630" class="label">Integrity manifest</text>
+  <text x="260" y="630" class="mono">evidence sha256: 2e3b3395523bca437b9f6883dee9a3da3790f535cb17b1317a9dd30b2084d0a4</text>
+  <text x="82" y="654" class="small">Reports, logs, and JSON outputs are hashed in reports/integrity_manifest.json.</text>
+</svg>

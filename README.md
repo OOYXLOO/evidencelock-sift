@@ -56,6 +56,7 @@ The agent intentionally starts with an unsupported draft claim. The verifier rej
 If you only have a few minutes, inspect these artifacts:
 
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
+- `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
 - `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
 - `reports/integrity_manifest.json`: SHA-256 hashes for the input evidence file and generated outputs.
@@ -73,12 +74,16 @@ If you only have a few minutes, inspect these artifacts:
 See:
 
 - `docs/architecture.md`
+- `docs/architecture.png`
 - `docs/architecture.svg`
 - `docs/dataset.md`
 - `docs/demo_script.md`
 - `docs/demo_recording.md`
 - `docs/demo-recording-page.html`
+- `docs/devpost_gallery_assets.md`
 - `docs/devpost_submission.md`
 - `docs/judging_guide.md`
+- `docs/proof-card.png`
+- `docs/proof-card.svg`
 - `docs/submission_checklist.md`
 - `docs/accuracy_method.md`
