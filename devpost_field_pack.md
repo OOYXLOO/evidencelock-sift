@@ -20,6 +20,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Judge hub source: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/index.html
 - Judge hub Pages URL, use only after it returns HTTP 200: https://ooyxloo.github.io/evidencelock-sift/
 - Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
+- Presentation deck: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/evidencelock-sift-judge-deck.pptx
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
 - Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
 - Accuracy card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-card.png
@@ -65,6 +66,7 @@ The first report draft intentionally fails verification. The final report only k
 - Designed to fail closed: missing evidence downgrades or rejects a finding instead of inventing certainty.
 - Public artifacts are judge-verifiable: reports, execution logs, integrity manifest, proof card, architecture diagram, and tests.
 - The judge pack gives a two-minute review path, requirements map, reproduction command, and honest boundary in one GitHub-rendered page.
+- The editable presentation deck gives a compact 5-slide judge path: verifier boundary, proof chain, architecture, evaluation, and Devpost close.
 - The judge scorecard maps the package directly to the FIND EVIL criteria: autonomous execution quality, IR accuracy, depth, constraint implementation, audit trail quality, and usability.
 - The judge smoke test gives reviewers one command that returns JSON `ok: true` only if the rejected draft, corrected verifier, manifest check, generated outputs, and exact `F-001`/`F-002` evidence/tool-call IDs match expectations.
 - The smoke test also runs a negative-control case and requires `negative_control_downgrades_to_unresolved: true` plus `negative_manifest_ok: true`.
@@ -85,5 +87,6 @@ The first report draft intentionally fails verification. The final report only k
 - Use `https://ooyxloo.github.io/evidencelock-sift/` as the `Try it out` link only after GitHub Pages returns HTTP 200. Until then, use the GitHub-rendered judge hub source link.
 - Upload `proof-card.png` first and `architecture.png` second.
 - Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` after any report regeneration.
+- Include the presentation deck link in supporting links after the judge hub and demo video.
 - Use the hosted video field only if Devpost accepts the raw GitHub WebM; otherwise upload the WebM to a supported video host first.
 - Do not add API keys, private logs, real incident data, payout details, tax data, KYC data, or private account information.

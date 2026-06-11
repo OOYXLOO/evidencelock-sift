@@ -8,6 +8,7 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 | Open-source license | `LICENSE` | ready |
 | One-page judge pack | `docs/judge_pack.md` | ready |
 | Judging criteria scorecard | `docs/judge_scorecard.md` | ready |
+| Presentation deck | `docs/evidencelock-sift-judge-deck.pptx` | ready |
 | Demo video, five minutes or less | `docs/demo-video/evidencelock-sift-demo.webm` | ready; upload to a supported video host if Devpost does not accept raw GitHub WebM |
 | Architecture / trust-boundary diagram | `docs/architecture.png`, `docs/architecture.md` | ready |
 | Dataset documentation | `docs/dataset.md` | ready |
@@ -25,6 +26,7 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 - Lead with the verifier-first trust boundary: the agent can draft quickly, but confirmed findings must pass mechanical evidence and tool-reference checks.
 - Include `docs/judge_pack.md` early in Additional info because it is the shortest route through the full evidence package.
 - Include `docs/judge_scorecard.md` near the judge pack so reviewers can map each FIND EVIL criterion to evidence without hunting through the repo.
+- Include `docs/evidencelock-sift-judge-deck.pptx` as a compact presentation layer after the judge hub and demo video.
 - Include `tools/judge_smoke_test.py` and `reports/agent_trace.md` in Additional info because they shorten the path from claim to exact evidence/tool-call verification.
 - Include `docs/fail_closed_negative_control.md` to show that no-evidence cases downgrade instead of becoming false positives.
 - Include `docs/sift_compatibility_runbook.md` to show platform fit without claiming unproven live SIFT execution.
