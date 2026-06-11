@@ -11,9 +11,10 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 1. Watch or skim the demo asset: [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm).
 2. Open the proof trace: [`docs/proof-card.png`](proof-card.png).
 3. Open the accuracy summary: [`docs/accuracy-card.png`](accuracy-card.png).
-4. Read the final report: [`reports/investigation_report.md`](../reports/investigation_report.md).
-5. Read the responder handoff: [`reports/analyst_handoff.md`](../reports/analyst_handoff.md).
-6. Verify integrity: `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`
+4. Check the before/after claim verification table: [`docs/claim_verification_table.md`](claim_verification_table.md).
+5. Read the final report: [`reports/investigation_report.md`](../reports/investigation_report.md).
+6. Read the responder handoff: [`reports/analyst_handoff.md`](../reports/analyst_handoff.md).
+7. Verify integrity: `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`
 
 ## FIND EVIL Requirements Map
 
@@ -23,7 +24,9 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 | Demo video | [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm) | Ready |
 | Architecture diagram | [`docs/architecture.png`](architecture.png), [`docs/architecture.md`](architecture.md) | Ready |
 | Dataset description | [`docs/dataset.md`](dataset.md) | Ready |
+| Public dataset / benchmark appendix | [`docs/public_dataset_benchmark_appendix.md`](public_dataset_benchmark_appendix.md) | Ready |
 | Accuracy/evaluation | [`reports/accuracy_report.md`](../reports/accuracy_report.md), [`docs/accuracy_method.md`](accuracy_method.md) | Ready |
+| Before/after claim verification | [`docs/claim_verification_table.md`](claim_verification_table.md) | Ready |
 | Execution/tool-call log | [`reports/execution_log.jsonl`](../reports/execution_log.jsonl) | Ready |
 | Integrity manifest | [`reports/integrity_manifest.json`](../reports/integrity_manifest.json) | Ready |
 | Analyst-ready output | [`reports/analyst_handoff.md`](../reports/analyst_handoff.md) | Ready |
@@ -33,6 +36,7 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 
 - The first draft intentionally fails verification because it lacks evidence and tool references.
 - The corrected report has 2 confirmed findings, 2/2 expected behaviors found, and 0 final verifier issues.
+- The before/after claim table shows exactly what changed between the rejected draft and accepted report.
 - Confirmed finding `F-001` maps to MITRE `T1059.001` and cites event `windows_triage_events:1024` plus tool call `cmd-0003`.
 - Confirmed finding `F-002` maps to MITRE `T1543.003` and cites event `windows_triage_events:2048` plus tool call `cmd-0004`.
 - `reports/analyst_handoff.md` turns verified findings into response actions, so the output is useful after the proof step.
@@ -60,4 +64,4 @@ Expected verification result:
 
 ## Honest Boundary
 
-This is a narrow EVTX-style vertical slice and a custom MCP-style boundary for SIFT workflows. It does not claim full disk-forensics coverage or live SIFT workstation execution. The point is the trust boundary: if evidence is missing, the correct behavior is to reject or downgrade the finding, not invent certainty.
+This is a narrow EVTX-style vertical slice and a custom MCP-style boundary for SIFT workflows. It does not claim full disk-forensics coverage, public-corpus benchmarking, or live SIFT workstation execution. The public-data extension path is documented in [`docs/public_dataset_benchmark_appendix.md`](public_dataset_benchmark_appendix.md). The point is the trust boundary: if evidence is missing, the correct behavior is to reject or downgrade the finding, not invent certainty.
