@@ -19,7 +19,7 @@
     },
     {
       "path": "accuracy_report.md",
-      "sha256": "d68f6928aa7531d641fe81d01adfa38593f48f0eb136e2a5aaf26704b7271132"
+      "sha256": "162df64cfa1d4ed63870124f2778c2724be48cae65d2e6cce2b4412d283f58bc"
     },
     {
       "path": "timeline_report.md",
@@ -30,8 +30,12 @@
       "sha256": "65d706920c7f4b16a3e598a7455a84854bf33eac6d7761d1b825d813c99bf646"
     },
     {
+      "path": "agent_trace.md",
+      "sha256": "635c8287350198a787cb0ff71c22bc0ebbecad818abf29840bd740dce58500fb"
+    },
+    {
       "path": "execution_log.jsonl",
-      "sha256": "2a13ec1f27101779ad7edf07fa278b52111f0746550496648a7c70ba71fc4b6b"
+      "sha256": "22bbfaf9c44ec2b23dce656987725dc249bfbb73a50dcbbf8552286fd70fa4ae"
     }
   ]
 }

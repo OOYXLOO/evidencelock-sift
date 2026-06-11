@@ -25,6 +25,7 @@ git clone https://github.com/OOYXLOO/evidencelock-sift.git
 cd evidencelock-sift
 $env:PYTHONPATH="src"
 python -m unittest discover -s tests -v
+python tools/judge_smoke_test.py
 python -m evidencelock_sift.cli run-case --case examples/cases/windows_triage_case.json --out reports
 python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .
 ```
@@ -36,6 +37,7 @@ Generated outputs:
 - `reports/accuracy_report.md`
 - `reports/timeline_report.md`
 - `reports/analyst_handoff.md`
+- `reports/agent_trace.md`
 - `reports/execution_log.jsonl`
 - `reports/integrity_manifest.json`
 - `docs/demo-video/evidencelock-sift-demo.webm`
@@ -64,10 +66,12 @@ If you only have a few minutes, inspect these artifacts:
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
+- `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `docs/accuracy-card.png`: visual metrics and guardrail/bypass-test summary.
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
+- `reports/agent_trace.md`: annotated step-by-step trace over the execution log.
 - `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
 - `reports/timeline_report.md`: timestamp-sorted event timeline for fast triage review.
 - `reports/analyst_handoff.md`: analyst-ready response actions mapped to MITRE technique, evidence, and tool calls.
@@ -112,3 +116,4 @@ See:
 - `docs/submission_checklist.md`
 - `docs/accuracy_method.md`
 - `reports/analyst_handoff.md`
+- `reports/agent_trace.md`

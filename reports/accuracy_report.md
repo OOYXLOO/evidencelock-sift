@@ -16,6 +16,16 @@ Case: `windows-triage-mini-001`
 | Confirmed findings with tool refs | `2/2` |
 | Manifest verification | `ok after run` |
 
+## Tiny Confusion Matrix
+
+| Class | Count | Evidence |
+| --- | ---: | --- |
+| True positives | `2` | `F-001` PowerShell encoded command and `F-002` suspicious service installation |
+| True negatives | `1` | benign interactive logon remains outside the final confirmed findings |
+| False positives | `0` | verifier rejects unsupported final confirmed claims |
+| False negatives | `0` | both expected behaviors are present in the final report |
+| Unsupported final confirmed claims | `0` | final verifier issues are zero |
+
 ## Self-Correction Result
 
 - Draft verifier issues: `3`

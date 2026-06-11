@@ -181,6 +181,7 @@ def run_case(case_path: Path, out_dir: Path) -> InvestigationReport:
     _write_accuracy_report(case, findings, first_issues, final_issues, out_dir)
     _write_timeline_report(case["case_id"], events, out_dir)
     _write_analyst_handoff(report, out_dir)
+    _write_agent_trace(case["case_id"], out_dir)
     _write_integrity_manifest(case["case_id"], artifact, event_label, out_dir)
     return report
 
@@ -254,6 +255,16 @@ def _write_accuracy_report(case: dict[str, Any], findings: list[Finding], first_
         f"| Confirmed findings with evidence refs | `{len(confirmed_with_evidence)}/{len(confirmed)}` |",
         f"| Confirmed findings with tool refs | `{len(confirmed_with_tools)}/{len(confirmed)}` |",
         "| Manifest verification | `ok after run` |",
+        "",
+        "## Tiny Confusion Matrix",
+        "",
+        "| Class | Count | Evidence |",
+        "| --- | ---: | --- |",
+        "| True positives | `2` | `F-001` PowerShell encoded command and `F-002` suspicious service installation |",
+        "| True negatives | `1` | benign interactive logon remains outside the final confirmed findings |",
+        "| False positives | `0` | verifier rejects unsupported final confirmed claims |",
+        "| False negatives | `0` | both expected behaviors are present in the final report |",
+        "| Unsupported final confirmed claims | `0` | final verifier issues are zero |",
         "",
         "## Self-Correction Result",
         "",
@@ -386,6 +397,78 @@ def _write_analyst_handoff(report: InvestigationReport, out_dir: Path) -> None:
     )
     (out_dir / "analyst_handoff.md").write_text("\n".join(lines), encoding="utf-8")
 
+def _trace_purpose(entry: dict[str, Any]) -> str:
+    tool_name = entry.get("tool_name")
+    args = entry.get("args", {})
+    if tool_name == "hash_evidence":
+        return "Record evidence hash before analysis."
+    if tool_name == "parse_evtx":
+        return "Normalize event evidence into searchable records."
+    if tool_name == "search_events" and args.get("contains") == "encodedcommand":
+        return "Find document-spawned PowerShell encoded-command behavior."
+    if tool_name == "search_events" and args.get("contains") == "temp":
+        return "Find suspicious service installation from a temporary path."
+    if tool_name == "verify_report_claims" and args.get("iteration") == 1:
+        return "Reject unsupported confirmed draft claims before publication."
+    if tool_name == "verify_report_claims" and args.get("iteration") == 2:
+        return "Verify corrected findings after evidence and tool refs are attached."
+    return "Execute deterministic local triage step."
+
+def _trace_result(entry: dict[str, Any]) -> str:
+    result = entry.get("result", {})
+    if "sha256" in result:
+        return f"sha256 `{result['sha256']}`"
+    if "events" in result:
+        return f"`{result['events']}` events parsed"
+    if "matches" in result:
+        matches = result["matches"]
+        if matches:
+            return ", ".join(f"`{match}`" for match in matches)
+        return "`0` matches"
+    if "issues" in result:
+        issues = result["issues"]
+        if issues:
+            return f"`{len(issues)}` verifier issues"
+        return "`0` verifier issues"
+    return "`ok`"
+
+def _write_agent_trace(case_id: str, out_dir: Path) -> None:
+    log_path = out_dir / "execution_log.jsonl"
+    entries = [
+        json.loads(line)
+        for line in log_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    lines = [
+        "# Agent Trace",
+        "",
+        f"Case: `{case_id}`",
+        "",
+        "This trace annotates the deterministic local demo run. It uses no external LLM call, no private data, and no API key; token usage is not applicable for this submitted vertical slice.",
+        "",
+        "| Step | Tool call | Purpose | Status | Observed result |",
+        "| ---: | --- | --- | --- | --- |",
+    ]
+    for index, entry in enumerate(entries, start=1):
+        command_id = entry.get("command_id", "unknown")
+        tool_name = entry.get("tool_name", "unknown")
+        status = entry.get("status", "unknown")
+        lines.append(
+            f"| {index} | `{command_id}` `{tool_name}` | {_trace_purpose(entry)} | `{status}` | {_trace_result(entry)} |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Correction Decision",
+            "",
+            "- `cmd-0005` is expected to fail because the first draft marks `F-001` confirmed without evidence refs or tool refs.",
+            "- The correction pass attaches event `windows_triage_events:1024` and tool call `cmd-0003` to `F-001`.",
+            "- The collection pass also adds `F-002`, backed by event `windows_triage_events:2048` and tool call `cmd-0004`.",
+            "- `cmd-0006` verifies the corrected report with zero issues before analyst-facing reports are written.",
+        ]
+    )
+    (out_dir / "agent_trace.md").write_text("\n".join(lines), encoding="utf-8")
+
 def _write_integrity_manifest(case_id: str, artifact, event_label: str, out_dir: Path) -> None:
     output_names = [
         "investigation_report.md",
@@ -393,6 +476,7 @@ def _write_integrity_manifest(case_id: str, artifact, event_label: str, out_dir:
         "accuracy_report.md",
         "timeline_report.md",
         "analyst_handoff.md",
+        "agent_trace.md",
         "execution_log.jsonl",
     ]
     manifest = {

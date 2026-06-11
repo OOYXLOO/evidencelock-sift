@@ -25,6 +25,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Accuracy card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-card.png
 - Judge pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md
 - Judge scorecard: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md
+- Judge smoke test: https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
 - Claim verification table: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/claim_verification_table.md
@@ -33,6 +34,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Investigation report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/investigation_report.md
 - Timeline report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/timeline_report.md
 - Analyst handoff: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/analyst_handoff.md
+- Agent trace: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/agent_trace.md
 - Execution log: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/execution_log.jsonl
 - Integrity manifest: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/integrity_manifest.json
 
@@ -62,6 +64,8 @@ The first report draft intentionally fails verification. The final report only k
 - Public artifacts are judge-verifiable: reports, execution logs, integrity manifest, proof card, architecture diagram, and tests.
 - The judge pack gives a two-minute review path, requirements map, reproduction command, and honest boundary in one GitHub-rendered page.
 - The judge scorecard maps the package directly to the FIND EVIL criteria: autonomous execution quality, IR accuracy, depth, constraint implementation, audit trail quality, and usability.
+- The judge smoke test gives reviewers one command that returns JSON `ok: true` only if the rejected draft, corrected verifier, manifest check, and generated outputs match expectations.
+- The annotated agent trace explains each execution-log tool call and states that the deterministic demo uses no external LLM call, private data, or API key.
 - The static judge hub gives a browser-first review path for Devpost `Try it out`.
 - A concise before/after claim-verification table shows the rejected draft claim, corrected final claim, and artifact that proves each result.
 - The public dataset appendix explains the synthetic mini-case honestly and gives a compatible path for EVTX-ATTACK-SAMPLES, NIST CFReDS, or Digital Corpora extension work.

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -65,6 +67,7 @@ class EvidenceLockTests(unittest.TestCase):
             integrity_manifest = tmp_path / "integrity_manifest.json"
             timeline_report = tmp_path / "timeline_report.md"
             analyst_handoff = tmp_path / "analyst_handoff.md"
+            agent_trace = tmp_path / "agent_trace.md"
 
             self.assertEqual(len(report.findings), 2)
             self.assertEqual(report.verifier_issues, [])
@@ -74,6 +77,7 @@ class EvidenceLockTests(unittest.TestCase):
             self.assertTrue(integrity_manifest.exists())
             self.assertTrue(timeline_report.exists())
             self.assertTrue(analyst_handoff.exists())
+            self.assertTrue(agent_trace.exists())
             self.assertIn(
                 "Verifier rejected the first draft",
                 report_md.read_text(encoding="utf-8"),
@@ -86,8 +90,15 @@ class EvidenceLockTests(unittest.TestCase):
             self.assertIn("Recommended Response Actions", handoff_text)
             self.assertIn("T1059.001", handoff_text)
             self.assertIn("T1543.003", handoff_text)
+            trace_text = agent_trace.read_text(encoding="utf-8")
+            self.assertIn("cmd-0005", trace_text)
+            self.assertIn("token usage is not applicable", trace_text)
             self.assertIn(
                 "Draft verifier issues: `3`",
+                accuracy_md.read_text(encoding="utf-8"),
+            )
+            self.assertIn(
+                "| True positives | `2` |",
                 accuracy_md.read_text(encoding="utf-8"),
             )
             manifest = json.loads(integrity_manifest.read_text(encoding="utf-8"))
@@ -96,6 +107,7 @@ class EvidenceLockTests(unittest.TestCase):
             self.assertIn("investigation_report.md", {entry["path"] for entry in manifest["outputs"]})
             self.assertIn("timeline_report.md", {entry["path"] for entry in manifest["outputs"]})
             self.assertIn("analyst_handoff.md", {entry["path"] for entry in manifest["outputs"]})
+            self.assertIn("agent_trace.md", {entry["path"] for entry in manifest["outputs"]})
 
     def test_run_case_rejects_evidence_path_escape(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -193,8 +205,10 @@ class EvidenceLockTests(unittest.TestCase):
             "docs/demo-video/evidencelock-sift-demo.webm",
             "reports/investigation_report.md",
             "reports/analyst_handoff.md",
+            "reports/agent_trace.md",
             "reports/integrity_manifest.json",
             "judge_scorecard.md",
+            "tools/judge_smoke_test.py",
             "mcp_tool_schema.json",
             "verify-manifest",
             "T1059.001",
@@ -205,6 +219,8 @@ class EvidenceLockTests(unittest.TestCase):
         for fragment in [
             "EvidenceLock SIFT Judge Hub",
             "judge_scorecard.md",
+            "judge_smoke_test.py",
+            "agent_trace.md",
             "claim_verification_table.md",
             "public_dataset_benchmark_appendix.md",
             "raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/execution_log.jsonl",
@@ -215,6 +231,20 @@ class EvidenceLockTests(unittest.TestCase):
         ]:
             self.assertIn(fragment, judge_hub)
         self.assertNotIn("../reports/", judge_hub)
+
+    def test_judge_smoke_test_passes(self) -> None:
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "tools" / "judge_smoke_test.py")],
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=20,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        payload = json.loads(result.stdout)
+        self.assertTrue(payload["ok"])
+        self.assertTrue(payload["checks"]["manifest_ok"])
+        self.assertTrue(payload["checks"]["agent_trace_hashed"])
 
 if __name__ == "__main__":
     unittest.main()

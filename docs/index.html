@@ -22,6 +22,8 @@
     .panel h2 { margin: 0 0 12px; font-size: 24px; letter-spacing: 0; }
     .panel p { margin: 0 0 12px; }
     .panel img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: #fff; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .actions a { display: inline-flex; align-items: center; min-height: 42px; border: 1px solid var(--line); background: var(--paper); padding: 10px 14px; }
     ol, ul { margin: 0; padding-left: 20px; }
     a { color: var(--blue); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
     code { background: #e8eef6; padding: 2px 5px; }
@@ -38,6 +40,12 @@
     <p class="eyebrow">FIND EVIL judge hub</p>
     <h1>EvidenceLock SIFT is a verifier-first MCP-style boundary for Protocol SIFT triage.</h1>
     <p class="dek">The demo proves a narrow, auditable DFIR loop: an unsupported confirmed claim fails, the agent corrects it with evidence and tool-call IDs, and published reports are checked against a SHA-256 integrity manifest.</p>
+    <nav class="actions" aria-label="Judge shortcuts">
+      <a href="https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm">Watch Demo</a>
+      <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py">Run Smoke Test</a>
+      <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md">Open Scorecard</a>
+      <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/reports/agent_trace.md">Open Trace</a>
+    </nav>
 
     <section class="metrics" aria-label="Demo metrics">
       <div class="tile"><strong>3</strong><span>draft verifier issues caught</span></div>
@@ -63,7 +71,9 @@
         <ol>
           <li>Open the <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md">judge pack</a>.</li>
           <li>Scan the <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md">judging criteria scorecard</a>.</li>
+          <li>Run <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py">the smoke test</a>.</li>
           <li>Read the <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/claim_verification_table.md">before/after claim table</a>.</li>
+          <li>Open the <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/reports/agent_trace.md">annotated agent trace</a>.</li>
           <li>Inspect the <a href="https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/execution_log.jsonl">execution log</a>.</li>
           <li>Verify the <a href="https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/integrity_manifest.json">integrity manifest</a>.</li>
         </ol>
@@ -80,6 +90,7 @@
 cd evidencelock-sift
 $env:PYTHONPATH="src"
 python -m unittest discover -s tests -v
+python tools/judge_smoke_test.py
 python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .</code>
       </div>
       <div class="panel boundary">
@@ -94,6 +105,7 @@ python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_man
           <li><a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/reports/timeline_report.md">Timeline report</a></li>
           <li><a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/reports/accuracy_report.md">Accuracy report</a></li>
           <li><a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/reports/analyst_handoff.md">Analyst handoff</a></li>
+          <li><a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/reports/agent_trace.md">Agent trace</a></li>
         </ul>
       </div>
       <div class="panel">

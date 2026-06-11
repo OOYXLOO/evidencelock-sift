@@ -28,6 +28,7 @@ The demo implements a complete vertical slice:
 - corrects the report by attaching exact evidence IDs and tool-call IDs
 - emits `investigation_report.md`, `investigation_report.json`, `accuracy_report.md`, `timeline_report.md`, `execution_log.jsonl`, and `integrity_manifest.json`
 - emits `analyst_handoff.md` with MITRE mapping, priority, and concrete response actions for each confirmed finding
+- emits `agent_trace.md`, an annotated trace over the execution log that explains each tool call and correction decision
 
 The first draft intentionally fails verification. The final report only keeps confirmed findings when they include evidence references and reproducible tool references.
 
@@ -59,7 +60,8 @@ Another challenge was keeping the demo honest without redistributing third-party
 - The final report has two confirmed findings and zero final verifier issues.
 - Every confirmed finding has an evidence ID, event record number, timestamp, and tool-call reference.
 - The execution log shows the failed first verification pass and the successful corrected pass.
-- The accuracy report includes a metrics table, before/after claim table, and bypass tests for unsupported claims, path escapes, tampered reports, and unsafe manifest paths.
+- The accuracy report includes a metrics table, tiny confusion matrix, before/after claim table, and bypass tests for unsupported claims, path escapes, tampered reports, and unsafe manifest paths.
+- The judge smoke test returns JSON `ok: true` only after checking the rejected draft, corrected verifier, manifest, trace, and generated report set.
 - The timeline report gives judges a timestamp-sorted triage view before they inspect the full report.
 - The analyst handoff converts confirmed findings into MITRE-mapped response actions, so the output is useful to a responder after verification.
 - The integrity manifest records SHA-256 hashes for the input evidence file and generated outputs.
@@ -85,10 +87,12 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
+- `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `docs/accuracy-card.png`: visual metrics and guardrail/bypass-test summary.
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
+- `reports/agent_trace.md`: annotated trace over the execution log and correction decision.
 - `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
 - `reports/timeline_report.md`: timestamp-sorted event timeline for fast triage review.
 - `reports/analyst_handoff.md`: MITRE, priority, evidence, tool-call, and response-action handoff.
@@ -100,6 +104,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 - Judge pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md
 - Judge scorecard: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md
+- Judge smoke test: https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Devpost field pack: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/devpost_field_pack.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
@@ -114,6 +119,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - Investigation report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/investigation_report.md
 - Timeline report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/timeline_report.md
 - Analyst handoff: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/analyst_handoff.md
+- Agent trace: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/agent_trace.md
 - Integrity manifest: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/integrity_manifest.json
 - Architecture diagram: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.svg
 
