@@ -24,6 +24,8 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Judge pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
+- Claim verification table: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/claim_verification_table.md
+- Public dataset / benchmark appendix: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/public_dataset_benchmark_appendix.md
 - MCP-style tool schema: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/mcp_tool_schema.json
 - Investigation report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/investigation_report.md
 - Timeline report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/timeline_report.md
@@ -43,7 +45,7 @@ EvidenceLock SIFT is a verifier-first incident-response agent pattern for SANS S
 
 Judge fast path: run one command, watch the first verifier pass reject an unsafe confirmed claim, inspect the corrected pass, then verify the report hashes with the integrity manifest.
 
-The demo runs a complete vertical slice: hash evidence, parse/search normalized Windows event records, draft findings, reject unsupported confirmed claims, repair the report with evidence IDs and tool-call IDs, and emit an investigation report, timeline report, accuracy report, execution log, and integrity manifest.
+The demo runs a complete vertical slice on a synthetic Windows EVTX-style mini-case: hash evidence, parse/search normalized Windows event records, draft findings, reject unsupported confirmed claims, repair the report with evidence IDs and tool-call IDs, and emit an investigation report, timeline report, accuracy report, execution log, and integrity manifest.
 
 ## Judging Hook
 
@@ -56,6 +58,8 @@ The first report draft intentionally fails verification. The final report only k
 - Designed to fail closed: missing evidence downgrades or rejects a finding instead of inventing certainty.
 - Public artifacts are judge-verifiable: reports, execution logs, integrity manifest, proof card, architecture diagram, and tests.
 - The judge pack gives a two-minute review path, requirements map, reproduction command, and honest boundary in one GitHub-rendered page.
+- A concise before/after claim-verification table shows the rejected draft claim, corrected final claim, and artifact that proves each result.
+- The public dataset appendix explains the synthetic mini-case honestly and gives a compatible path for EVTX-ATTACK-SAMPLES, NIST CFReDS, or Digital Corpora extension work.
 - Gallery assets include a proof chain, trust-boundary diagram, and accuracy/bypass-test card.
 - Demo path runs with the Python standard library, so judges can reproduce the vertical slice quickly.
 - Integrity can be checked with `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`, which returns `"ok": true` when evidence and report hashes still match.
