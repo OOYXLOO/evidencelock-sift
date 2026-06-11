@@ -183,5 +183,22 @@ class EvidenceLockTests(unittest.TestCase):
         )
         self.assertTrue(verification["issues"])
 
+    def test_judge_pack_links_required_public_artifacts(self) -> None:
+        judge_pack = (ROOT / "docs" / "judge_pack.md").read_text(encoding="utf-8")
+
+        required_fragments = [
+            "EvidenceLock SIFT Judge Pack",
+            "docs/demo-video/evidencelock-sift-demo.webm",
+            "reports/investigation_report.md",
+            "reports/analyst_handoff.md",
+            "reports/integrity_manifest.json",
+            "mcp_tool_schema.json",
+            "verify-manifest",
+            "T1059.001",
+            "T1543.003",
+        ]
+        for fragment in required_fragments:
+            self.assertIn(fragment, judge_pack)
+
 if __name__ == "__main__":
     unittest.main()

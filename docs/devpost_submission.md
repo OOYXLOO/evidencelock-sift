@@ -83,6 +83,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 ## Judge Fast Path
 
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
+- `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `docs/accuracy-card.png`: visual metrics and guardrail/bypass-test summary.
@@ -96,6 +97,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 
 - Repository: https://github.com/OOYXLOO/evidencelock-sift
 - Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
+- Judge pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Devpost field pack: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/devpost_field_pack.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
