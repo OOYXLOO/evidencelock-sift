@@ -226,6 +226,7 @@ class EvidenceLockTests(unittest.TestCase):
             "EvidenceLock SIFT Judge Pack",
             "docs/index.html",
             "docs/demo-video/evidencelock-sift-demo.webm",
+            "docs/evidencelock-sift-judge-deck.pptx",
             "reports/investigation_report.md",
             "reports/analyst_handoff.md",
             "reports/agent_trace.md",
@@ -243,6 +244,7 @@ class EvidenceLockTests(unittest.TestCase):
             self.assertIn(fragment, judge_pack)
         for fragment in [
             "EvidenceLock SIFT Judge Hub",
+            "evidencelock-sift-judge-deck.pptx",
             "judge_scorecard.md",
             "judge_smoke_test.py",
             "agent_trace.md",
@@ -260,6 +262,7 @@ class EvidenceLockTests(unittest.TestCase):
         ]:
             self.assertIn(fragment, judge_hub)
         self.assertNotIn("../reports/", judge_hub)
+        self.assertTrue((ROOT / "docs" / "evidencelock-sift-judge-deck.pptx").is_file())
 
     def test_judge_smoke_test_passes(self) -> None:
         result = subprocess.run(

@@ -7,6 +7,7 @@
 - [x] Architecture diagram present.
 - [x] Proof-card visual present.
 - [x] Devpost gallery asset guide present.
+- [x] Editable presentation deck present.
 - [x] Dataset documentation present.
 - [x] Accuracy report present.
 - [x] Execution log present.
