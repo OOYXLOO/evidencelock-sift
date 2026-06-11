@@ -1,0 +1,94 @@
+{
+  "case_id": "windows-triage-mini-001",
+  "findings": [
+    {
+      "confidence": 0.7,
+      "correction_notes": [
+        "Verifier rejected the first draft because it lacked evidence_refs; correction attached the exact process-creation event."
+      ],
+      "evidence_refs": [
+        {
+          "evidence_id": "windows_triage_events:1024",
+          "matched_fields": {
+            "event_id": "4688",
+            "message": "A new process has been created.",
+            "tags": [
+              "process_creation",
+              "powershell",
+              "T1059.001"
+            ]
+          },
+          "record_number": "1024",
+          "source_path": "examples/cases/windows_triage_events.jsonl",
+          "timestamp": "2026-06-01T10:04:31Z"
+        }
+      ],
+      "finding_id": "F-001",
+      "mitre_techniques": [
+        "T1059.001"
+      ],
+      "status": "confirmed",
+      "summary": "A document-spawned PowerShell process appears to run an encoded command.",
+      "title": "Suspicious PowerShell execution",
+      "tool_refs": [
+        {
+          "args": {
+            "contains": "encodedcommand",
+            "event_ids": [
+              "4688"
+            ]
+          },
+          "command_id": "cmd-0003",
+          "status": "success",
+          "tool_name": "search_events"
+        }
+      ]
+    },
+    {
+      "confidence": 0.74,
+      "correction_notes": [
+        "Added after the collection pass found a service-installation event with a suspicious image path."
+      ],
+      "evidence_refs": [
+        {
+          "evidence_id": "windows_triage_events:2048",
+          "matched_fields": {
+            "event_id": "7045",
+            "message": "A service was installed in the system.",
+            "tags": [
+              "service_install",
+              "persistence",
+              "T1543.003"
+            ]
+          },
+          "record_number": "2048",
+          "source_path": "examples/cases/windows_triage_events.jsonl",
+          "timestamp": "2026-06-01T10:07:09Z"
+        }
+      ],
+      "finding_id": "F-002",
+      "mitre_techniques": [
+        "T1543.003"
+      ],
+      "status": "confirmed",
+      "summary": "A service was installed with an executable path under a temporary directory.",
+      "title": "Suspicious service installation",
+      "tool_refs": [
+        {
+          "args": {
+            "contains": "temp",
+            "event_ids": [
+              "7045"
+            ]
+          },
+          "command_id": "cmd-0004",
+          "status": "success",
+          "tool_name": "search_events"
+        }
+      ]
+    }
+  ],
+  "title": "Mini Windows EVTX triage with self-correction",
+  "verifier_issues": [],
+  "verifier_iterations": 2
+}

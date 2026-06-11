@@ -1,0 +1,10 @@
+{
+  "case_id": "windows-triage-mini-001",
+  "title": "Mini Windows EVTX triage with self-correction",
+  "event_evidence": "windows_triage_events.jsonl",
+  "expected_findings": [
+    "F-001",
+    "F-002"
+  ],
+  "dataset_note": "Synthetic normalized Windows events created for the public demo. The same schema can be populated from SIFT/EZ Tools EVTX exports or EVTX-ATTACK-SAMPLES."
+}
