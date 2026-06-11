@@ -17,7 +17,8 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 ## Project Links
 
 - Repository: https://github.com/OOYXLOO/evidencelock-sift
-- Judge hub: https://ooyxloo.github.io/evidencelock-sift/
+- Judge hub source: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/index.html
+- Judge hub Pages URL, use only after it returns HTTP 200: https://ooyxloo.github.io/evidencelock-sift/
 - Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
 - Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
@@ -71,7 +72,7 @@ The first report draft intentionally fails verification. The final report only k
 ## Final Submit Checks
 
 - Confirm Devpost project belongs to FIND EVIL, not another hackathon.
-- Use `https://ooyxloo.github.io/evidencelock-sift/` as the `Try it out` link after GitHub Pages is verified.
+- Use `https://ooyxloo.github.io/evidencelock-sift/` as the `Try it out` link only after GitHub Pages returns HTTP 200. Until then, use the GitHub-rendered judge hub source link.
 - Upload `proof-card.png` first and `architecture.png` second.
 - Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` after any report regeneration.
 - Use the hosted video field only if Devpost accepts the raw GitHub WebM; otherwise upload the WebM to a supported video host first.
