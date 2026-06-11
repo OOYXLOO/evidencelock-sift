@@ -185,9 +185,11 @@ class EvidenceLockTests(unittest.TestCase):
 
     def test_judge_pack_links_required_public_artifacts(self) -> None:
         judge_pack = (ROOT / "docs" / "judge_pack.md").read_text(encoding="utf-8")
+        judge_hub = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
 
         required_fragments = [
             "EvidenceLock SIFT Judge Pack",
+            "docs/index.html",
             "docs/demo-video/evidencelock-sift-demo.webm",
             "reports/investigation_report.md",
             "reports/analyst_handoff.md",
@@ -199,6 +201,14 @@ class EvidenceLockTests(unittest.TestCase):
         ]
         for fragment in required_fragments:
             self.assertIn(fragment, judge_pack)
+        for fragment in [
+            "EvidenceLock SIFT Judge Hub",
+            "claim_verification_table.md",
+            "public_dataset_benchmark_appendix.md",
+            "proof-card.png",
+            "accuracy-card.png",
+        ]:
+            self.assertIn(fragment, judge_hub)
 
 if __name__ == "__main__":
     unittest.main()

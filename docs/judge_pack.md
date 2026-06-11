@@ -8,13 +8,14 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 
 ## Two-Minute Review Path
 
-1. Watch or skim the demo asset: [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm).
-2. Open the proof trace: [`docs/proof-card.png`](proof-card.png).
-3. Open the accuracy summary: [`docs/accuracy-card.png`](accuracy-card.png).
-4. Check the before/after claim verification table: [`docs/claim_verification_table.md`](claim_verification_table.md).
-5. Read the final report: [`reports/investigation_report.md`](../reports/investigation_report.md).
-6. Read the responder handoff: [`reports/analyst_handoff.md`](../reports/analyst_handoff.md).
-7. Verify integrity: `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`
+1. Open the static judge hub: [`docs/index.html`](index.html).
+2. Watch or skim the demo asset: [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm).
+3. Open the proof trace: [`docs/proof-card.png`](proof-card.png).
+4. Open the accuracy summary: [`docs/accuracy-card.png`](accuracy-card.png).
+5. Check the before/after claim verification table: [`docs/claim_verification_table.md`](claim_verification_table.md).
+6. Read the final report: [`reports/investigation_report.md`](../reports/investigation_report.md).
+7. Read the responder handoff: [`reports/analyst_handoff.md`](../reports/analyst_handoff.md).
+8. Verify integrity: `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`
 
 ## FIND EVIL Requirements Map
 

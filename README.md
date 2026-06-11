@@ -60,6 +60,7 @@ The agent intentionally starts with an unsupported draft claim. The verifier rej
 
 If you only have a few minutes, inspect these artifacts:
 
+- `docs/index.html`: static judge hub for GitHub Pages or local browser review.
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
@@ -88,6 +89,7 @@ If you only have a few minutes, inspect these artifacts:
 See:
 
 - `docs/architecture.md`
+- `docs/index.html`
 - `docs/accuracy-card.png`
 - `docs/accuracy-card.svg`
 - `docs/architecture.png`

@@ -17,6 +17,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 ## Project Links
 
 - Repository: https://github.com/OOYXLOO/evidencelock-sift
+- Judge hub: https://ooyxloo.github.io/evidencelock-sift/
 - Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
 - Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
@@ -58,6 +59,7 @@ The first report draft intentionally fails verification. The final report only k
 - Designed to fail closed: missing evidence downgrades or rejects a finding instead of inventing certainty.
 - Public artifacts are judge-verifiable: reports, execution logs, integrity manifest, proof card, architecture diagram, and tests.
 - The judge pack gives a two-minute review path, requirements map, reproduction command, and honest boundary in one GitHub-rendered page.
+- The static judge hub gives a browser-first review path for Devpost `Try it out`.
 - A concise before/after claim-verification table shows the rejected draft claim, corrected final claim, and artifact that proves each result.
 - The public dataset appendix explains the synthetic mini-case honestly and gives a compatible path for EVTX-ATTACK-SAMPLES, NIST CFReDS, or Digital Corpora extension work.
 - Gallery assets include a proof chain, trust-boundary diagram, and accuracy/bypass-test card.
@@ -69,6 +71,7 @@ The first report draft intentionally fails verification. The final report only k
 ## Final Submit Checks
 
 - Confirm Devpost project belongs to FIND EVIL, not another hackathon.
+- Use `https://ooyxloo.github.io/evidencelock-sift/` as the `Try it out` link after GitHub Pages is verified.
 - Upload `proof-card.png` first and `architecture.png` second.
 - Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` after any report regeneration.
 - Use the hosted video field only if Devpost accepts the raw GitHub WebM; otherwise upload the WebM to a supported video host first.
