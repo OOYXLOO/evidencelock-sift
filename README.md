@@ -80,6 +80,7 @@ See:
 - `docs/demo_script.md`
 - `docs/demo_recording.md`
 - `docs/demo-recording-page.html`
+- `docs/devpost_field_pack.md`
 - `docs/devpost_gallery_assets.md`
 - `docs/devpost_submission.md`
 - `docs/judging_guide.md`
