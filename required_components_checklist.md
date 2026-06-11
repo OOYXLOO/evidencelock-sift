@@ -13,6 +13,8 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 | Dataset documentation | `docs/dataset.md` | ready |
 | Accuracy / evaluation report | `reports/accuracy_report.md`, `docs/accuracy_method.md` | ready |
 | Execution logs / tool-call trace | `reports/execution_log.jsonl` | ready |
+| Annotated agent trace | `reports/agent_trace.md` | ready |
+| One-command judge smoke test | `tools/judge_smoke_test.py` | ready |
 | Analyst-ready response handoff | `reports/analyst_handoff.md` | ready |
 | Try-it-out / reproducibility path | `README.md` quick start and `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` | ready |
 
@@ -21,6 +23,7 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 - Lead with the verifier-first trust boundary: the agent can draft quickly, but confirmed findings must pass mechanical evidence and tool-reference checks.
 - Include `docs/judge_pack.md` early in Additional info because it is the shortest route through the full evidence package.
 - Include `docs/judge_scorecard.md` near the judge pack so reviewers can map each FIND EVIL criterion to evidence without hunting through the repo.
+- Include `tools/judge_smoke_test.py` and `reports/agent_trace.md` in Additional info because they shorten the path from claim to verification.
 - Show the self-correction sequence early: first draft rejected, corrected report accepted.
 - Use `docs/proof-card.png` as the first gallery image because it compresses the whole proof chain into one screen.
 - Use `docs/accuracy-card.png` as the third gallery image to show metrics and bypass tests without making judges open a Markdown report first.

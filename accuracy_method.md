@@ -10,8 +10,9 @@ Metrics used in the demo:
 - Tool trace coverage: confirmed findings with at least one tool call reference.
 - Expected behavior coverage: whether the known mini-case behaviors are found.
 - Manifest integrity: whether the evidence and generated reports still match their recorded SHA-256 hashes.
+- Tiny confusion matrix: whether the two expected suspicious behaviors are true positives, the benign logon stays a true negative, and final false positives/false negatives remain zero for this mini-case.
 - Guardrail bypass checks: whether unsupported claims, path escapes, and tampered outputs fail closed.
 
 The demo is intentionally honest: the first draft fails verification. That failure is a feature because it proves the verifier can catch a confident but unsupported claim before publication.
 
-The generated `reports/accuracy_report.md` includes a metrics table, a before/after claim table, and the guardrail tests that support the claimed boundary.
+The generated `reports/accuracy_report.md` includes a metrics table, a tiny confusion matrix, a before/after claim table, and the guardrail tests that support the claimed boundary.
