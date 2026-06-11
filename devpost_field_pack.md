@@ -50,7 +50,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 
 EvidenceLock SIFT is a verifier-first incident-response agent pattern for SANS SIFT / Protocol SIFT workflows. It lets an agent move quickly through evidence collection and report drafting, but blocks the dangerous part: confident conclusions that are not tied to reproducible evidence.
 
-Judge fast path: run one command, watch the first verifier pass reject an unsafe confirmed claim, inspect the corrected pass, then verify the report hashes with the integrity manifest.
+Judge fast path: run one command, watch the first verifier pass reject an unsafe confirmed claim, inspect the corrected pass and `proof_trace` IDs, then verify the report hashes with the integrity manifest.
 
 The demo runs a complete vertical slice on a synthetic Windows EVTX-style mini-case: hash evidence, parse/search normalized Windows event records, draft findings, reject unsupported confirmed claims, repair the report with evidence IDs and tool-call IDs, and emit an investigation report, timeline report, accuracy report, execution log, and integrity manifest.
 
@@ -66,8 +66,8 @@ The first report draft intentionally fails verification. The final report only k
 - Public artifacts are judge-verifiable: reports, execution logs, integrity manifest, proof card, architecture diagram, and tests.
 - The judge pack gives a two-minute review path, requirements map, reproduction command, and honest boundary in one GitHub-rendered page.
 - The judge scorecard maps the package directly to the FIND EVIL criteria: autonomous execution quality, IR accuracy, depth, constraint implementation, audit trail quality, and usability.
-- The judge smoke test gives reviewers one command that returns JSON `ok: true` only if the rejected draft, corrected verifier, manifest check, and generated outputs match expectations.
-- The smoke test also runs a negative-control case and requires `negative_control_downgrades_to_unresolved: true`.
+- The judge smoke test gives reviewers one command that returns JSON `ok: true` only if the rejected draft, corrected verifier, manifest check, generated outputs, and exact `F-001`/`F-002` evidence/tool-call IDs match expectations.
+- The smoke test also runs a negative-control case and requires `negative_control_downgrades_to_unresolved: true` plus `negative_manifest_ok: true`.
 - The SIFT compatibility runbook gives a concrete, non-claiming migration path for EvtxECmd exports, Sleuth Kit wrappers, typed MCP tools, and integrity manifests.
 - The annotated agent trace explains each execution-log tool call and states that the deterministic demo uses no external LLM call, private data, or API key.
 - The static judge hub gives a browser-first review path for Devpost `Try it out`.

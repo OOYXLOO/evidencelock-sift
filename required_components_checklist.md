@@ -14,7 +14,7 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 | Accuracy / evaluation report | `reports/accuracy_report.md`, `docs/accuracy_method.md` | ready |
 | Execution logs / tool-call trace | `reports/execution_log.jsonl` | ready |
 | Annotated agent trace | `reports/agent_trace.md` | ready |
-| One-command judge smoke test | `tools/judge_smoke_test.py` | ready |
+| One-command proof-trace judge smoke test | `tools/judge_smoke_test.py` | ready |
 | Fail-closed negative control | `docs/fail_closed_negative_control.md`, `examples/cases/windows_negative_case.json` | ready |
 | SIFT compatibility runbook | `docs/sift_compatibility_runbook.md` | ready |
 | Analyst-ready response handoff | `reports/analyst_handoff.md` | ready |
@@ -25,7 +25,7 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 - Lead with the verifier-first trust boundary: the agent can draft quickly, but confirmed findings must pass mechanical evidence and tool-reference checks.
 - Include `docs/judge_pack.md` early in Additional info because it is the shortest route through the full evidence package.
 - Include `docs/judge_scorecard.md` near the judge pack so reviewers can map each FIND EVIL criterion to evidence without hunting through the repo.
-- Include `tools/judge_smoke_test.py` and `reports/agent_trace.md` in Additional info because they shorten the path from claim to verification.
+- Include `tools/judge_smoke_test.py` and `reports/agent_trace.md` in Additional info because they shorten the path from claim to exact evidence/tool-call verification.
 - Include `docs/fail_closed_negative_control.md` to show that no-evidence cases downgrade instead of becoming false positives.
 - Include `docs/sift_compatibility_runbook.md` to show platform fit without claiming unproven live SIFT execution.
 - Show the self-correction sequence early: first draft rejected, corrected report accepted.
