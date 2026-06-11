@@ -63,6 +63,7 @@ If you only have a few minutes, inspect these artifacts:
 - `docs/index.html`: static judge hub for GitHub Pages or local browser review.
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
+- `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `docs/accuracy-card.png`: visual metrics and guardrail/bypass-test summary.
@@ -103,6 +104,7 @@ See:
 - `docs/devpost_submission.md`
 - `docs/judging_guide.md`
 - `docs/judge_pack.md`
+- `docs/judge_scorecard.md`
 - `docs/mcp_tool_schema.json`
 - `docs/proof-card.png`
 - `docs/proof-card.svg`

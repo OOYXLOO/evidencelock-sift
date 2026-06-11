@@ -194,6 +194,7 @@ class EvidenceLockTests(unittest.TestCase):
             "reports/investigation_report.md",
             "reports/analyst_handoff.md",
             "reports/integrity_manifest.json",
+            "judge_scorecard.md",
             "mcp_tool_schema.json",
             "verify-manifest",
             "T1059.001",
@@ -203,6 +204,7 @@ class EvidenceLockTests(unittest.TestCase):
             self.assertIn(fragment, judge_pack)
         for fragment in [
             "EvidenceLock SIFT Judge Hub",
+            "judge_scorecard.md",
             "claim_verification_table.md",
             "public_dataset_benchmark_appendix.md",
             "raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/execution_log.jsonl",
