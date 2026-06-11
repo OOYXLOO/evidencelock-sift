@@ -18,6 +18,7 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 - Lead with the verifier-first trust boundary: the agent can draft quickly, but confirmed findings must pass mechanical evidence and tool-reference checks.
 - Show the self-correction sequence early: first draft rejected, corrected report accepted.
 - Use `docs/proof-card.png` as the first gallery image because it compresses the whole proof chain into one screen.
+- Use `docs/accuracy-card.png` as the third gallery image to show metrics and bypass tests without making judges open a Markdown report first.
 - State the honest boundary: this is a narrow EVTX-style vertical slice and a SIFT/MCP wrapper pattern, not a claim of full disk-forensics coverage.
 - Include the manifest verification command so judges can validate that evidence and generated outputs still match the published hashes.
 

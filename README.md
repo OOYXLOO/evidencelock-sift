@@ -62,6 +62,7 @@ If you only have a few minutes, inspect these artifacts:
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
+- `docs/accuracy-card.png`: visual metrics and guardrail/bypass-test summary.
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
 - `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
 - `reports/timeline_report.md`: timestamp-sorted event timeline for fast triage review.
@@ -84,6 +85,8 @@ If you only have a few minutes, inspect these artifacts:
 See:
 
 - `docs/architecture.md`
+- `docs/accuracy-card.png`
+- `docs/accuracy-card.svg`
 - `docs/architecture.png`
 - `docs/architecture.svg`
 - `docs/dataset.md`

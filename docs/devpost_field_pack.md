@@ -20,6 +20,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
 - Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
+- Accuracy card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-card.png
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
 - MCP-style tool schema: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/mcp_tool_schema.json
@@ -32,6 +33,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 
 1. `docs/proof-card.png`
 2. `docs/architecture.png`
+3. `docs/accuracy-card.png`
 
 ## Short Description
 
@@ -51,6 +53,7 @@ The first report draft intentionally fails verification. The final report only k
 - Public `docs/mcp_tool_schema.json` exposes the typed boundary, including `extract_event_evidence` and `verify_report_claims`.
 - Designed to fail closed: missing evidence downgrades or rejects a finding instead of inventing certainty.
 - Public artifacts are judge-verifiable: reports, execution logs, integrity manifest, proof card, architecture diagram, and tests.
+- Gallery assets include a proof chain, trust-boundary diagram, and accuracy/bypass-test card.
 - Demo path runs with the Python standard library, so judges can reproduce the vertical slice quickly.
 - Integrity can be checked with `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`, which returns `"ok": true` when evidence and report hashes still match.
 - Accuracy evidence includes a metrics table, before/after claim table, and bypass tests for unsupported claims, path escapes, tampered reports, and unsafe manifest paths.

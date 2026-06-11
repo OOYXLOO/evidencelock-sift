@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="EvidenceLock SIFT accuracy and guardrail card">
+  <rect width="1280" height="720" fill="#f8fafc"/>
+  <style>
+    .title{font-family:Arial,sans-serif;font-size:42px;font-weight:700;fill:#111827}
+    .subtitle{font-family:Arial,sans-serif;font-size:21px;fill:#475569}
+    .label{font-family:Arial,sans-serif;font-size:17px;font-weight:700;fill:#0f172a}
+    .body{font-family:Arial,sans-serif;font-size:18px;fill:#1f2937}
+    .mono{font-family:Consolas,monospace;font-size:17px;fill:#0f172a}
+    .small{font-family:Arial,sans-serif;font-size:15px;fill:#475569}
+    .card{fill:#ffffff;stroke:#cbd5e1;stroke-width:2;rx:8}
+    .ok{fill:#ecfdf5;stroke:#059669;stroke-width:3;rx:8}
+    .warn{fill:#fff7ed;stroke:#ea580c;stroke-width:3;rx:8}
+    .blue{fill:#eff6ff;stroke:#2563eb;stroke-width:3;rx:8}
+    .purple{fill:#f5f3ff;stroke:#7c3aed;stroke-width:3;rx:8}
+    .rule{stroke:#cbd5e1;stroke-width:2}
+  </style>
+
+  <text x="56" y="72" class="title">Accuracy and Guardrail Evidence</text>
+  <text x="56" y="108" class="subtitle">EvidenceLock SIFT makes the self-correction and bypass checks visible before judges read the full report.</text>
+
+  <rect x="56" y="150" width="270" height="138" class="warn"/>
+  <text x="82" y="191" class="label">Draft verifier issues</text>
+  <text x="82" y="247" style="font-family:Arial,sans-serif;font-size:58px;font-weight:700;fill:#9a3412">3</text>
+  <text x="156" y="239" class="body">blocked</text>
+  <text x="82" y="270" class="small">before final report</text>
+
+  <rect x="362" y="150" width="270" height="138" class="ok"/>
+  <text x="388" y="191" class="label">Final verifier issues</text>
+  <text x="388" y="247" style="font-family:Arial,sans-serif;font-size:58px;font-weight:700;fill:#047857">0</text>
+  <text x="462" y="239" class="body">after</text>
+  <text x="388" y="270" class="small">correction pass</text>
+
+  <rect x="668" y="150" width="270" height="138" class="blue"/>
+  <text x="694" y="191" class="label">Expected behaviors</text>
+  <text x="694" y="247" style="font-family:Arial,sans-serif;font-size:58px;font-weight:700;fill:#1d4ed8">2/2</text>
+  <text x="820" y="239" class="body">found</text>
+  <text x="694" y="270" class="small">in the mini-case</text>
+
+  <rect x="974" y="150" width="250" height="138" class="purple"/>
+  <text x="1000" y="191" class="label">Trace coverage</text>
+  <text x="1000" y="247" style="font-family:Arial,sans-serif;font-size:58px;font-weight:700;fill:#6d28d9">2/2</text>
+  <text x="1120" y="239" class="body">refs</text>
+  <text x="1000" y="270" class="small">evidence + tool refs</text>
+
+  <rect x="56" y="340" width="548" height="250" class="card"/>
+  <text x="86" y="383" class="label">Before / after claim state</text>
+  <line x1="86" y1="410" x2="574" y2="410" class="rule"/>
+  <text x="86" y="445" class="mono">First draft</text>
+  <text x="220" y="445" class="body">F-001 confirmed</text>
+  <text x="430" y="445" class="body">0 evidence refs</text>
+  <text x="86" y="485" class="mono">Verifier</text>
+  <text x="220" y="485" class="body">rejects draft</text>
+  <text x="430" y="485" class="body">0 tool refs</text>
+  <text x="86" y="525" class="mono">Final</text>
+  <text x="220" y="525" class="body">F-001 + F-002</text>
+  <text x="430" y="525" class="body">2 evidence refs</text>
+  <text x="86" y="565" class="small">The report can only publish confirmed findings after mechanical verification.</text>
+
+  <rect x="676" y="340" width="548" height="250" class="card"/>
+  <text x="706" y="383" class="label">Guardrail / bypass tests</text>
+  <line x1="706" y1="410" x2="1194" y2="410" class="rule"/>
+  <text x="706" y="445" class="body">1. Confirmed claim with no evidence refs: rejected</text>
+  <text x="706" y="485" class="body">2. Case manifest path escape: rejected before parsing</text>
+  <text x="706" y="525" class="body">3. Tampered generated report: SHA-256 mismatch</text>
+  <text x="706" y="565" class="body">4. Unsafe manifest path: integrity issue</text>
+
+  <rect x="56" y="628" width="1168" height="52" class="card"/>
+  <text x="82" y="661" class="mono">python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .  ->  {"ok": true}</text>
+</svg>
