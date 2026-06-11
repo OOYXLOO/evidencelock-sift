@@ -122,5 +122,24 @@ class EvidenceLockTests(unittest.TestCase):
             self.assertEqual(issues[0]["issue"], "sha256 mismatch")
 
 
+    def test_integrity_manifest_rejects_unsafe_paths(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            run_case(CASE, tmp_path)
+            manifest_path = tmp_path / "integrity_manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+
+            manifest["outputs"][0]["path"] = "../outside.md"
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            issues = verify_integrity_manifest(manifest_path, ROOT)
+            self.assertEqual(issues[0]["kind"], "output")
+            self.assertEqual(issues[0]["issue"], "path escapes base")
+
+            manifest["outputs"][0]["path"] = str((tmp_path / "outside.md").resolve())
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            issues = verify_integrity_manifest(manifest_path, ROOT)
+            self.assertEqual(issues[0]["kind"], "output")
+            self.assertEqual(issues[0]["issue"], "absolute paths are not allowed")
+
 if __name__ == "__main__":
     unittest.main()

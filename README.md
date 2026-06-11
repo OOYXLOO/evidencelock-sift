@@ -70,6 +70,7 @@ If you only have a few minutes, inspect these artifacts:
 - Evidence inputs are read-only.
 - Case manifest evidence paths must resolve under the case directory; path escapes such as `../outside.jsonl` are rejected before parsing.
 - Output is limited to the chosen reports directory.
+- Integrity manifests are verified with relative paths only; absolute paths and path escapes are reported as integrity issues.
 - Finding status must be one of `confirmed`, `inferred`, `disproven`, or `unresolved`.
 - Confirmed findings require evidence references and tool references.
 - Tool failures are recorded in `execution_log.jsonl` and cannot be cited as proof.

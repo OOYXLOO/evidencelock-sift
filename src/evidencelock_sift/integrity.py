@@ -6,12 +6,21 @@ from typing import Any
 
 from evidencelock_sift.tools.evidence import sha256_file
 
-def _resolve_existing(base_dir: Path, value: str) -> Path:
+def _resolve_manifest_path(base_dir: Path, value: str) -> tuple[Path, str | None]:
     path = Path(value)
-    return path if path.is_absolute() else base_dir / path
+    if path.is_absolute():
+        return path, "absolute paths are not allowed"
+    resolved = (base_dir / path).resolve()
+    try:
+        resolved.relative_to(base_dir.resolve())
+    except ValueError:
+        return resolved, "path escapes base"
+    return resolved, None
 
 def _check_entry(base_dir: Path, entry: dict[str, Any], label: str) -> dict[str, str] | None:
-    path = _resolve_existing(base_dir, str(entry.get("path", "")))
+    path, path_issue = _resolve_manifest_path(base_dir, str(entry.get("path", "")))
+    if path_issue:
+        return {"path": str(path), "kind": label, "issue": path_issue}
     expected = str(entry.get("sha256", ""))
     if not expected:
         return {"path": str(path), "kind": label, "issue": "missing expected sha256"}
