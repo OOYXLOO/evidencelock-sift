@@ -32,6 +32,7 @@ Generated outputs:
 - `reports/investigation_report.json`
 - `reports/accuracy_report.md`
 - `reports/execution_log.jsonl`
+- `docs/demo-video/evidencelock-sift-demo.webm`
 
 ## Protocol SIFT Fit
 
@@ -65,4 +66,6 @@ See:
 - `docs/architecture.svg`
 - `docs/dataset.md`
 - `docs/demo_script.md`
+- `docs/demo_recording.md`
+- `docs/demo-recording-page.html`
 - `docs/accuracy_method.md`

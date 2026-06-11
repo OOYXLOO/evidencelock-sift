@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EvidenceLock SIFT Demo Recording</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #121826;
+      --muted: #526071;
+      --panel: #ffffff;
+      --line: #ccd6e0;
+      --blue: #1d4ed8;
+      --green: #047857;
+      --amber: #b45309;
+      --bg: #eef4f8;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--ink); font-family: Inter, "Segoe UI", Arial, sans-serif; }
+    body { width: 1280px; height: 720px; overflow: hidden; }
+    main { width: 1280px; height: 720px; padding: 42px 54px; display: grid; grid-template-columns: 1fr 440px; gap: 34px; }
+    h1 { margin: 0; font-size: 52px; line-height: 1.02; letter-spacing: 0; max-width: 720px; }
+    h2 { margin: 0 0 12px; font-size: 26px; letter-spacing: 0; }
+    p { margin: 0; }
+    .eyebrow { font-size: 15px; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: 0; margin-bottom: 14px; }
+    .dek { margin-top: 18px; font-size: 22px; line-height: 1.42; color: var(--muted); max-width: 760px; }
+    .stage { display: grid; grid-template-rows: auto 1fr auto; min-width: 0; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 30px; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; min-height: 132px; }
+    .card strong { display: block; font-size: 30px; margin-bottom: 9px; }
+    .card span { color: var(--muted); font-size: 16px; line-height: 1.35; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 24px; min-height: 0; }
+    .flow { display: grid; gap: 12px; margin-top: 18px; }
+    .step { display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; background: #f8fafc; }
+    .step b { color: var(--blue); }
+    .step span { color: var(--muted); line-height: 1.32; }
+    .terminal { margin-top: 24px; background: #0f172a; color: #dbeafe; border-radius: 8px; padding: 18px; font: 18px/1.45 Consolas, "Courier New", monospace; min-height: 170px; white-space: pre-wrap; }
+    .side { display: grid; grid-template-rows: auto auto 1fr; gap: 16px; }
+    .verdict { border-left: 6px solid var(--green); }
+    .issue { border-left: 6px solid var(--amber); }
+    .small { color: var(--muted); line-height: 1.45; font-size: 17px; }
+    .list { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 11px; }
+    .list li { display: grid; grid-template-columns: 22px 1fr; gap: 9px; font-size: 17px; line-height: 1.35; }
+    .dot { width: 10px; height: 10px; margin-top: 7px; border-radius: 999px; background: var(--green); }
+    .chapters { display: flex; gap: 8px; align-items: center; margin-top: 24px; }
+    .chapter { width: 46px; height: 10px; border: 0; border-radius: 999px; background: #cbd5e1; cursor: pointer; }
+    .chapter.active { background: var(--blue); }
+    .footer { position: absolute; left: 54px; right: 54px; bottom: 28px; display: flex; justify-content: space-between; color: #64748b; font-size: 15px; }
+  </style>
+</head>
+<body>
+<main>
+  <section class="stage">
+    <div>
+      <p class="eyebrow" id="eyebrow">FIND EVIL! submission demo</p>
+      <h1 id="headline">EvidenceLock SIFT refuses unsupported confirmed findings.</h1>
+      <p class="dek" id="dek">A Protocol SIFT-style DFIR agent can move quickly, but the report is only useful if each conclusion is tied to reproducible evidence.</p>
+      <div class="cards">
+        <div class="card"><strong id="metricA">3</strong><span id="metricALabel">normalized Windows events in the mini-case</span></div>
+        <div class="card"><strong id="metricB">2</strong><span id="metricBLabel">verified confirmed findings</span></div>
+        <div class="card"><strong id="metricC">0</strong><span id="metricCLabel">final verifier issues</span></div>
+      </div>
+    </div>
+    <div class="terminal" id="terminal">$ python -m evidencelock_sift.cli run-case --case examples/cases/windows_triage_case.json --out reports
+{"case_id": "windows-triage-mini-001", "findings": 2}</div>
+    <div class="chapters" aria-label="demo chapters">
+      <button class="chapter active" data-index="0" aria-label="chapter 1"></button>
+      <button class="chapter" data-index="1" aria-label="chapter 2"></button>
+      <button class="chapter" data-index="2" aria-label="chapter 3"></button>
+      <button class="chapter" data-index="3" aria-label="chapter 4"></button>
+      <button class="chapter" data-index="4" aria-label="chapter 5"></button>
+    </div>
+  </section>
+  <aside class="side">
+    <section class="panel issue">
+      <h2 id="panelTitle">Verifier catches the unsafe draft</h2>
+      <p class="small" id="panelBody">The first draft marks suspicious PowerShell as confirmed, but has no evidence_refs and no tool_refs. EvidenceLock blocks that claim before it reaches the final report.</p>
+    </section>
+    <section class="panel verdict">
+      <h2>Evidence chain</h2>
+      <ul class="list" id="chain">
+        <li><span class="dot"></span><span>SHA-256 hash recorded for the event artifact.</span></li>
+        <li><span class="dot"></span><span>Event record IDs connect findings to source evidence.</span></li>
+        <li><span class="dot"></span><span>Tool call IDs connect the report to reproducible searches.</span></li>
+      </ul>
+    </section>
+    <section class="panel">
+      <h2>Submission assets</h2>
+      <ul class="list">
+        <li><span class="dot"></span><span>Public GitHub repo with typed DFIR tools and tests.</span></li>
+        <li><span class="dot"></span><span>Architecture diagram, dataset docs, execution log, and accuracy report.</span></li>
+        <li><span class="dot"></span><span>Designed to wrap SIFT workstation tools through an MCP-style boundary.</span></li>
+      </ul>
+    </section>
+  </aside>
+</main>
+<div class="footer"><span>EvidenceLock SIFT</span><span>Self-correcting DFIR agent for Protocol SIFT workflows</span></div>
+<script>
+const chapters = [
+  {
+    eyebrow: "FIND EVIL! submission demo",
+    headline: "EvidenceLock SIFT refuses unsupported confirmed findings.",
+    dek: "A Protocol SIFT-style DFIR agent can move quickly, but the report is only useful if each conclusion is tied to reproducible evidence.",
+    metricA: "3",
+    metricALabel: "normalized Windows events in the mini-case",
+    metricB: "2",
+    metricBLabel: "verified confirmed findings",
+    metricC: "0",
+    metricCLabel: "final verifier issues",
+    terminal: "$ python -m evidencelock_sift.cli run-case --case examples/cases/windows_triage_case.json --out reports\n{\"case_id\": \"windows-triage-mini-001\", \"findings\": 2}",
+    panelTitle: "Verifier catches the unsafe draft",
+    panelBody: "The first draft marks suspicious PowerShell as confirmed, but has no evidence_refs and no tool_refs. EvidenceLock blocks that claim before it reaches the final report."
+  },
+  {
+    eyebrow: "Typed DFIR tools",
+    headline: "The agent uses constrained tools instead of raw shell access.",
+    dek: "EvidenceLock exposes hash, parse, search, extraction, and verification functions. SIFT binaries can be wrapped behind the same typed interface.",
+    metricA: "SHA",
+    metricALabel: "artifact integrity recorded before analysis",
+    metricB: "EVTX",
+    metricBLabel: "normalized event records with IDs and timestamps",
+    metricC: "MCP",
+    metricCLabel: "tool schema ready for Protocol SIFT extension",
+    terminal: "cmd-0001 hash_evidence -> sha256=7210c2a5...\ncmd-0002 parse_evtx -> events=3\ncmd-0003 search_events -> windows_triage_events:1024",
+    panelTitle: "Read-only evidence boundary",
+    panelBody: "The demo keeps inputs read-only and writes only reports. Optional Sleuth Kit wrappers are designed for fls and istat on a SIFT workstation."
+  },
+  {
+    eyebrow: "Self-correction loop",
+    headline: "The verifier forces the agent to repair or downgrade claims.",
+    dek: "The first verification pass fails. The correction pass searches exact events, attaches evidence_refs, and leaves final verifier issues at zero.",
+    metricA: "3",
+    metricALabel: "draft verifier issues",
+    metricB: "2",
+    metricBLabel: "verification passes",
+    metricC: "0",
+    metricCLabel: "unsupported confirmed findings",
+    terminal: "cmd-0005 verify_report_claims -> failed\n- confirmed finding has no evidence_refs\n- confirmed finding has no tool_refs\ncmd-0006 verify_report_claims -> success",
+    panelTitle: "Honest failure becomes signal",
+    panelBody: "The demo intentionally begins with a weak claim so judges can see the guardrail catch and repair a failure, not just read a polished final report."
+  },
+  {
+    eyebrow: "Investigation report",
+    headline: "Every confirmed finding has an evidence ID and a tool call ID.",
+    dek: "The final report ties PowerShell execution to Event ID 4688 and service installation to Event ID 7045 with exact record numbers.",
+    metricA: "4688",
+    metricALabel: "PowerShell encoded command",
+    metricB: "7045",
+    metricBLabel: "suspicious service installation",
+    metricC: "2",
+    metricCLabel: "MITRE-mapped findings",
+    terminal: "F-001 -> windows_triage_events:1024 -> cmd-0003\nF-002 -> windows_triage_events:2048 -> cmd-0004\nFinal verifier issues: 0",
+    panelTitle: "Report traceability",
+    panelBody: "A reader can reproduce each finding from the event source, record number, search arguments, and execution log."
+  },
+  {
+    eyebrow: "Why it fits FIND EVIL",
+    headline: "Fast response is only safe when the agent can prove itself.",
+    dek: "EvidenceLock focuses on autonomous execution quality, audit trail, constraints, and accuracy validation, the exact areas where DFIR agents can win or fail.",
+    metricA: "Repo",
+    metricALabel: "public code and reports",
+    metricB: "Docs",
+    metricBLabel: "architecture, dataset, accuracy method",
+    metricC: "Video",
+    metricCLabel: "recording asset ready for upload",
+    terminal: "reports/investigation_report.md\nreports/accuracy_report.md\nreports/execution_log.jsonl\ndocs/architecture.svg",
+    panelTitle: "Next extension",
+    panelBody: "On SIFT, the same verifier can guard EvtxECmd, mmls, fls, istat, and icat outputs through typed MCP tools."
+  }
+];
+
+function setChapter(index) {
+  const chapter = chapters[index];
+  for (const [key, value] of Object.entries(chapter)) {
+    const element = document.getElementById(key);
+    if (element) element.textContent = value;
+  }
+  document.querySelectorAll(".chapter").forEach((button, i) => {
+    button.classList.toggle("active", i === index);
+  });
+}
+
+document.querySelectorAll(".chapter").forEach((button) => {
+  button.addEventListener("click", () => setChapter(Number(button.dataset.index)));
+});
+</script>
+</body>
+</html>
