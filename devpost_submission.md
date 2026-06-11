@@ -1,0 +1,84 @@
+# Devpost Submission Draft
+
+## Project Name
+
+EvidenceLock SIFT
+
+## Tagline
+
+Self-correcting DFIR agent tools for Protocol SIFT that refuse unsupported confirmed findings.
+
+## Built With
+
+Python, Protocol SIFT design pattern, Model Context Protocol-style typed tools, Windows event triage, Sleuth Kit wrapper pattern, HTML/CSS demo recording, browser MediaRecorder.
+
+## What It Does
+
+EvidenceLock SIFT is a defensive incident-response agent pattern for SANS SIFT / Protocol SIFT workflows. It lets an agent move quickly through evidence collection and report drafting, but it blocks the dangerous part: confident conclusions that are not tied to reproducible evidence.
+
+The demo implements a complete vertical slice:
+
+- hashes the evidence artifact before analysis
+- parses normalized Windows EVTX-style event records
+- searches for suspicious process creation and service-installation events
+- drafts an investigation report
+- runs a verifier that rejects unsupported confirmed findings
+- corrects the report by attaching exact evidence IDs and tool-call IDs
+- emits `investigation_report.md`, `investigation_report.json`, `accuracy_report.md`, and `execution_log.jsonl`
+
+The first draft intentionally fails verification. The final report only keeps confirmed findings when they include evidence references and reproducible tool references.
+
+## Inspiration
+
+FIND EVIL asks builders to close the speed gap between AI-accelerated attackers and human responders. The speed problem is real, but a faster report is not helpful if it hallucinates. EvidenceLock focuses on the trust boundary: make the agent fast, but make every confirmed finding prove itself.
+
+## How We Built It
+
+I built the project as a small, auditable Python package instead of a broad chatbot. The core modules are:
+
+- `tools/evidence.py`: read-only evidence listing and SHA-256 hashing
+- `tools/evtx.py`: normalized EVTX JSONL/XML parsing and search
+- `tools/sleuthkit.py`: optional SIFT/Sleuth Kit wrapper pattern
+- `agent/verifier.py`: mechanical claim verification
+- `agent/loop.py`: plan, collect, draft, verify, correct, final report
+- `mcp_server.py`: MCP-style tool schema and tool-call boundary
+
+The design keeps SIFT tools behind typed functions. On a full SIFT workstation, the same pattern can wrap EvtxECmd, mmls, fls, istat, icat, and other DFIR tools without giving the model unconstrained shell access.
+
+## Challenges
+
+The hard part was deciding what the agent is not allowed to do. It is easy to make a demo that always ends cleanly. It is more useful to make a demo that starts with an unsafe confirmed claim and then proves the verifier can catch it.
+
+Another challenge was keeping the demo honest without redistributing third-party forensic images or private logs. The repository includes a synthetic normalized Windows mini-case and documents how the same schema maps to SIFT/EZ Tools exports, EVTX-ATTACK-SAMPLES, Digital Corpora, or NIST CFReDS data.
+
+## Accomplishments
+
+- The final report has two confirmed findings and zero final verifier issues.
+- Every confirmed finding has an evidence ID, event record number, timestamp, and tool-call reference.
+- The execution log shows the failed first verification pass and the successful corrected pass.
+- The project runs with the Python standard library for the demo path.
+- The repository includes tests, reports, dataset documentation, architecture diagram, and a generated WebM demo asset.
+
+## What We Learned
+
+The most important lesson is that DFIR agents need verifiers as architecture, not just instructions. Prompting the model to be careful is not enough. EvidenceLock makes the verifier an explicit boundary between draft reasoning and published findings.
+
+## What's Next
+
+- Run the same verifier against SIFT workstation outputs from EvtxECmd and Sleuth Kit.
+- Add a real MCP server transport around the current typed tool schema.
+- Add timeline contradiction checks across event sources.
+- Add a larger public benchmark from EVTX-ATTACK-SAMPLES or NIST CFReDS.
+- Add report export templates compatible with Protocol SIFT case reporting.
+
+## Links
+
+- Repository: https://github.com/OOYXLOO/evidencelock-sift
+- Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
+- Accuracy report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/accuracy_report.md
+- Investigation report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/investigation_report.md
+- Architecture diagram: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.svg
+
+## Final Submission Reminder
+
+Do not submit until the Devpost project draft exists, video URL requirements are satisfied, and all FIND EVIL additional-info fields are reviewed.
