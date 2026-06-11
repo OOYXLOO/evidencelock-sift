@@ -7,6 +7,7 @@ from pathlib import Path
 
 from evidencelock_sift.agent.loop import run_case
 from evidencelock_sift.agent.verifier import verify_findings
+from evidencelock_sift.integrity import verify_integrity_manifest
 from evidencelock_sift.schemas import Finding
 from evidencelock_sift.tools.evidence import hash_evidence
 from evidencelock_sift.tools.evtx import parse_events
@@ -74,6 +75,21 @@ class EvidenceLockTests(unittest.TestCase):
             self.assertEqual(manifest["case_id"], "windows-triage-mini-001")
             self.assertEqual(manifest["evidence"][0]["sha256"], hash_evidence(EVENTS).sha256)
             self.assertIn("investigation_report.md", {entry["path"] for entry in manifest["outputs"]})
+
+    def test_integrity_manifest_verifies_and_detects_tampering(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            run_case(CASE, tmp_path)
+            manifest_path = tmp_path / "integrity_manifest.json"
+
+            self.assertEqual(verify_integrity_manifest(manifest_path, ROOT), [])
+
+            report_md = tmp_path / "investigation_report.md"
+            report_md.write_text(report_md.read_text(encoding="utf-8") + "\nTampered.\n", encoding="utf-8")
+            issues = verify_integrity_manifest(manifest_path, ROOT)
+            self.assertEqual(len(issues), 1)
+            self.assertEqual(issues[0]["kind"], "output")
+            self.assertEqual(issues[0]["issue"], "sha256 mismatch")
 
 
 if __name__ == "__main__":

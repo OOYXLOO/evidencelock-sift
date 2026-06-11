@@ -24,6 +24,7 @@ cd evidencelock-sift
 $env:PYTHONPATH="src"
 python -m unittest discover -s tests -v
 python -m evidencelock_sift.cli run-case --case examples/cases/windows_triage_case.json --out reports
+python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .
 ```
 
 Generated outputs:
@@ -60,6 +61,7 @@ If you only have a few minutes, inspect these artifacts:
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
 - `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
 - `reports/integrity_manifest.json`: SHA-256 hashes for the input evidence file and generated outputs.
+- `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`: verifies the evidence and output hashes still match.
 
 ## Safety Boundary
 

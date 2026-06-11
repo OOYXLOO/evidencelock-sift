@@ -9,4 +9,5 @@ Target length: under 5 minutes.
 5. Show the first verifier pass failed because `F-001` was confirmed without evidence.
 6. Show the final report where `F-001` and `F-002` each include evidence IDs, record numbers, timestamps, and tool calls.
 7. Show `reports/integrity_manifest.json` so judges can verify the evidence and output hashes.
-8. Close with the Protocol SIFT fit: the same typed tools can wrap SIFT workstation binaries, but the verifier remains the guardrail.
+8. Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` and show `"ok": true`.
+9. Close with the Protocol SIFT fit: the same typed tools can wrap SIFT workstation binaries, but the verifier remains the guardrail.
