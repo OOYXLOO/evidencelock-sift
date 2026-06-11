@@ -10,6 +10,7 @@ EvidenceLock SIFT is designed as verifier-first DFIR automation: the agent can m
 | Incident-response accuracy | `reports/accuracy_report.md` shows the first verifier failure and the final zero-issue verification state. |
 | Fast triage review | `reports/timeline_report.md` gives a timestamp-sorted view of the suspicious process, service install, and benign logon events. |
 | Constraint enforcement | `src/evidencelock_sift/agent/verifier.py` rejects confirmed findings without evidence/tool references; `run_case` rejects case-manifest evidence paths that escape the case directory. |
+| Typed tool boundary | `docs/mcp_tool_schema.json` exposes the MCP-style tool contract, including `extract_event_evidence` and `verify_report_claims`. |
 | Audit trail quality | `reports/execution_log.jsonl` records evidence hashing, parsing, searches, and both verifier iterations with command IDs. |
 | Chain of custody | `reports/integrity_manifest.json` records the input evidence hash and hashes of generated reports/logs. |
 | Tamper check | `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` verifies the hashes still match and rejects unsafe absolute or escaping manifest paths. |

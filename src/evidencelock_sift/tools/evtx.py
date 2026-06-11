@@ -118,3 +118,9 @@ def search_events(
             continue
         matches.append(event)
     return matches
+
+def extract_event_evidence(events: list[EventRecord], evidence_id: str) -> EventRecord | None:
+    for event in events:
+        if event.evidence_id == evidence_id:
+            return event
+    return None

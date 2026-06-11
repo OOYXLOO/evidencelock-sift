@@ -65,6 +65,7 @@ If you only have a few minutes, inspect these artifacts:
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
 - `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
 - `reports/timeline_report.md`: timestamp-sorted event timeline for fast triage review.
+- `docs/mcp_tool_schema.json`: typed tool boundary, including `extract_event_evidence` and `verify_report_claims`.
 - `reports/integrity_manifest.json`: SHA-256 hashes for the input evidence file and generated outputs.
 - `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`: verifies the evidence and output hashes still match.
 
@@ -93,6 +94,7 @@ See:
 - `docs/devpost_gallery_assets.md`
 - `docs/devpost_submission.md`
 - `docs/judging_guide.md`
+- `docs/mcp_tool_schema.json`
 - `docs/proof-card.png`
 - `docs/proof-card.svg`
 - `docs/required_components_checklist.md`

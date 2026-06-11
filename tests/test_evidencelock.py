@@ -8,8 +8,11 @@ from pathlib import Path
 from evidencelock_sift.agent.loop import run_case
 from evidencelock_sift.agent.verifier import verify_findings
 from evidencelock_sift.integrity import verify_integrity_manifest
+from evidencelock_sift.mcp_server import call_tool
+from evidencelock_sift.mcp_server import TOOL_SCHEMAS
 from evidencelock_sift.schemas import Finding
 from evidencelock_sift.tools.evidence import hash_evidence
+from evidencelock_sift.tools.evtx import extract_event_evidence
 from evidencelock_sift.tools.evtx import parse_events
 from evidencelock_sift.tools.evtx import search_events
 
@@ -31,6 +34,10 @@ class EvidenceLockTests(unittest.TestCase):
         self.assertEqual(len(events), 3)
         self.assertEqual(len(matches), 1)
         self.assertEqual(matches[0].evidence_id, "windows_triage_events:1024")
+        self.assertEqual(
+            extract_event_evidence(events, "windows_triage_events:1024"),
+            matches[0],
+        )
 
     def test_verifier_rejects_confirmed_finding_without_evidence(self) -> None:
         events = parse_events(EVENTS)
@@ -140,6 +147,34 @@ class EvidenceLockTests(unittest.TestCase):
             issues = verify_integrity_manifest(manifest_path, ROOT)
             self.assertEqual(issues[0]["kind"], "output")
             self.assertEqual(issues[0]["issue"], "absolute paths are not allowed")
+
+    def test_mcp_style_tool_contract_exposes_verifier_boundary(self) -> None:
+        tool_names = {tool["name"] for tool in TOOL_SCHEMAS}
+        self.assertIn("extract_event_evidence", tool_names)
+        self.assertIn("verify_report_claims", tool_names)
+
+        extracted = call_tool(
+            "extract_event_evidence",
+            {"path": str(EVENTS), "evidence_id": "windows_triage_events:1024"},
+        )
+        self.assertEqual(extracted["event"]["record_number"], "1024")
+
+        verification = call_tool(
+            "verify_report_claims",
+            {
+                "path": str(EVENTS),
+                "findings": [
+                    {
+                        "confidence": 0.9,
+                        "finding_id": "F-009",
+                        "status": "confirmed",
+                        "summary": "Unsupported claim",
+                        "title": "Unsupported claim",
+                    }
+                ],
+            },
+        )
+        self.assertTrue(verification["issues"])
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,120 @@
+{
+  "tools": [
+    {
+      "description": "List and hash read-only evidence artifacts under an evidence root.",
+      "input_schema": {
+        "properties": {
+          "root": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "root"
+        ],
+        "type": "object"
+      },
+      "name": "list_evidence"
+    },
+    {
+      "description": "Return SHA-256 and metadata for one evidence artifact.",
+      "input_schema": {
+        "properties": {
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "type": "object"
+      },
+      "name": "hash_evidence"
+    },
+    {
+      "description": "Parse normalized EVTX JSONL/XML exports into evidence-linked event records.",
+      "input_schema": {
+        "properties": {
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "type": "object"
+      },
+      "name": "parse_evtx"
+    },
+    {
+      "description": "Search parsed event records by event ID, substring, or tag.",
+      "input_schema": {
+        "properties": {
+          "contains": {
+            "type": "string"
+          },
+          "event_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "path": {
+            "type": "string"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "type": "object"
+      },
+      "name": "search_events"
+    },
+    {
+      "description": "Return the exact event record for an evidence ID so reports can cite concrete evidence.",
+      "input_schema": {
+        "properties": {
+          "evidence_id": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "evidence_id"
+        ],
+        "type": "object"
+      },
+      "name": "extract_event_evidence"
+    },
+    {
+      "description": "Reject confirmed findings that lack valid evidence references or tool-call references.",
+      "input_schema": {
+        "properties": {
+          "findings": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "findings"
+        ],
+        "type": "object"
+      },
+      "name": "verify_report_claims"
+    }
+  ]
+}
