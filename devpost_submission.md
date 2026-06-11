@@ -24,7 +24,7 @@ The demo implements a complete vertical slice:
 - drafts an investigation report
 - runs a verifier that rejects unsupported confirmed findings
 - corrects the report by attaching exact evidence IDs and tool-call IDs
-- emits `investigation_report.md`, `investigation_report.json`, `accuracy_report.md`, `execution_log.jsonl`, and `integrity_manifest.json`
+- emits `investigation_report.md`, `investigation_report.json`, `accuracy_report.md`, `timeline_report.md`, `execution_log.jsonl`, and `integrity_manifest.json`
 
 The first draft intentionally fails verification. The final report only keeps confirmed findings when they include evidence references and reproducible tool references.
 
@@ -56,6 +56,7 @@ Another challenge was keeping the demo honest without redistributing third-party
 - The final report has two confirmed findings and zero final verifier issues.
 - Every confirmed finding has an evidence ID, event record number, timestamp, and tool-call reference.
 - The execution log shows the failed first verification pass and the successful corrected pass.
+- The timeline report gives judges a timestamp-sorted triage view before they inspect the full report.
 - The integrity manifest records SHA-256 hashes for the input evidence file and generated outputs.
 - The `verify-manifest` CLI command checks that evidence and output hashes still match and returns `"ok": true` for the published report set.
 - The proof-card visual gives judges a one-screen trace from finding to evidence, tool call, verifier correction, and integrity hash.
@@ -80,6 +81,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
 - `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
+- `reports/timeline_report.md`: timestamp-sorted event timeline for fast triage review.
 - `reports/integrity_manifest.json`: SHA-256 hashes for the input evidence file and generated outputs.
 
 ## Links
@@ -94,6 +96,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - Devpost gallery assets: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/devpost_gallery_assets.md
 - Accuracy report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/accuracy_report.md
 - Investigation report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/investigation_report.md
+- Timeline report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/timeline_report.md
 - Integrity manifest: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/integrity_manifest.json
 - Architecture diagram: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.svg
 

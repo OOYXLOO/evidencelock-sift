@@ -8,6 +8,7 @@ EvidenceLock SIFT is designed as verifier-first DFIR automation: the agent can m
 | --- | --- |
 | Autonomous execution | `src/evidencelock_sift/agent/loop.py` runs the full plan, collect, draft, verify, correct, and report loop with one command. |
 | Incident-response accuracy | `reports/accuracy_report.md` shows the first verifier failure and the final zero-issue verification state. |
+| Fast triage review | `reports/timeline_report.md` gives a timestamp-sorted view of the suspicious process, service install, and benign logon events. |
 | Constraint enforcement | `src/evidencelock_sift/agent/verifier.py` rejects confirmed findings without evidence references or tool references. |
 | Audit trail quality | `reports/execution_log.jsonl` records evidence hashing, parsing, searches, and both verifier iterations with command IDs. |
 | Chain of custody | `reports/integrity_manifest.json` records the input evidence hash and hashes of generated reports/logs. |
@@ -32,11 +33,12 @@ Finding `F-001` is the best quick trace for judges:
 1. Open with the risk: AI DFIR is fast, but unverified findings can be dangerous.
 2. Run `python -m evidencelock_sift.cli run-case --case examples/cases/windows_triage_case.json --out reports`.
 3. Show `docs/proof-card.svg`: one confirmed finding traced to evidence, command, verifier result, and hash.
-4. Show `execution_log.jsonl`: hash, parse, search, failed verifier pass, successful verifier pass.
-5. Show `investigation_report.md`: each confirmed finding has evidence and tool-call references.
-6. Show `integrity_manifest.json`: input and output hashes make tampering visible.
-7. Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`.
-8. Close with `python -m unittest discover -s tests -v`.
+4. Show `reports/timeline_report.md`: timestamp-sorted event triage.
+5. Show `execution_log.jsonl`: hash, parse, search, failed verifier pass, successful verifier pass.
+6. Show `investigation_report.md`: each confirmed finding has evidence and tool-call references.
+7. Show `integrity_manifest.json`: input and output hashes make tampering visible.
+8. Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`.
+9. Close with `python -m unittest discover -s tests -v`.
 
 ## Limitations and Failure Modes
 

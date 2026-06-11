@@ -6,8 +6,9 @@ Target length: under 5 minutes.
 2. Show `python -m evidencelock_sift.cli run-case --case examples/cases/windows_triage_case.json --out reports`.
 3. Show `docs/proof-card.svg` as the quick judge view: one finding traced to evidence, tool call, verifier correction, and integrity hash.
 4. Open `reports/execution_log.jsonl` and point out `hash_evidence`, `parse_evtx`, `search_events`, and two verification passes.
-5. Show the first verifier pass failed because `F-001` was confirmed without evidence.
-6. Show the final report where `F-001` and `F-002` each include evidence IDs, record numbers, timestamps, and tool calls.
-7. Show `reports/integrity_manifest.json` so judges can verify the evidence and output hashes.
-8. Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` and show `"ok": true`.
-9. Close with the Protocol SIFT fit: the same typed tools can wrap SIFT workstation binaries, but the verifier remains the guardrail.
+5. Show `reports/timeline_report.md` as the timestamp-sorted triage view.
+6. Show the first verifier pass failed because `F-001` was confirmed without evidence.
+7. Show the final report where `F-001` and `F-002` each include evidence IDs, record numbers, timestamps, and tool calls.
+8. Show `reports/integrity_manifest.json` so judges can verify the evidence and output hashes.
+9. Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` and show `"ok": true`.
+10. Close with the Protocol SIFT fit: the same typed tools can wrap SIFT workstation binaries, but the verifier remains the guardrail.

@@ -11,6 +11,7 @@
 - [x] Accuracy report present.
 - [x] Execution log present.
 - [x] Investigation report present.
+- [x] Timeline report present.
 - [x] Integrity manifest verification command present.
 - [x] Demo WebM generated and public in GitHub raw.
 - [x] Devpost submission text drafted.
