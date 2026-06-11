@@ -6,6 +6,7 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 | --- | --- | --- |
 | Public repository | `https://github.com/OOYXLOO/evidencelock-sift` | ready |
 | Open-source license | `LICENSE` | ready |
+| One-page judge pack | `docs/judge_pack.md` | ready |
 | Demo video, five minutes or less | `docs/demo-video/evidencelock-sift-demo.webm` | ready; upload to a supported video host if Devpost does not accept raw GitHub WebM |
 | Architecture / trust-boundary diagram | `docs/architecture.png`, `docs/architecture.md` | ready |
 | Dataset documentation | `docs/dataset.md` | ready |
@@ -17,6 +18,7 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 ## Submission Emphasis
 
 - Lead with the verifier-first trust boundary: the agent can draft quickly, but confirmed findings must pass mechanical evidence and tool-reference checks.
+- Include `docs/judge_pack.md` early in Additional info because it is the shortest route through the full evidence package.
 - Show the self-correction sequence early: first draft rejected, corrected report accepted.
 - Use `docs/proof-card.png` as the first gallery image because it compresses the whole proof chain into one screen.
 - Use `docs/accuracy-card.png` as the third gallery image to show metrics and bypass tests without making judges open a Markdown report first.

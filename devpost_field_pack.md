@@ -21,6 +21,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
 - Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
 - Accuracy card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-card.png
+- Judge pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
 - MCP-style tool schema: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/mcp_tool_schema.json
@@ -54,6 +55,7 @@ The first report draft intentionally fails verification. The final report only k
 - Public `docs/mcp_tool_schema.json` exposes the typed boundary, including `extract_event_evidence` and `verify_report_claims`.
 - Designed to fail closed: missing evidence downgrades or rejects a finding instead of inventing certainty.
 - Public artifacts are judge-verifiable: reports, execution logs, integrity manifest, proof card, architecture diagram, and tests.
+- The judge pack gives a two-minute review path, requirements map, reproduction command, and honest boundary in one GitHub-rendered page.
 - Gallery assets include a proof chain, trust-boundary diagram, and accuracy/bypass-test card.
 - Demo path runs with the Python standard library, so judges can reproduce the vertical slice quickly.
 - Integrity can be checked with `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`, which returns `"ok": true` when evidence and report hashes still match.
