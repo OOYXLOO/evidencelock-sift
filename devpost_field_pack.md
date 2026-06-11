@@ -29,6 +29,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
 - Claim verification table: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/claim_verification_table.md
+- Fail-closed negative control: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/fail_closed_negative_control.md
 - Public dataset / benchmark appendix: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/public_dataset_benchmark_appendix.md
 - MCP-style tool schema: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/mcp_tool_schema.json
 - Investigation report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/investigation_report.md
@@ -65,6 +66,7 @@ The first report draft intentionally fails verification. The final report only k
 - The judge pack gives a two-minute review path, requirements map, reproduction command, and honest boundary in one GitHub-rendered page.
 - The judge scorecard maps the package directly to the FIND EVIL criteria: autonomous execution quality, IR accuracy, depth, constraint implementation, audit trail quality, and usability.
 - The judge smoke test gives reviewers one command that returns JSON `ok: true` only if the rejected draft, corrected verifier, manifest check, and generated outputs match expectations.
+- The smoke test also runs a negative-control case and requires `negative_control_downgrades_to_unresolved: true`.
 - The annotated agent trace explains each execution-log tool call and states that the deterministic demo uses no external LLM call, private data, or API key.
 - The static judge hub gives a browser-first review path for Devpost `Try it out`.
 - A concise before/after claim-verification table shows the rejected draft claim, corrected final claim, and artifact that proves each result.

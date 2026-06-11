@@ -9,6 +9,14 @@ The checked-in evaluation uses a synthetic mini-case:
 - Format: normalized Windows EVTX-style JSONL records
 - Expected behaviors: `F-001` PowerShell encoded-command execution and `F-002` suspicious service installation
 
+It also includes a negative-control mini-case:
+
+- Case: `windows-negative-mini-001`
+- Evidence file: `examples/cases/windows_negative_events.jsonl`
+- Format: normalized Windows EVTX-style JSONL records
+- Expected confirmed behaviors: none
+- Expected guardrail result: unsupported draft `F-001` is downgraded to `unresolved`
+
 The synthetic case is deliberately small so judges can reproduce the verifier loop quickly without downloading forensic images, redistributing third-party logs, or handling private incident data.
 
 ## What The Current Results Mean
@@ -20,6 +28,7 @@ In the checked-in run, the answer is yes:
 - First verifier pass: `3` issues on an under-evidenced confirmed claim.
 - Final verifier pass: `0` issues.
 - Expected behaviors found: `2/2`.
+- Negative-control downgrade: `F-001` becomes `unresolved` when the evidence contains no matching PowerShell event.
 - Confirmed findings with evidence refs: `2/2`.
 - Confirmed findings with tool refs: `2/2`.
 - Manifest verification: passes against the checked-in evidence and generated reports.

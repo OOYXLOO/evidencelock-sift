@@ -13,6 +13,14 @@ Expected behaviors:
 - `F-001`: PowerShell encoded-command execution from a document parent process.
 - `F-002`: Suspicious service installation from a temporary directory.
 
+## Included Negative Control
+
+File: `examples/cases/windows_negative_events.jsonl`
+
+Type: Synthetic normalized Windows event record with one benign interactive logon.
+
+Purpose: Prove fail-closed behavior when the draft claim has no supporting event evidence. The expected outcome is `F-001` downgraded to `unresolved`, zero final verifier issues, and zero false positives.
+
 ## Public Data Path for Full Evaluation
 
 The same schema can be populated from:
