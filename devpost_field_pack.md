@@ -22,6 +22,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
+- MCP-style tool schema: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/mcp_tool_schema.json
 - Investigation report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/investigation_report.md
 - Timeline report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/timeline_report.md
 - Execution log: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/execution_log.jsonl
@@ -47,6 +48,7 @@ The first report draft intentionally fails verification. The final report only k
 ## Differentiators
 
 - Built around Protocol SIFT-style typed tool boundaries, not a broad forensic chatbot.
+- Public `docs/mcp_tool_schema.json` exposes the typed boundary, including `extract_event_evidence` and `verify_report_claims`.
 - Designed to fail closed: missing evidence downgrades or rejects a finding instead of inventing certainty.
 - Public artifacts are judge-verifiable: reports, execution logs, integrity manifest, proof card, architecture diagram, and tests.
 - Demo path runs with the Python standard library, so judges can reproduce the vertical slice quickly.

@@ -95,6 +95,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Devpost field pack: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/devpost_field_pack.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
+- MCP-style tool schema: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/mcp_tool_schema.json
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
 - Proof card: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.svg
 - Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png

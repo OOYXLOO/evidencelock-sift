@@ -15,6 +15,7 @@ Typed DFIR tools
   - parse_evtx
   - search_events
   - extract_event_evidence
+  - verify_report_claims
   - optional Sleuth Kit wrappers on SIFT
   |
   v
@@ -33,3 +34,5 @@ Reports
 ```
 
 The important boundary is the verifier. Prompting asks the agent to be careful, but the verifier enforces the rule mechanically. A claim can be unresolved, inferred, or disproven, but it cannot remain confirmed without reproducible evidence.
+
+The public tool contract is exported in `docs/mcp_tool_schema.json` for judges who want to inspect the MCP-style boundary directly.
