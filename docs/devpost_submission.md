@@ -16,7 +16,7 @@ Python, Protocol SIFT design pattern, Model Context Protocol-style typed tools, 
 
 EvidenceLock SIFT is a defensive incident-response agent pattern for SANS SIFT / Protocol SIFT workflows. It lets an agent move quickly through evidence collection and report drafting, but it blocks the dangerous part: confident conclusions that are not tied to reproducible evidence.
 
-Judge fast path: run one command, watch the first verifier pass reject an unsafe confirmed claim, inspect the corrected pass, then verify the report hashes with the integrity manifest.
+Judge fast path: run one command, watch the first verifier pass reject an unsafe confirmed claim, inspect the corrected pass and `proof_trace` IDs, then verify the report hashes with the integrity manifest.
 
 The demo implements a complete vertical slice:
 
@@ -61,7 +61,7 @@ Another challenge was keeping the demo honest without redistributing third-party
 - Every confirmed finding has an evidence ID, event record number, timestamp, and tool-call reference.
 - The execution log shows the failed first verification pass and the successful corrected pass.
 - The accuracy report includes a metrics table, tiny confusion matrix, before/after claim table, and bypass tests for unsupported claims, path escapes, tampered reports, and unsafe manifest paths.
-- The judge smoke test returns JSON `ok: true` only after checking the rejected draft, corrected verifier, manifest, trace, generated report set, and negative-control downgrade behavior.
+- The judge smoke test returns JSON `ok: true` only after checking the rejected draft, corrected verifier, manifest, exact `F-001`/`F-002` evidence/tool-call proof trace, generated report set, negative-control manifest, and downgrade behavior.
 - The timeline report gives judges a timestamp-sorted triage view before they inspect the full report.
 - The analyst handoff converts confirmed findings into MITRE-mapped response actions, so the output is useful to a responder after verification.
 - The integrity manifest records SHA-256 hashes for the input evidence file and generated outputs.
@@ -87,7 +87,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
-- `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks.
+- `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks and `proof_trace` evidence/tool-call IDs.
 - `docs/fail_closed_negative_control.md`: negative-control case proving unsupported claims downgrade to unresolved.
 - `docs/sift_compatibility_runbook.md`: non-claiming SIFT/Sleuth Kit migration path.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
