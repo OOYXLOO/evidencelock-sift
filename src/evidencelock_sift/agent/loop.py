@@ -11,6 +11,7 @@ from evidencelock_sift.schemas import Finding
 from evidencelock_sift.schemas import InvestigationReport
 from evidencelock_sift.schemas import ToolRef
 from evidencelock_sift.tools.evidence import hash_evidence
+from evidencelock_sift.tools.evidence import sha256_file
 from evidencelock_sift.tools.evtx import parse_events
 from evidencelock_sift.tools.evtx import search_events
 
@@ -177,6 +178,7 @@ def run_case(case_path: Path, out_dir: Path) -> InvestigationReport:
     )
     _write_report(report, out_dir)
     _write_accuracy_report(case, first_issues, final_issues, out_dir)
+    _write_integrity_manifest(case["case_id"], artifact, event_label, out_dir)
     return report
 
 
@@ -251,3 +253,31 @@ def _write_accuracy_report(case: dict[str, Any], first_issues, final_issues, out
         ]
     )
     (out_dir / "accuracy_report.md").write_text("\n".join(lines), encoding="utf-8")
+
+def _write_integrity_manifest(case_id: str, artifact, event_label: str, out_dir: Path) -> None:
+    output_names = [
+        "investigation_report.md",
+        "investigation_report.json",
+        "accuracy_report.md",
+        "execution_log.jsonl",
+    ]
+    manifest = {
+        "case_id": case_id,
+        "evidence": [
+            {
+                "evidence_id": artifact.evidence_id,
+                "kind": artifact.kind,
+                "path": event_label,
+                "sha256": artifact.sha256,
+            }
+        ],
+        "outputs": [
+            {
+                "path": name,
+                "sha256": sha256_file(out_dir / name),
+            }
+            for name in output_names
+        ],
+    }
+    with (out_dir / "integrity_manifest.json").open("w", encoding="utf-8") as handle:
+        json.dump(manifest, handle, indent=2, sort_keys=True)

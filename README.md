@@ -1,6 +1,6 @@
 # EvidenceLock SIFT
 
-EvidenceLock SIFT is a defensive DFIR agent pattern for the FIND EVIL! hackathon. It is built for Protocol SIFT-style workflows where an AI agent can use incident-response tools, but every conclusion must remain tied to reproducible evidence.
+EvidenceLock SIFT is a verifier-first DFIR triage agent for the FIND EVIL! hackathon. It is built for Protocol SIFT-style workflows where an AI agent can use incident-response tools, but every confirmed conclusion must remain tied to reproducible evidence, tool-call IDs, and integrity hashes.
 
 The project does not try to be a broad forensic chatbot. It implements a narrow, auditable loop:
 
@@ -32,6 +32,7 @@ Generated outputs:
 - `reports/investigation_report.json`
 - `reports/accuracy_report.md`
 - `reports/execution_log.jsonl`
+- `reports/integrity_manifest.json`
 - `docs/demo-video/evidencelock-sift-demo.webm`
 
 ## Protocol SIFT Fit
@@ -49,6 +50,15 @@ The included synthetic Windows triage case contains three normalized events:
 - A benign interactive logon.
 
 The agent intentionally starts with an unsupported draft claim. The verifier rejects it because it has no evidence ID. The correction pass searches events, attaches exact event records, and produces confirmed findings only for the two supported behaviors.
+
+## Judge Fast Path
+
+If you only have a few minutes, inspect these artifacts:
+
+- `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
+- `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
+- `reports/investigation_report.md`: final confirmed findings with evidence and tool references.
+- `reports/integrity_manifest.json`: SHA-256 hashes for the input evidence file and generated outputs.
 
 ## Safety Boundary
 
@@ -69,5 +79,6 @@ See:
 - `docs/demo_recording.md`
 - `docs/demo-recording-page.html`
 - `docs/devpost_submission.md`
+- `docs/judging_guide.md`
 - `docs/submission_checklist.md`
 - `docs/accuracy_method.md`

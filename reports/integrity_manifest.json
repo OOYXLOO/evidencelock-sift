@@ -1,0 +1,29 @@
+{
+  "case_id": "windows-triage-mini-001",
+  "evidence": [
+    {
+      "evidence_id": "windows-triage-mini-001",
+      "kind": "normalized_evtx_jsonl",
+      "path": "examples/cases/windows_triage_events.jsonl",
+      "sha256": "2e3b3395523bca437b9f6883dee9a3da3790f535cb17b1317a9dd30b2084d0a4"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "investigation_report.md",
+      "sha256": "09de163071bf5078bd4d8021d9fac9baec3210f57c7faee418b06f6cb70b92e1"
+    },
+    {
+      "path": "investigation_report.json",
+      "sha256": "e68960786d91256015f5b14b8a93c84dc9f2172b6f860c711e232a1d7ed79c73"
+    },
+    {
+      "path": "accuracy_report.md",
+      "sha256": "6d3d17c7389096d669203195062a7f2215c31fd051ce02105d6f7ef143f989ec"
+    },
+    {
+      "path": "execution_log.jsonl",
+      "sha256": "bee6b56a2cf23db8689f39484523604593d9e67c07ddb3ae8513328f1812607b"
+    }
+  ]
+}
