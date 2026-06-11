@@ -68,4 +68,6 @@ See:
 - `docs/demo_script.md`
 - `docs/demo_recording.md`
 - `docs/demo-recording-page.html`
+- `docs/devpost_submission.md`
+- `docs/submission_checklist.md`
 - `docs/accuracy_method.md`
