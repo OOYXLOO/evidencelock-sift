@@ -67,6 +67,7 @@ If you only have a few minutes, inspect these artifacts:
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
 - `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks.
+- `docs/fail_closed_negative_control.md`: negative-control case proving unsupported draft claims downgrade to unresolved.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `docs/accuracy-card.png`: visual metrics and guardrail/bypass-test summary.
@@ -109,6 +110,7 @@ See:
 - `docs/judging_guide.md`
 - `docs/judge_pack.md`
 - `docs/judge_scorecard.md`
+- `docs/fail_closed_negative_control.md`
 - `docs/mcp_tool_schema.json`
 - `docs/proof-card.png`
 - `docs/proof-card.svg`

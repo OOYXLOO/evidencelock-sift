@@ -1,0 +1,1 @@
+{"record_number":"9001","timestamp":"2026-06-01T11:00:00Z","event_id":"4624","channel":"Security","host":"WIN-IR-02","message":"An account was successfully logged on.","LogonType":"2","TargetUserName":"analyst","IpAddress":"127.0.0.1","tags":["logon","benign"]}

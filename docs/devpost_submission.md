@@ -61,7 +61,7 @@ Another challenge was keeping the demo honest without redistributing third-party
 - Every confirmed finding has an evidence ID, event record number, timestamp, and tool-call reference.
 - The execution log shows the failed first verification pass and the successful corrected pass.
 - The accuracy report includes a metrics table, tiny confusion matrix, before/after claim table, and bypass tests for unsupported claims, path escapes, tampered reports, and unsafe manifest paths.
-- The judge smoke test returns JSON `ok: true` only after checking the rejected draft, corrected verifier, manifest, trace, and generated report set.
+- The judge smoke test returns JSON `ok: true` only after checking the rejected draft, corrected verifier, manifest, trace, generated report set, and negative-control downgrade behavior.
 - The timeline report gives judges a timestamp-sorted triage view before they inspect the full report.
 - The analyst handoff converts confirmed findings into MITRE-mapped response actions, so the output is useful to a responder after verification.
 - The integrity manifest records SHA-256 hashes for the input evidence file and generated outputs.
@@ -88,6 +88,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
 - `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks.
+- `docs/fail_closed_negative_control.md`: negative-control case proving unsupported claims downgrade to unresolved.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `docs/accuracy-card.png`: visual metrics and guardrail/bypass-test summary.
@@ -108,6 +109,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Devpost field pack: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/devpost_field_pack.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
+- Fail-closed negative control: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/fail_closed_negative_control.md
 - MCP-style tool schema: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/mcp_tool_schema.json
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
 - Accuracy card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-card.png

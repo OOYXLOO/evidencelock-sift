@@ -1,0 +1,7 @@
+{
+  "case_id": "windows-negative-mini-001",
+  "title": "Negative Windows EVTX triage with fail-closed downgrade",
+  "event_evidence": "windows_negative_events.jsonl",
+  "expected_findings": [],
+  "dataset_note": "Synthetic negative-control Windows event created for the public demo. The verifier should downgrade unsupported draft claims instead of confirming them."
+}

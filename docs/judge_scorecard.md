@@ -22,6 +22,7 @@ This scorecard maps the public EvidenceLock package to the FIND EVIL judging cri
 - Confirmed finding `F-002` maps to event `windows_triage_events:2048` and tool call `cmd-0004`.
 - `verify-manifest` returns `{"ok": true}` for the published report set.
 - `tools/judge_smoke_test.py` returns `{"ok": true}` only after checking the rejected draft, corrected verifier, generated trace, and manifest.
+- The smoke test includes a negative-control case where unsupported `F-001` is downgraded to `unresolved`.
 - `reports/agent_trace.md` annotates each execution-log tool call without claiming external LLM/API usage.
 - Regression tests cover unsupported confirmed claims, evidence path escapes, tampered outputs, unsafe manifest paths, and MCP-style verifier tools.
 

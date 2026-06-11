@@ -22,6 +22,7 @@ from evidencelock_sift.tools.evtx import search_events
 ROOT = Path(__file__).resolve().parents[1]
 CASE = ROOT / "examples" / "cases" / "windows_triage_case.json"
 EVENTS = ROOT / "examples" / "cases" / "windows_triage_events.jsonl"
+NEGATIVE_CASE = ROOT / "examples" / "cases" / "windows_negative_case.json"
 
 
 class EvidenceLockTests(unittest.TestCase):
@@ -108,6 +109,28 @@ class EvidenceLockTests(unittest.TestCase):
             self.assertIn("timeline_report.md", {entry["path"] for entry in manifest["outputs"]})
             self.assertIn("analyst_handoff.md", {entry["path"] for entry in manifest["outputs"]})
             self.assertIn("agent_trace.md", {entry["path"] for entry in manifest["outputs"]})
+
+    def test_run_case_downgrades_unsupported_claim_when_evidence_missing(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            report = run_case(NEGATIVE_CASE, tmp_path)
+            accuracy_md = (tmp_path / "accuracy_report.md").read_text(encoding="utf-8")
+            report_md = (tmp_path / "investigation_report.md").read_text(encoding="utf-8")
+            agent_trace = (tmp_path / "agent_trace.md").read_text(encoding="utf-8")
+
+            self.assertEqual(report.verifier_issues, [])
+            self.assertEqual(len(report.findings), 1)
+            finding = report.findings[0]
+            self.assertEqual(finding.finding_id, "F-001")
+            self.assertEqual(finding.status, "unresolved")
+            self.assertEqual(finding.evidence_refs, [])
+            self.assertEqual(finding.tool_refs, [])
+            self.assertIn("downgraded the claim to unresolved", report_md)
+            self.assertIn("| True positives | `0` |", accuracy_md)
+            self.assertIn("| True negatives | `1` |", accuracy_md)
+            self.assertIn("| False positives | `0` |", accuracy_md)
+            self.assertIn("| Unsupported final confirmed claims | `0` |", accuracy_md)
+            self.assertIn("`0` verifier issues", agent_trace)
 
     def test_run_case_rejects_evidence_path_escape(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -209,6 +232,7 @@ class EvidenceLockTests(unittest.TestCase):
             "reports/integrity_manifest.json",
             "judge_scorecard.md",
             "tools/judge_smoke_test.py",
+            "fail_closed_negative_control.md",
             "mcp_tool_schema.json",
             "verify-manifest",
             "T1059.001",
@@ -221,6 +245,7 @@ class EvidenceLockTests(unittest.TestCase):
             "judge_scorecard.md",
             "judge_smoke_test.py",
             "agent_trace.md",
+            "fail_closed_negative_control.md",
             "claim_verification_table.md",
             "public_dataset_benchmark_appendix.md",
             "raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/execution_log.jsonl",
@@ -245,6 +270,7 @@ class EvidenceLockTests(unittest.TestCase):
         self.assertTrue(payload["ok"])
         self.assertTrue(payload["checks"]["manifest_ok"])
         self.assertTrue(payload["checks"]["agent_trace_hashed"])
+        self.assertTrue(payload["checks"]["negative_control_downgrades_to_unresolved"])
 
 if __name__ == "__main__":
     unittest.main()

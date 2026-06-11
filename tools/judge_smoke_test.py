@@ -18,18 +18,27 @@ def _load_jsonl(path: Path) -> list[dict]:
 
 def main() -> int:
     case_path = ROOT / "examples" / "cases" / "windows_triage_case.json"
+    negative_case_path = ROOT / "examples" / "cases" / "windows_negative_case.json"
     with tempfile.TemporaryDirectory(prefix="evidencelock-judge-") as tmp:
-        out_dir = Path(tmp) / "reports"
+        tmp_path = Path(tmp)
+        out_dir = tmp_path / "reports"
+        negative_out_dir = tmp_path / "negative-reports"
         report = run_case(case_path, out_dir)
+        negative_report = run_case(negative_case_path, negative_out_dir)
         manifest_path = out_dir / "integrity_manifest.json"
         manifest_issues = verify_integrity_manifest(manifest_path, ROOT)
         execution_log = _load_jsonl(out_dir / "execution_log.jsonl")
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        negative_manifest_issues = verify_integrity_manifest(
+            negative_out_dir / "integrity_manifest.json",
+            ROOT,
+        )
 
         first_verifier = next(entry for entry in execution_log if entry["tool_name"] == "verify_report_claims" and entry["args"]["iteration"] == 1)
         final_verifier = next(entry for entry in execution_log if entry["tool_name"] == "verify_report_claims" and entry["args"]["iteration"] == 2)
         output_names = {entry["path"] for entry in manifest["outputs"]}
         finding_ids = {finding.finding_id for finding in report.findings}
+        negative_finding = negative_report.findings[0]
 
         checks = {
             "two_confirmed_findings": len(report.findings) == 2 and finding_ids == {"F-001", "F-002"},
@@ -38,6 +47,15 @@ def main() -> int:
             "manifest_ok": manifest_issues == [],
             "agent_trace_hashed": "agent_trace.md" in output_names,
             "accuracy_report_hashed": "accuracy_report.md" in output_names,
+            "negative_control_downgrades_to_unresolved": (
+                len(negative_report.findings) == 1
+                and negative_finding.finding_id == "F-001"
+                and negative_finding.status == "unresolved"
+                and not negative_finding.evidence_refs
+                and not negative_finding.tool_refs
+                and negative_report.verifier_issues == []
+                and negative_manifest_issues == []
+            ),
         }
         ok = all(checks.values())
         result = {

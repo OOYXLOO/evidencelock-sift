@@ -80,6 +80,16 @@ def _correct_findings(findings: list[Finding], events, command_refs: dict[str, T
             finding.correction_notes.append(
                 "Verifier rejected the first draft because it lacked evidence_refs; correction attached the exact process-creation event."
             )
+        elif finding.finding_id == "F-001":
+            finding.status = "unresolved"
+            finding.confidence = 0.2
+            finding.summary = (
+                "The draft PowerShell claim could not be confirmed because the supplied evidence contained no matching "
+                "PowerShell encoded-command process-creation event."
+            )
+            finding.correction_notes.append(
+                "Verifier rejected the first draft because it lacked evidence_refs; correction downgraded the claim to unresolved instead of inventing evidence."
+            )
         corrected.append(finding)
     if service_events:
         event = service_events[0]
@@ -178,7 +188,7 @@ def run_case(case_path: Path, out_dir: Path) -> InvestigationReport:
         verifier_issues=final_issues,
     )
     _write_report(report, out_dir)
-    _write_accuracy_report(case, findings, first_issues, final_issues, out_dir)
+    _write_accuracy_report(case, events, findings, first_issues, final_issues, out_dir)
     _write_timeline_report(case["case_id"], events, out_dir)
     _write_analyst_handoff(report, out_dir)
     _write_agent_trace(case["case_id"], out_dir)
@@ -229,11 +239,15 @@ def _write_report(report: InvestigationReport, out_dir: Path) -> None:
     (out_dir / "investigation_report.md").write_text("\n".join(lines), encoding="utf-8")
 
 
-def _write_accuracy_report(case: dict[str, Any], findings: list[Finding], first_issues, final_issues, out_dir: Path) -> None:
+def _write_accuracy_report(case: dict[str, Any], events, findings: list[Finding], first_issues, final_issues, out_dir: Path) -> None:
     expected = set(case.get("expected_findings", []))
     final_findings = {finding.finding_id for finding in findings}
+    confirmed_findings = {finding.finding_id for finding in findings if finding.status == "confirmed"}
     expected_found = expected.intersection(final_findings)
-    expected_missed = expected.difference(final_findings)
+    expected_confirmed = expected.intersection(confirmed_findings)
+    expected_missed = expected.difference(confirmed_findings)
+    false_positives = confirmed_findings.difference(expected)
+    true_negatives = sum(1 for event in events if "benign" in event.tags)
     confirmed = [finding for finding in findings if finding.status == "confirmed"]
     confirmed_with_evidence = [finding for finding in confirmed if finding.evidence_refs]
     confirmed_with_tools = [finding for finding in confirmed if finding.tool_refs]
@@ -260,11 +274,11 @@ def _write_accuracy_report(case: dict[str, Any], findings: list[Finding], first_
         "",
         "| Class | Count | Evidence |",
         "| --- | ---: | --- |",
-        "| True positives | `2` | `F-001` PowerShell encoded command and `F-002` suspicious service installation |",
-        "| True negatives | `1` | benign interactive logon remains outside the final confirmed findings |",
-        "| False positives | `0` | verifier rejects unsupported final confirmed claims |",
-        "| False negatives | `0` | both expected behaviors are present in the final report |",
-        "| Unsupported final confirmed claims | `0` | final verifier issues are zero |",
+        f"| True positives | `{len(expected_confirmed)}` | expected behaviors confirmed in the final report |",
+        f"| True negatives | `{true_negatives}` | benign events remain outside the final confirmed findings |",
+        f"| False positives | `{len(false_positives)}` | final confirmed findings not listed as expected behaviors |",
+        f"| False negatives | `{len(expected_missed)}` | expected behaviors not confirmed in the final report |",
+        f"| Unsupported final confirmed claims | `{len(final_issues)}` | final verifier issues after correction |",
         "",
         "## Self-Correction Result",
         "",
@@ -293,8 +307,11 @@ def _write_accuracy_report(case: dict[str, Any], findings: list[Finding], first_
         "## Expected Behaviors",
         "",
     ]
-    for finding in sorted(expected):
-        lines.append(f"- `{finding}`")
+    if expected:
+        for finding in sorted(expected):
+            lines.append(f"- `{finding}`")
+    else:
+        lines.append("- none for this case")
     lines.extend(
         [
             "",
