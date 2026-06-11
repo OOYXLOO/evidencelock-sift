@@ -26,6 +26,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - MCP-style tool schema: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/mcp_tool_schema.json
 - Investigation report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/investigation_report.md
 - Timeline report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/timeline_report.md
+- Analyst handoff: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/analyst_handoff.md
 - Execution log: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/execution_log.jsonl
 - Integrity manifest: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/integrity_manifest.json
 
@@ -57,6 +58,7 @@ The first report draft intentionally fails verification. The final report only k
 - Demo path runs with the Python standard library, so judges can reproduce the vertical slice quickly.
 - Integrity can be checked with `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`, which returns `"ok": true` when evidence and report hashes still match.
 - Accuracy evidence includes a metrics table, before/after claim table, and bypass tests for unsupported claims, path escapes, tampered reports, and unsafe manifest paths.
+- Analyst handoff maps confirmed findings to MITRE techniques, primary evidence, command IDs, priority, and concrete response actions.
 
 ## Final Submit Checks
 

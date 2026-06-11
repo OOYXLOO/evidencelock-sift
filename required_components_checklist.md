@@ -11,6 +11,7 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 | Dataset documentation | `docs/dataset.md` | ready |
 | Accuracy / evaluation report | `reports/accuracy_report.md`, `docs/accuracy_method.md` | ready |
 | Execution logs / tool-call trace | `reports/execution_log.jsonl` | ready |
+| Analyst-ready response handoff | `reports/analyst_handoff.md` | ready |
 | Try-it-out / reproducibility path | `README.md` quick start and `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` | ready |
 
 ## Submission Emphasis
@@ -19,6 +20,7 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 - Show the self-correction sequence early: first draft rejected, corrected report accepted.
 - Use `docs/proof-card.png` as the first gallery image because it compresses the whole proof chain into one screen.
 - Use `docs/accuracy-card.png` as the third gallery image to show metrics and bypass tests without making judges open a Markdown report first.
+- Link `reports/analyst_handoff.md` to show the final report is actionable for a responder, not just verifiable for a developer.
 - State the honest boundary: this is a narrow EVTX-style vertical slice and a SIFT/MCP wrapper pattern, not a claim of full disk-forensics coverage.
 - Include the manifest verification command so judges can validate that evidence and generated outputs still match the published hashes.
 
