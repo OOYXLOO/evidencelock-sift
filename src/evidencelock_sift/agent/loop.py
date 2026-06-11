@@ -11,6 +11,7 @@ from evidencelock_sift.schemas import Finding
 from evidencelock_sift.schemas import InvestigationReport
 from evidencelock_sift.schemas import ToolRef
 from evidencelock_sift.tools.evidence import hash_evidence
+from evidencelock_sift.tools.evidence import resolve_under
 from evidencelock_sift.tools.evidence import sha256_file
 from evidencelock_sift.tools.evtx import parse_events
 from evidencelock_sift.tools.evtx import search_events
@@ -108,7 +109,7 @@ def run_case(case_path: Path, out_dir: Path) -> InvestigationReport:
 
     case = _load_case(case_path)
     base_dir = case_path.parent
-    event_path = (base_dir / case["event_evidence"]).resolve()
+    event_path = resolve_under(base_dir, case["event_evidence"])
     event_label = _display_path(event_path)
 
     artifact = hash_evidence(event_path, evidence_id=case["case_id"], kind="normalized_evtx_jsonl")

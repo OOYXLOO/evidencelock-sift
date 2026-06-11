@@ -83,6 +83,29 @@ class EvidenceLockTests(unittest.TestCase):
             self.assertIn("investigation_report.md", {entry["path"] for entry in manifest["outputs"]})
             self.assertIn("timeline_report.md", {entry["path"] for entry in manifest["outputs"]})
 
+    def test_run_case_rejects_evidence_path_escape(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            case_dir = tmp_path / "case"
+            case_dir.mkdir()
+            outside = tmp_path / "outside.jsonl"
+            outside.write_text(EVENTS.read_text(encoding="utf-8"), encoding="utf-8")
+            case_path = case_dir / "case.json"
+            case_path.write_text(
+                json.dumps(
+                    {
+                        "case_id": "escape-demo",
+                        "event_evidence": "../outside.jsonl",
+                        "expected_findings": [],
+                        "title": "Path escape demo",
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with self.assertRaisesRegex(ValueError, "path escapes evidence root"):
+                run_case(case_path, tmp_path / "reports")
+
     def test_integrity_manifest_verifies_and_detects_tampering(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)

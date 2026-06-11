@@ -68,6 +68,7 @@ If you only have a few minutes, inspect these artifacts:
 ## Safety Boundary
 
 - Evidence inputs are read-only.
+- Case manifest evidence paths must resolve under the case directory; path escapes such as `../outside.jsonl` are rejected before parsing.
 - Output is limited to the chosen reports directory.
 - Finding status must be one of `confirmed`, `inferred`, `disproven`, or `unresolved`.
 - Confirmed findings require evidence references and tool references.
