@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EvidenceLock SIFT Judge Hub</title>
+  <style>
+    :root { color-scheme: light; --ink:#17202a; --muted:#536273; --line:#d7dde5; --paper:#fff; --wash:#f4f7fa; --blue:#2563eb; --green:#047857; --amber:#b45309; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: var(--wash); }
+    main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 40px 0 64px; }
+    .eyebrow { margin: 0 0 12px; color: var(--blue); font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    h1 { max-width: 920px; margin: 0; font-size: 52px; line-height: 1.08; letter-spacing: 0; }
+    .dek { max-width: 840px; margin: 18px 0 0; color: var(--muted); font-size: 18px; line-height: 1.6; }
+    .metrics, .cards, .proofs { display: grid; gap: 14px; margin-top: 26px; }
+    .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .proofs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tile, .panel { min-width: 0; background: var(--paper); border: 1px solid var(--line); padding: 18px; }
+    .tile strong { display: block; margin-bottom: 8px; color: var(--green); font-size: 34px; line-height: 1; }
+    .tile span, .panel p, li { color: var(--muted); line-height: 1.55; }
+    .panel h2 { margin: 0 0 12px; font-size: 24px; letter-spacing: 0; }
+    .panel p { margin: 0 0 12px; }
+    .panel img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: #fff; }
+    ol, ul { margin: 0; padding-left: 20px; }
+    a { color: var(--blue); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+    code { background: #e8eef6; padding: 2px 5px; }
+    .command { display: block; margin-top: 10px; padding: 12px; background: #17202a; color: #eff6ff; overflow-x: auto; white-space: pre-wrap; }
+    .boundary { border-left: 4px solid var(--amber); }
+    @media (max-width: 860px) {
+      h1 { font-size: 36px; }
+      .metrics, .cards, .proofs { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">FIND EVIL judge hub</p>
+    <h1>EvidenceLock SIFT is a verifier-first MCP-style boundary for Protocol SIFT triage.</h1>
+    <p class="dek">The demo proves a narrow, auditable DFIR loop: an unsupported confirmed claim fails, the agent corrects it with evidence and tool-call IDs, and published reports are checked against a SHA-256 integrity manifest.</p>
+
+    <section class="metrics" aria-label="Demo metrics">
+      <div class="tile"><strong>3</strong><span>draft verifier issues caught</span></div>
+      <div class="tile"><strong>0</strong><span>final verifier issues</span></div>
+      <div class="tile"><strong>2/2</strong><span>expected behaviors found</span></div>
+      <div class="tile"><strong>4</strong><span>guardrail and bypass checks</span></div>
+    </section>
+
+    <section class="proofs" aria-label="Visual proof cards">
+      <div class="panel">
+        <h2>Proof Trace</h2>
+        <img src="proof-card.png" alt="EvidenceLock proof trace from finding to evidence, tool call, correction, and hash">
+      </div>
+      <div class="panel">
+        <h2>Accuracy Summary</h2>
+        <img src="accuracy-card.png" alt="EvidenceLock accuracy and guardrail summary">
+      </div>
+    </section>
+
+    <section class="cards" aria-label="Judge links">
+      <div class="panel">
+        <h2>Two-Minute Review</h2>
+        <ol>
+          <li>Open the <a href="judge_pack.md">judge pack</a>.</li>
+          <li>Read the <a href="claim_verification_table.md">before/after claim table</a>.</li>
+          <li>Inspect the <a href="../reports/execution_log.jsonl">execution log</a>.</li>
+          <li>Verify the <a href="../reports/integrity_manifest.json">integrity manifest</a>.</li>
+        </ol>
+      </div>
+      <div class="panel">
+        <h2>Reproduce Locally</h2>
+        <p>Clone the repo and run the verifier.</p>
+        <code class="command">git clone https://github.com/OOYXLOO/evidencelock-sift
+cd evidencelock-sift
+$env:PYTHONPATH="src"
+python -m unittest discover -s tests -v
+python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .</code>
+      </div>
+      <div class="panel boundary">
+        <h2>Honest Boundary</h2>
+        <p>This package demonstrates a normalized Windows EVTX-style vertical slice with verifier correction and hash checks.</p>
+        <p>It does not claim live SIFT workstation execution, full-disk processing, real victim data, or automated endpoint isolation.</p>
+      </div>
+      <div class="panel">
+        <h2>Core Artifacts</h2>
+        <ul>
+          <li><a href="../reports/investigation_report.md">Investigation report</a></li>
+          <li><a href="../reports/timeline_report.md">Timeline report</a></li>
+          <li><a href="../reports/accuracy_report.md">Accuracy report</a></li>
+          <li><a href="../reports/analyst_handoff.md">Analyst handoff</a></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>Architecture</h2>
+        <p>Typed tools and verifier gates are the control boundary.</p>
+        <p><a href="architecture.md">Architecture notes</a> · <a href="mcp_tool_schema.json">MCP-style tool schema</a></p>
+      </div>
+      <div class="panel">
+        <h2>Benchmark Path</h2>
+        <p>The current mini-case is deliberately small and reproducible. The public-data extension path is documented for EVTX-ATTACK-SAMPLES, NIST CFReDS, and Digital Corpora-style evaluations.</p>
+        <p><a href="public_dataset_benchmark_appendix.md">Public dataset appendix</a></p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
