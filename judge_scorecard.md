@@ -11,7 +11,7 @@ This scorecard maps the public EvidenceLock package to the FIND EVIL judging cri
 | Breadth and depth of analysis | The demo chooses depth over breadth: process creation, service-installation, benign-logon contrast, timeline ordering, MITRE mapping, and analyst handoff are all traced end to end. | `reports/timeline_report.md`; `reports/analyst_handoff.md` |
 | Constraint implementation | Guardrails are architectural: typed tools, read-only evidence handling, verifier enforcement, path-escape rejection, and manifest path checks. | `docs/mcp_tool_schema.json`; `tests/test_evidencelock.py` |
 | Audit trail quality | Every confirmed finding cites evidence IDs and tool-call IDs, and every generated report is tied to a SHA-256 integrity manifest. | `reports/execution_log.jsonl`; `reports/integrity_manifest.json` |
-| Usability and documentation | Judges get a static hub, a two-minute judge pack, a one-command smoke test, gallery assets, and Devpost-ready field text. | `docs/index.html`; `docs/judge_pack.md`; `tools/judge_smoke_test.py` |
+| Usability and documentation | Judges get a static hub, a two-minute judge pack, a one-command smoke test, a SIFT compatibility runbook, gallery assets, and Devpost-ready field text. | `docs/index.html`; `docs/judge_pack.md`; `tools/judge_smoke_test.py` |
 
 ## Fast Verification Signals
 
@@ -23,6 +23,7 @@ This scorecard maps the public EvidenceLock package to the FIND EVIL judging cri
 - `verify-manifest` returns `{"ok": true}` for the published report set.
 - `tools/judge_smoke_test.py` returns `{"ok": true}` only after checking the rejected draft, corrected verifier, generated trace, and manifest.
 - The smoke test includes a negative-control case where unsupported `F-001` is downgraded to `unresolved`.
+- `docs/sift_compatibility_runbook.md` states what is proven now and what would be required for a future live SIFT run.
 - `reports/agent_trace.md` annotates each execution-log tool call without claiming external LLM/API usage.
 - Regression tests cover unsupported confirmed claims, evidence path escapes, tampered outputs, unsafe manifest paths, and MCP-style verifier tools.
 
