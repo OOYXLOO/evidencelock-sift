@@ -110,6 +110,7 @@ See:
 - `docs/dataset.md`
 - `docs/demo_script.md`
 - `docs/demo_recording.md`
+- `docs/video_upload_pack.md`
 - `docs/demo.html`
 - `docs/demo-recording-page.html`
 - `docs/devpost_field_pack.md`

@@ -17,6 +17,7 @@ Public deadline check: the FIND EVIL Devpost page exposes `2026-06-15T23:45:00-0
 | Scorecard | `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md` |
 | Stage One preflight | `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/stage_one_preflight.md` |
 | Deck | `https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/evidencelock-sift-judge-deck.pptx` |
+| Video upload pack | `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/video_upload_pack.md` |
 
 ## Gallery Order
 
@@ -39,6 +40,8 @@ https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video
 ```
 
 If Devpost rejects raw GitHub video URLs, upload the WebM to YouTube, Vimeo, or Youku, then paste that hosted URL into the video field. Keep `https://ooyxloo.github.io/evidencelock-sift/demo.html` as a supporting project link either way.
+
+Use `docs/video_upload_pack.md` for the exact hosted-video title, description, tags, settings, and logged-out playback checks. Do not use a private video URL.
 
 ## Additional Info Must Include
 
@@ -86,6 +89,7 @@ Do not press final submit if any item is true:
 - The project was imported from `prizepilot-qwen-cloud`.
 - The project page is `https://devpost.com/software/evidence-locked-dfir-agent`; that is a competitor project, not this submission.
 - The video field is empty or points to a private/unaccepted video.
+- The hosted video is still processing or fails in a logged-out browser.
 - The repo is private or the MIT license is not visible.
 - Additional info omits the judge pack, scorecard, smoke test, Stage One preflight, or honest scope boundary.
 - The text claims live full-disk SIFT execution, real victim data, or live external LLM/API usage.
