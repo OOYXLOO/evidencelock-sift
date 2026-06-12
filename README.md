@@ -65,6 +65,7 @@ The agent intentionally starts with an unsupported draft claim. The verifier rej
 If you only have a few minutes, inspect these artifacts:
 
 - `docs/index.html`: static judge hub for GitHub Pages or local browser review.
+- `docs/demo.html`: embedded browser playback page for the silent WebM demo.
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
@@ -107,6 +108,7 @@ See:
 - `docs/dataset.md`
 - `docs/demo_script.md`
 - `docs/demo_recording.md`
+- `docs/demo.html`
 - `docs/demo-recording-page.html`
 - `docs/devpost_field_pack.md`
 - `docs/devpost_gallery_assets.md`

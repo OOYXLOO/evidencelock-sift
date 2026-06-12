@@ -9,7 +9,7 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 ## Two-Minute Review Path
 
 1. Open the static judge hub: [`docs/index.html`](index.html).
-2. Watch or skim the demo asset: [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm).
+2. Watch the embedded demo page: [`docs/demo.html`](demo.html). Raw fallback: [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm).
 3. Open the 5-slide presentation deck: [`docs/evidencelock-sift-judge-deck.pptx`](evidencelock-sift-judge-deck.pptx).
 4. Open the proof trace: [`docs/proof-card.png`](proof-card.png).
 5. Open the accuracy summary: [`docs/accuracy-card.png`](accuracy-card.png).
@@ -28,7 +28,7 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 | Requirement | EvidenceLock artifact | Status |
 | --- | --- | --- |
 | Public repository | <https://github.com/OOYXLOO/evidencelock-sift> | Ready |
-| Demo video | [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm) | Ready |
+| Demo video | [`docs/demo.html`](demo.html), [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm) | Ready |
 | Presentation deck | [`docs/evidencelock-sift-judge-deck.pptx`](evidencelock-sift-judge-deck.pptx) | Ready |
 | Architecture diagram | [`docs/architecture.png`](architecture.png), [`docs/architecture.md`](architecture.md) | Ready |
 | Dataset description | [`docs/dataset.md`](dataset.md) | Ready |

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EvidenceLock SIFT Demo</title>
+  <style>
+    :root { color-scheme: light; --ink:#17202a; --muted:#536273; --line:#d7dde5; --paper:#fff; --wash:#f4f7fa; --blue:#2563eb; --green:#047857; --amber:#b45309; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: var(--wash); }
+    main { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 36px 0 56px; }
+    .eyebrow { margin: 0 0 10px; color: var(--blue); font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    h1 { max-width: 900px; margin: 0; font-size: 46px; line-height: 1.08; letter-spacing: 0; }
+    .dek { max-width: 820px; margin: 16px 0 0; color: var(--muted); font-size: 18px; line-height: 1.6; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 0; }
+    .actions a { display: inline-flex; align-items: center; min-height: 42px; border: 1px solid var(--line); background: var(--paper); padding: 10px 14px; }
+    .video-shell { margin-top: 28px; background: #0f172a; border: 1px solid #0f172a; }
+    video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #0f172a; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+    .panel { min-width: 0; background: var(--paper); border: 1px solid var(--line); padding: 18px; }
+    h2 { margin: 0 0 12px; font-size: 22px; letter-spacing: 0; }
+    p, li { color: var(--muted); line-height: 1.55; }
+    p { margin: 0 0 12px; }
+    ol, ul { margin: 0; padding-left: 20px; }
+    a { color: var(--blue); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+    code { background: #e8eef6; padding: 2px 5px; }
+    .command { display: block; margin-top: 10px; padding: 12px; background: #17202a; color: #eff6ff; overflow-x: auto; white-space: pre-wrap; }
+    .boundary { border-left: 4px solid var(--amber); }
+    .ok { color: var(--green); font-weight: 700; }
+    @media (max-width: 860px) {
+      h1 { font-size: 34px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">EvidenceLock SIFT demo</p>
+    <h1>Watch the verifier reject an unsupported finding, then accept the corrected proof trace.</h1>
+    <p class="dek">This silent demo is generated from public project assets only. It shows the judge path for FIND EVIL: run the vertical slice, inspect the proof card, verify the manifest, and check the honest SIFT boundary.</p>
+
+    <nav class="actions" aria-label="Demo shortcuts">
+      <a href="./">Back to Judge Hub</a>
+      <a href="https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm">Open Raw WebM</a>
+      <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md">Open Judge Pack</a>
+      <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py">Run Smoke Test</a>
+    </nav>
+
+    <div class="video-shell">
+      <video controls preload="metadata" poster="proof-card.png">
+        <source src="demo-video/evidencelock-sift-demo.webm" type="video/webm">
+        Your browser cannot play this WebM file. Use the raw WebM link above.
+      </video>
+    </div>
+
+    <section class="grid" aria-label="Demo review path">
+      <div class="panel">
+        <h2>What To Watch</h2>
+        <ol>
+          <li>First verifier pass catches unsupported confirmed claims.</li>
+          <li>Corrected report cites exact evidence IDs and tool-call IDs.</li>
+          <li>Integrity manifest verifies the published report hashes.</li>
+          <li>Negative control downgrades no-evidence claims to unresolved.</li>
+        </ol>
+      </div>
+      <div class="panel">
+        <h2>One Command</h2>
+        <p>Judges can reproduce the core proof without accounts, keys, or private data.</p>
+        <code class="command">$env:PYTHONPATH="src"
+python tools/judge_smoke_test.py</code>
+      </div>
+      <div class="panel boundary">
+        <h2>Safety Boundary</h2>
+        <p><span class="ok">Proven now:</span> normalized Windows EVTX-style evidence, typed tool traces, fail-closed verifier, and SHA-256 manifest checks.</p>
+        <p><span class="ok">Not claimed:</span> live victim data, endpoint isolation, full disk forensics, or live SIFT workstation execution.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

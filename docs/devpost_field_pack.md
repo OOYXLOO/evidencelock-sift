@@ -19,6 +19,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Repository: https://github.com/OOYXLOO/evidencelock-sift
 - Judge hub source: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/index.html
 - Judge hub Pages URL, use only after it returns HTTP 200: https://ooyxloo.github.io/evidencelock-sift/
+- Embedded demo playback page: https://ooyxloo.github.io/evidencelock-sift/demo.html
 - Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 - Presentation deck: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/evidencelock-sift-judge-deck.pptx
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
@@ -72,7 +73,7 @@ The first report draft intentionally fails verification. The final report only k
 - The smoke test also runs a negative-control case and requires `negative_control_downgrades_to_unresolved: true` plus `negative_manifest_ok: true`.
 - The SIFT compatibility runbook gives a concrete, non-claiming migration path for EvtxECmd exports, Sleuth Kit wrappers, typed MCP tools, and integrity manifests.
 - The annotated agent trace explains each execution-log tool call and states that the deterministic demo uses no external LLM call, private data, or API key.
-- The static judge hub gives a browser-first review path for Devpost `Try it out`.
+- The static judge hub gives a browser-first review path for Devpost `Try it out`, and `demo.html` lets judges play the WebM in-page before opening raw artifacts.
 - A concise before/after claim-verification table shows the rejected draft claim, corrected final claim, and artifact that proves each result.
 - The public dataset appendix explains the synthetic mini-case honestly and gives a compatible path for EVTX-ATTACK-SAMPLES, NIST CFReDS, or Digital Corpora extension work.
 - Gallery assets include a proof chain, trust-boundary diagram, and accuracy/bypass-test card.
@@ -85,6 +86,7 @@ The first report draft intentionally fails verification. The final report only k
 
 - Confirm Devpost project belongs to FIND EVIL, not another hackathon.
 - Use `https://ooyxloo.github.io/evidencelock-sift/` as the `Try it out` link only after GitHub Pages returns HTTP 200. Until then, use the GitHub-rendered judge hub source link.
+- Put `https://ooyxloo.github.io/evidencelock-sift/demo.html` in supporting links near the video field. If Devpost requires YouTube/Vimeo for the dedicated video field, use the raw WebM as the upload source and keep `demo.html` as a project link.
 - Upload `proof-card.png` first and `architecture.png` second.
 - Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` after any report regeneration.
 - Include the presentation deck link in supporting links after the judge hub and demo video.
