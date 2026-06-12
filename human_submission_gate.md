@@ -8,7 +8,7 @@ For the final 10-minute submit flow, use `docs/final_submit_console.html` and `d
 
 1. Open the submitted FIND EVIL project: `https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage`.
 2. Use project name: `EvidenceLock SIFT: Verifier-First Protocol SIFT Triage`.
-3. Use tagline: `Verifier-first custom MCP-style boundary for Protocol SIFT triage: every confirmed finding must prove itself with evidence refs, tool-call logs, verifier correction, and integrity hashes.`
+3. Use tagline: `Evidence-locked DFIR triage: agent speed with verifier-enforced proof.`
 4. Use try-it-out link: `https://ooyxloo.github.io/evidencelock-sift/`.
 5. Use repository link: `https://github.com/OOYXLOO/evidencelock-sift`.
 6. Add demo playback link: `https://ooyxloo.github.io/evidencelock-sift/demo.html`.
@@ -31,7 +31,7 @@ EvidenceLock SIFT: Verifier-First Protocol SIFT Triage
 ### Tagline
 
 ```text
-Verifier-first custom MCP-style boundary for Protocol SIFT triage: every confirmed finding must prove itself with evidence refs, tool-call logs, verifier correction, and integrity hashes.
+Evidence-locked DFIR triage: agent speed with verifier-enforced proof.
 ```
 
 ### Short Description

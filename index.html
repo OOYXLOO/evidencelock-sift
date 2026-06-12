@@ -34,6 +34,10 @@
     .status-item { min-width: 0; border: 1px solid var(--line); background: var(--paper); padding: 14px; }
     .status-item strong { display: block; margin-bottom: 6px; color: var(--ink); }
     .status-item span { color: var(--muted); line-height: 1.45; }
+    .alignment { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+    .alignment-item { min-width: 0; border: 1px solid var(--line); background: var(--paper); padding: 14px; }
+    .alignment-item strong { display: block; margin-bottom: 6px; color: var(--ink); }
+    .alignment-item span { color: var(--muted); line-height: 1.45; }
     ol, ul { margin: 0; padding-left: 20px; }
     a { color: var(--blue); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
     code { background: #e8eef6; padding: 2px 5px; }
@@ -43,6 +47,7 @@
       h1 { font-size: 36px; }
       .metrics, .cards, .proofs { grid-template-columns: 1fr; }
       .status-strip { grid-template-columns: 1fr; }
+      .alignment { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -55,6 +60,11 @@
       <div class="status-item"><strong>Submitted on Devpost</strong><span>Project page is live at devpost.com/software/evidencelock-sift-verifier-first-protocol-triage.</span></div>
       <div class="status-item"><strong>Hosted Video Live</strong><span>Official Vimeo demo is public at vimeo.com/1200810741, with local MP4/WebM backups retained.</span></div>
       <div class="status-item"><strong>Honest scope</strong><span>Synthetic Windows EVTX-style vertical slice; no live victim data or full-disk SIFT claim.</span></div>
+    </section>
+    <section class="alignment" aria-label="Protocol SIFT alignment">
+      <div class="alignment-item"><strong>SIFT concern</strong><span>Agents can summarize forensic output faster than humans can verify it.</span></div>
+      <div class="alignment-item"><strong>EvidenceLock proof</strong><span>Confirmed findings must cite evidence IDs, tool-call IDs, verifier correction, and SHA-256 manifests.</span></div>
+      <div class="alignment-item"><strong>Not claimed</strong><span>No broad forensic coverage, live victim data, full-disk SIFT execution, or endpoint containment claim.</span></div>
     </section>
     <nav class="actions" aria-label="Judge shortcuts">
       <a href="demo.html">Watch Demo</a>
