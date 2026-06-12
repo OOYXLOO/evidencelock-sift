@@ -12,7 +12,9 @@ from evidencelock_sift.agent.verifier import verify_findings
 from evidencelock_sift.integrity import verify_integrity_manifest
 from evidencelock_sift.mcp_server import call_tool
 from evidencelock_sift.mcp_server import TOOL_SCHEMAS
+from evidencelock_sift.schemas import EvidenceRef
 from evidencelock_sift.schemas import Finding
+from evidencelock_sift.schemas import ToolRef
 from evidencelock_sift.tools.evidence import hash_evidence
 from evidencelock_sift.tools.evtx import extract_event_evidence
 from evidencelock_sift.tools.evtx import parse_events
@@ -57,6 +59,35 @@ class EvidenceLockTests(unittest.TestCase):
             events,
         )
         self.assertTrue(any("no evidence_refs" in issue.message for issue in issues))
+
+    def test_verifier_rejects_forged_tool_reference(self) -> None:
+        events = parse_events(EVENTS)
+        event = search_events(events, event_ids={"4688"}, contains="encodedcommand")[0]
+        finding = Finding(
+            finding_id="F-777",
+            title="Forged proof trace",
+            status="confirmed",
+            confidence=0.9,
+            summary="This cites a real evidence ID but a tool call that never produced it.",
+            evidence_refs=[
+                EvidenceRef(
+                    evidence_id=event.evidence_id,
+                    source_path=event.source_path,
+                    record_number=event.record_number,
+                    timestamp=event.timestamp,
+                )
+            ],
+            tool_refs=[
+                ToolRef(
+                    command_id="cmd-9999",
+                    tool_name="search_events",
+                    args={"event_ids": ["4688"], "contains": "encodedcommand"},
+                    status="success",
+                )
+            ],
+        )
+        issues = verify_findings(findings=[finding], events=events, execution_log=[])
+        self.assertTrue(any("unknown tool command_id cmd-9999" in issue.message for issue in issues))
 
     def test_run_case_generates_self_corrected_reports(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

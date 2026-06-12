@@ -60,6 +60,7 @@ TOOL_SCHEMAS = [
             "type": "object",
             "properties": {
                 "path": {"type": "string"},
+                "execution_log": {"type": "array", "items": {"type": "object"}},
                 "findings": {"type": "array", "items": {"type": "object"}},
             },
             "required": ["path", "findings"],
@@ -107,7 +108,12 @@ def call_tool(name: str, args: dict) -> dict:
     if name == "verify_report_claims":
         events = parse_events(Path(args["path"]))
         findings = [_finding_from_dict(finding) for finding in args["findings"]]
-        return {"issues": [issue.__dict__ for issue in verify_findings(findings, events)]}
+        return {
+            "issues": [
+                issue.__dict__
+                for issue in verify_findings(findings, events, args.get("execution_log"))
+            ]
+        }
     raise ValueError(f"unknown tool {name}")
 
 

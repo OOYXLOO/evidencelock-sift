@@ -98,6 +98,12 @@
       "description": "Reject confirmed findings that lack valid evidence references or tool-call references.",
       "input_schema": {
         "properties": {
+          "execution_log": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array"
+          },
           "findings": {
             "items": {
               "type": "object"

@@ -163,7 +163,7 @@ def run_case(case_path: Path, out_dir: Path) -> InvestigationReport:
     }
 
     findings = _initial_draft()
-    first_issues = verify_findings(findings, events)
+    first_issues = verify_findings(findings, events, audit.entries)
     audit.record(
         "verify_report_claims",
         {"iteration": 1},
@@ -172,7 +172,7 @@ def run_case(case_path: Path, out_dir: Path) -> InvestigationReport:
     )
 
     findings = _correct_findings(findings, events, command_refs)
-    final_issues = verify_findings(findings, events)
+    final_issues = verify_findings(findings, events, audit.entries)
     audit.record(
         "verify_report_claims",
         {"iteration": 2},

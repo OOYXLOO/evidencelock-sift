@@ -12,6 +12,7 @@ class AuditLogger:
         self.output_path = output_path
         self.output_path.parent.mkdir(parents=True, exist_ok=True)
         self._counter = 0
+        self.entries: list[dict[str, Any]] = []
 
     def record(
         self,
@@ -32,6 +33,7 @@ class AuditLogger:
             "result": result or {},
             "error": error,
         }
+        self.entries.append(entry)
         with self.output_path.open("a", encoding="utf-8") as handle:
             handle.write(json.dumps(entry, sort_keys=True) + "\n")
         return command_id
