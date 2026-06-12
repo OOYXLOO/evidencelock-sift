@@ -19,9 +19,9 @@
 - [x] Devpost submission text drafted.
 - [x] Devpost field pack drafted.
 - [x] Final submit operator runbook drafted.
-- [ ] Devpost project draft created.
-- [ ] Public YouTube/Vimeo/Youku video URL with audio narration accepted.
-- [ ] Additional info fields completed.
-- [ ] Final submit completed before 2026-06-16 11:45 GMT+8.
+- [x] Devpost project created: https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage.
+- [x] Public Vimeo video URL with audio narration accepted: https://vimeo.com/1200810741.
+- [x] Additional info fields completed.
+- [x] Final submit completed before 2026-06-16 11:45 GMT+8.
 
-Current blocker: Devpost project creation is blocked by invisible reCAPTCHA on the manage-submissions page.
+Current status: submitted and ready for judging; monitor for organizer, judge, or prize/claim signals.

@@ -1,6 +1,6 @@
 # FIND EVIL Stage One Preflight
 
-Use this before the final Devpost submit button. The public organizer forum says Stage One is pass/fail and missing required components can eliminate a submission after the deadline.
+Use this as the submitted Stage One preflight record. The public organizer forum says Stage One is pass/fail and missing required components can eliminate a submission after the deadline.
 
 Organizer forum topic:
 `https://findevil.devpost.com/forum_topics/44065-submission-checks-make-sure-your-entry-wont-be-disqualified`
@@ -9,10 +9,10 @@ Organizer forum topic:
 
 | Check | EvidenceLock status | Required final action |
 | --- | --- | --- |
-| FIND EVIL Devpost project URL | Not available until the Devpost project draft is created | Complete Devpost human verification / project creation, then paste the final Devpost project URL into the official check prompt |
+| FIND EVIL Devpost project URL | `https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage` | Keep this URL in any organizer check prompt |
 | Public code repository | `https://github.com/OOYXLOO/evidencelock-sift` | Confirm the repo is public and the MIT license is visible |
-| Public demo video URL | Narrated MP4/WebM upload sources and public playback page exist | Upload `docs/demo-video/evidencelock-sift-demo.mp4` to YouTube, Vimeo, or Youku; use that hosted URL in the official Devpost video field |
-| Copy-ready final submit console | `docs/final_submit_console.html` exists | Use it only as an operator aid; it is not a substitute for the real Devpost project URL or hosted video URL |
+| Public demo video URL | `https://vimeo.com/1200810741` | Keep the Vimeo URL in the official Devpost video field |
+| Copy-ready final submit console | `docs/final_submit_console.html` exists | Use it only as a post-submit edit aid |
 | Try-it-out / local run path | `https://ooyxloo.github.io/evidencelock-sift/` and README quick start | Use the GitHub Pages judge hub as the Devpost try-it-out link |
 | Setup instructions | `README.md` quick start | Keep the standard-library Python path visible in the README |
 | Architecture diagram | `docs/architecture.png` and `docs/architecture.md` | Upload `docs/architecture.png` second in Devpost gallery |
@@ -24,17 +24,17 @@ Organizer forum topic:
 
 ## Official Check Input Template
 
-After the Devpost project exists and the hosted video URL is available, paste this into the official submission-check assistant together with the organizer prompt:
+Paste this into the official submission-check assistant together with the organizer prompt:
 
 ```text
 Public GitHub repository URL:
 https://github.com/OOYXLOO/evidencelock-sift
 
 Devpost project page URL:
-[PASTE FINAL FIND EVIL DEVPOST PROJECT URL HERE]
+https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage
 
 Demo video URL:
-[PASTE PUBLIC YOUTUBE / VIMEO / YOUKU URL WITH AUDIO NARRATION HERE]
+https://vimeo.com/1200810741
 
 Try-it-out URL:
 https://ooyxloo.github.io/evidencelock-sift/
@@ -52,7 +52,7 @@ Stage One preflight:
 https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/stage_one_preflight.md
 ```
 
-## Do Not Submit Until These Are True
+## Post-Submit Guardrails
 
 - The Devpost URL is a FIND EVIL project owned by `OOYXLOO`.
 - The video URL is public, includes audio narration, and is hosted on YouTube, Vimeo, or Youku.

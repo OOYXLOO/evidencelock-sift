@@ -105,13 +105,16 @@ Smoke-test highlights to paste into Additional info: `draft_rejected_with_three_
 
 ## Links
 
+- Devpost project: https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage
 - Repository: https://github.com/OOYXLOO/evidencelock-sift
+- Official hosted demo video: https://vimeo.com/1200810741
 - Embedded demo page: https://ooyxloo.github.io/evidencelock-sift/demo.html
 - Preferred narrated MP4 upload source, not the official Devpost video field: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.mp4
 - Narrated WebM backup source, not the official Devpost video field: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 - Presentation deck: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/evidencelock-sift-judge-deck.pptx
 - Judge pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md
 - Judge scorecard: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md
+- Smoke proof snapshot: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/smoke_proof.md
 - Judge smoke test: https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Devpost field pack: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/devpost_field_pack.md
@@ -134,6 +137,6 @@ Smoke-test highlights to paste into Additional info: `draft_rejected_with_three_
 - Integrity manifest: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/integrity_manifest.json
 - Architecture diagram: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.svg
 
-## Final Submission Reminder
+## Submission Status
 
-Do not submit until the Devpost project draft exists, the official video field points to a public YouTube/Vimeo/Youku URL with audio narration, and all FIND EVIL additional-info fields are reviewed.
+Submitted on Devpost as `EvidenceLock SIFT: Verifier-First Protocol SIFT Triage` with the public project URL and Vimeo demo above. Future edits should preserve the judge hub, scorecard, smoke-test proof, negative control, SIFT compatibility boundary, and honest scope language.
