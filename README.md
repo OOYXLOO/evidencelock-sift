@@ -21,7 +21,7 @@ The project does not try to be a broad forensic chatbot. It implements a narrow,
 2. Hash every evidence artifact before analysis.
 3. Search events through typed read-only tools.
 4. Draft findings.
-5. Verify every confirmed claim against evidence IDs and tool calls.
+5. Verify every confirmed claim against evidence IDs and matching successful tool calls.
 6. Correct unsupported claims or downgrade them to unresolved hypotheses.
 7. Emit a structured report, accuracy report, and execution log.
 
@@ -79,7 +79,7 @@ The current implementation runs without external dependencies for the demo. On a
 
 | SIFT concern | EvidenceLock proof | Honest boundary |
 | --- | --- | --- |
-| Agent writes a confident report from weak evidence | `verify_report_claims` rejects confirmed findings without evidence refs and tool refs | The demo proves the trust boundary, not broad forensic coverage |
+| Agent writes a confident report from weak evidence | `verify_report_claims` rejects confirmed findings without evidence refs and successful tool refs that produced the cited evidence | The demo proves the trust boundary, not broad forensic coverage |
 | Tool output cannot be audited later | `reports/execution_log.jsonl` and `reports/agent_trace.md` preserve command IDs and proof trace | The current tool calls are standard-library vertical-slice wrappers |
 | Report artifacts drift after generation | `reports/integrity_manifest.json` locks inputs and outputs with SHA-256 | Full-disk SIFT evidence remains a documented extension path |
 
@@ -134,7 +134,7 @@ If you only have a few minutes, inspect these artifacts:
 - Output is limited to the chosen reports directory.
 - Integrity manifests are verified with relative paths only; absolute paths and path escapes are reported as integrity issues.
 - Finding status must be one of `confirmed`, `inferred`, `disproven`, or `unresolved`.
-- Confirmed findings require evidence references and tool references.
+- Confirmed findings require evidence references and successful tool references that match command ID, tool name, args, status, and produced evidence IDs.
 - Tool failures are recorded in `execution_log.jsonl` and cannot be cited as proof.
 
 ## Submission Assets

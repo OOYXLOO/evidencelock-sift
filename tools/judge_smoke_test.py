@@ -48,7 +48,20 @@ def main() -> int:
         output_names = {entry["path"] for entry in manifest["outputs"]}
         finding_ids = {finding.finding_id for finding in report.findings}
         proof_trace = {finding.finding_id: _finding_proof(finding) for finding in report.findings}
+        log_by_command = {entry["command_id"]: entry for entry in execution_log}
         negative_finding = negative_report.findings[0]
+        expected_proof_results = {
+            "F-001": ("cmd-0003", "search_events", ["windows_triage_events:1024"]),
+            "F-002": ("cmd-0004", "search_events", ["windows_triage_events:2048"]),
+        }
+        proof_trace_tool_results_match = all(
+            proof_trace.get(finding_id, {}).get("tool_call_ids") == [command_id]
+            and log_by_command.get(command_id, {}).get("tool_name") == tool_name
+            and log_by_command.get(command_id, {}).get("status") == "success"
+            and log_by_command.get(command_id, {}).get("result", {}).get("matches") == evidence_ids
+            and proof_trace.get(finding_id, {}).get("evidence_ids") == evidence_ids
+            for finding_id, (command_id, tool_name, evidence_ids) in expected_proof_results.items()
+        )
 
         checks = {
             "two_confirmed_findings": len(report.findings) == 2 and finding_ids == {"F-001", "F-002"},
@@ -66,6 +79,7 @@ def main() -> int:
             },
             "draft_rejected_with_three_issues": first_verifier["status"] == "failed" and len(first_verifier["result"]["issues"]) == 3,
             "final_verifier_zero_issues": final_verifier["status"] == "success" and final_verifier["result"]["issues"] == [],
+            "proof_trace_tool_results_match": proof_trace_tool_results_match,
             "manifest_ok": manifest_issues == [],
             "negative_manifest_ok": negative_manifest_issues == [],
             "agent_trace_hashed": "agent_trace.md" in output_names,

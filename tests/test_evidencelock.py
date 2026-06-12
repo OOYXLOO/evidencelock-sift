@@ -89,6 +89,95 @@ class EvidenceLockTests(unittest.TestCase):
         issues = verify_findings(findings=[finding], events=events, execution_log=[])
         self.assertTrue(any("unknown tool command_id cmd-9999" in issue.message for issue in issues))
 
+    def test_verifier_requires_cited_tool_to_produce_cited_evidence(self) -> None:
+        events = parse_events(EVENTS)
+        event = search_events(events, event_ids={"4688"}, contains="encodedcommand")[0]
+        finding = Finding(
+            finding_id="F-778",
+            title="Borrowed evidence",
+            status="confirmed",
+            confidence=0.9,
+            summary="This cites a real evidence ID but a parse command that did not produce it.",
+            evidence_refs=[
+                EvidenceRef(
+                    evidence_id=event.evidence_id,
+                    source_path=event.source_path,
+                    record_number=event.record_number,
+                    timestamp=event.timestamp,
+                )
+            ],
+            tool_refs=[
+                ToolRef(
+                    command_id="cmd-0001",
+                    tool_name="parse_evtx",
+                    args={"path": "examples/cases/windows_triage_events.jsonl"},
+                    status="success",
+                )
+            ],
+        )
+        issues = verify_findings(
+            findings=[finding],
+            events=events,
+            execution_log=[
+                {
+                    "command_id": "cmd-0001",
+                    "tool_name": "parse_evtx",
+                    "args": {"path": "examples/cases/windows_triage_events.jsonl"},
+                    "status": "success",
+                    "result": {"events": 3},
+                }
+            ],
+        )
+        self.assertTrue(
+            any(
+                "evidence_id windows_triage_events:1024 was not produced by cited tool_refs" in issue.message
+                for issue in issues
+            )
+        )
+
+    def test_verifier_rejects_non_success_tool_ref_status_for_confirmed_finding(self) -> None:
+        events = parse_events(EVENTS)
+        event = search_events(events, event_ids={"4688"}, contains="encodedcommand")[0]
+        finding = Finding(
+            finding_id="F-779",
+            title="Failed tool proof",
+            status="confirmed",
+            confidence=0.9,
+            summary="This tries to use a non-success tool ref as proof.",
+            evidence_refs=[
+                EvidenceRef(
+                    evidence_id=event.evidence_id,
+                    source_path=event.source_path,
+                    record_number=event.record_number,
+                    timestamp=event.timestamp,
+                )
+            ],
+            tool_refs=[
+                ToolRef(
+                    command_id="cmd-0003",
+                    tool_name="search_events",
+                    args={"event_ids": ["4688"], "contains": "encodedcommand"},
+                    status="failed",
+                )
+            ],
+        )
+        issues = verify_findings(
+            findings=[finding],
+            events=events,
+            execution_log=[
+                {
+                    "command_id": "cmd-0003",
+                    "tool_name": "search_events",
+                    "args": {"event_ids": ["4688"], "contains": "encodedcommand"},
+                    "status": "success",
+                    "result": {"matches": [event.evidence_id]},
+                }
+            ],
+        )
+        self.assertTrue(
+            any("confirmed finding cites non-success tool_ref status 'failed'" in issue.message for issue in issues)
+        )
+
     def test_run_case_generates_self_corrected_reports(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
@@ -380,6 +469,7 @@ class EvidenceLockTests(unittest.TestCase):
         self.assertTrue(payload["checks"]["agent_trace_hashed"])
         self.assertTrue(payload["checks"]["f001_trace_matches_expected_ids"])
         self.assertTrue(payload["checks"]["f002_trace_matches_expected_ids"])
+        self.assertTrue(payload["checks"]["proof_trace_tool_results_match"])
         self.assertTrue(payload["checks"]["negative_manifest_ok"])
         self.assertTrue(payload["checks"]["negative_control_downgrades_to_unresolved"])
         self.assertEqual(

@@ -25,6 +25,7 @@ Local verification on 2026-06-13 returned `ok: true`.
 | `two_confirmed_findings` | `true` |
 | `draft_rejected_with_three_issues` | `true` |
 | `final_verifier_zero_issues` | `true` |
+| `proof_trace_tool_results_match` | `true` |
 | `manifest_ok` | `true` |
 | `negative_control_downgrades_to_unresolved` | `true` |
 | `negative_manifest_ok` | `true` |
@@ -37,6 +38,8 @@ Local verification on 2026-06-13 returned `ok: true`.
 | --- | --- | --- | --- | --- |
 | `F-001` | `confirmed` | `windows_triage_events:1024` | `cmd-0003` | `search_events` |
 | `F-002` | `confirmed` | `windows_triage_events:2048` | `cmd-0004` | `search_events` |
+
+Verifier invariant: a confirmed finding can only use a proof trace when the cited command ID exists, the tool name and args match, the tool status is `success`, and the cited evidence ID appears in that successful tool result.
 
 ## Negative Control
 

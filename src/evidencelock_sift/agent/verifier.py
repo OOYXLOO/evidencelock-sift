@@ -58,6 +58,16 @@ def verify_findings(
         produced_by_cited_tools: set[str] = set()
         for ref in finding.tool_refs:
             entry = log_by_command.get(ref.command_id)
+            valid_proof_tool = True
+            if finding.status == "confirmed" and ref.status != "success":
+                valid_proof_tool = False
+                issues.append(
+                    VerificationIssue(
+                        finding_id=finding.finding_id,
+                        severity="error",
+                        message=f"confirmed finding cites non-success tool_ref status {ref.status!r}",
+                    )
+                )
             if execution_log is not None and entry is None:
                 issues.append(
                     VerificationIssue(
@@ -70,6 +80,7 @@ def verify_findings(
             if entry is None:
                 continue
             if entry.get("status") != "success":
+                valid_proof_tool = False
                 issues.append(
                     VerificationIssue(
                         finding_id=finding.finding_id,
@@ -78,6 +89,7 @@ def verify_findings(
                     )
                 )
             if entry.get("tool_name") != ref.tool_name:
+                valid_proof_tool = False
                 issues.append(
                     VerificationIssue(
                         finding_id=finding.finding_id,
@@ -86,6 +98,7 @@ def verify_findings(
                     )
                 )
             if ref.args and entry.get("args") != ref.args:
+                valid_proof_tool = False
                 issues.append(
                     VerificationIssue(
                         finding_id=finding.finding_id,
@@ -93,7 +106,8 @@ def verify_findings(
                         message=f"tool command_id {ref.command_id} args mismatch",
                     )
                 )
-            produced_by_cited_tools.update(_produced_evidence_ids(entry))
+            if valid_proof_tool:
+                produced_by_cited_tools.update(_produced_evidence_ids(entry))
 
         for ref in finding.evidence_refs:
             if ref.evidence_id not in known_evidence_ids:
