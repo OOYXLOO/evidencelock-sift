@@ -254,6 +254,8 @@ class EvidenceLockTests(unittest.TestCase):
             self.assertIn(fragment, judge_pack)
         for fragment in [
             "EvidenceLock SIFT Judge Hub",
+            "Verifier-first Protocol SIFT triage demo",
+            "og:image",
             "demo.html",
             "evidencelock-sift-judge-deck.pptx",
             "judge_scorecard.md",
@@ -273,6 +275,9 @@ class EvidenceLockTests(unittest.TestCase):
             "accuracy-card.png",
             "Smoke-Test Proof",
             "Submission Gate",
+            "Ready for Devpost",
+            "Human gate remains",
+            "Honest scope",
             "draft is rejected",
             "negative_control_downgrades_to_unresolved: true",
         ]:

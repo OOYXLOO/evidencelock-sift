@@ -4,6 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EvidenceLock SIFT Judge Hub</title>
+  <meta name="description" content="Verifier-first Protocol SIFT triage demo: every confirmed finding must carry evidence IDs, tool-call IDs, verifier correction, and SHA-256 integrity proof.">
+  <meta property="og:title" content="EvidenceLock SIFT Judge Hub">
+  <meta property="og:description" content="A FIND EVIL defensive DFIR agent package with proof traces, smoke-test evidence, fail-closed control, and a one-minute Devpost submission gate.">
+  <meta property="og:image" content="proof-card.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
   <style>
     :root { color-scheme: light; --ink:#17202a; --muted:#536273; --line:#d7dde5; --paper:#fff; --wash:#f4f7fa; --blue:#2563eb; --green:#047857; --amber:#b45309; }
     * { box-sizing: border-box; }
@@ -24,6 +30,10 @@
     .panel img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: #fff; }
     .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
     .actions a { display: inline-flex; align-items: center; min-height: 42px; border: 1px solid var(--line); background: var(--paper); padding: 10px 14px; }
+    .status-strip { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 12px; margin-top: 24px; }
+    .status-item { min-width: 0; border: 1px solid var(--line); background: var(--paper); padding: 14px; }
+    .status-item strong { display: block; margin-bottom: 6px; color: var(--ink); }
+    .status-item span { color: var(--muted); line-height: 1.45; }
     ol, ul { margin: 0; padding-left: 20px; }
     a { color: var(--blue); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
     code { background: #e8eef6; padding: 2px 5px; }
@@ -32,6 +42,7 @@
     @media (max-width: 860px) {
       h1 { font-size: 36px; }
       .metrics, .cards, .proofs { grid-template-columns: 1fr; }
+      .status-strip { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -40,6 +51,11 @@
     <p class="eyebrow">FIND EVIL judge hub</p>
     <h1>EvidenceLock SIFT is a verifier-first MCP-style boundary for Protocol SIFT triage.</h1>
     <p class="dek">The demo proves a narrow, auditable DFIR loop: an unsupported confirmed claim fails, the agent corrects it with evidence and tool-call IDs, and published reports are checked against a SHA-256 integrity manifest.</p>
+    <section class="status-strip" aria-label="Submission status">
+      <div class="status-item"><strong>Ready for Devpost</strong><span>Public repo, judge hub, demo, deck, gallery assets, proof traces, scorecard, and smoke test are ready.</span></div>
+      <div class="status-item"><strong>Human gate remains</strong><span>Devpost project creation/final submit still requires visible reCAPTCHA or account-owner confirmation.</span></div>
+      <div class="status-item"><strong>Honest scope</strong><span>Synthetic Windows EVTX-style vertical slice; no live victim data or full-disk SIFT claim.</span></div>
+    </section>
     <nav class="actions" aria-label="Judge shortcuts">
       <a href="demo.html">Watch Demo</a>
       <a href="https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/evidencelock-sift-judge-deck.pptx">Open Deck</a>
