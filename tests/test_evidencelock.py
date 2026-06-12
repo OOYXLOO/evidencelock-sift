@@ -203,6 +203,15 @@ class EvidenceLockTests(unittest.TestCase):
                 "Verifier rejected the first draft",
                 report_md.read_text(encoding="utf-8"),
             )
+            report_text = report_md.read_text(encoding="utf-8")
+            self.assertIn("Key fields", report_text)
+            self.assertIn("ParentImage", report_text)
+            self.assertIn("WINWORD.EXE", report_text)
+            self.assertIn("CommandLine", report_text)
+            self.assertIn("EncodedCommand", report_text)
+            self.assertIn("ServiceName", report_text)
+            self.assertIn("ImagePath", report_text)
+            self.assertIn("winupdate.exe", report_text)
             self.assertIn(
                 "windows_triage_events:1024",
                 timeline_report.read_text(encoding="utf-8"),
@@ -222,6 +231,7 @@ class EvidenceLockTests(unittest.TestCase):
                 "| True positives | `2` |",
                 accuracy_md.read_text(encoding="utf-8"),
             )
+            self.assertIn("mini-case `N=3` synthetic Windows events", accuracy_md.read_text(encoding="utf-8"))
             manifest = json.loads(integrity_manifest.read_text(encoding="utf-8"))
             self.assertEqual(manifest["case_id"], "windows-triage-mini-001")
             self.assertEqual(manifest["evidence"][0]["sha256"], hash_evidence(EVENTS).sha256)
@@ -447,6 +457,8 @@ class EvidenceLockTests(unittest.TestCase):
             "Smoke Proof",
             "proof_trace_tool_results_match: true",
             "cited commands returned the cited evidence IDs",
+            "mini-case N=3 synthetic Windows events",
+            "not corpus-level DFIR accuracy",
             "Submission Record",
             "Final Submit Console",
             "final_submit_console.html",

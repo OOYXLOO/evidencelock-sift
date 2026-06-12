@@ -4,6 +4,8 @@ Case: `windows-triage-mini-001`
 
 ## Metrics
 
+Scope: mini-case `N=3` synthetic Windows events plus a negative control; this is verifier-boundary evidence, not corpus-level DFIR accuracy.
+
 | Metric | Result |
 | --- | ---: |
 | Draft verifier issues | `3` |

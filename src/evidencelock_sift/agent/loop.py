@@ -39,17 +39,36 @@ def _write_text_lf(path: Path, text: str) -> None:
 def _write_json_lf(path: Path, payload: Any) -> None:
     _write_text_lf(path, json.dumps(payload, indent=2, sort_keys=True))
 
+def _matched_fields(event) -> dict[str, Any]:
+    keys = [
+        "Image",
+        "CommandLine",
+        "ParentImage",
+        "User",
+        "ServiceName",
+        "ImagePath",
+        "AccountName",
+        "LogonType",
+        "TargetUserName",
+        "IpAddress",
+    ]
+    fields: dict[str, Any] = {
+        "event_id": event.event_id,
+        "message": event.message,
+        "tags": event.tags,
+    }
+    for key in keys:
+        if key in event.fields:
+            fields[key] = event.fields[key]
+    return fields
+
 def _evidence_ref(event) -> EvidenceRef:
     return EvidenceRef(
         evidence_id=event.evidence_id,
         source_path=event.source_path,
         record_number=event.record_number,
         timestamp=event.timestamp,
-        matched_fields={
-            "event_id": event.event_id,
-            "message": event.message,
-            "tags": event.tags,
-        },
+        matched_fields=_matched_fields(event),
     )
 
 
@@ -231,6 +250,10 @@ def _write_report(report: InvestigationReport, out_dir: Path) -> None:
             lines.append(
                 f"- `{ref.evidence_id}` record `{ref.record_number}` at `{ref.timestamp}` from `{ref.source_path}`"
             )
+            if ref.matched_fields:
+                lines.append("  - Key fields:")
+                for key, value in ref.matched_fields.items():
+                    lines.append(f"    - `{key}`: `{value}`")
         lines.append("")
         lines.append("Tool calls:")
         for ref in finding.tool_refs:
@@ -262,6 +285,8 @@ def _write_accuracy_report(case: dict[str, Any], events, findings: list[Finding]
         f"Case: `{case['case_id']}`",
         "",
         "## Metrics",
+        "",
+        "Scope: mini-case `N=3` synthetic Windows events plus a negative control; this is verifier-boundary evidence, not corpus-level DFIR accuracy.",
         "",
         "| Metric | Result |",
         "| --- | ---: |",

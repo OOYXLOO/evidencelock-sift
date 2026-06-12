@@ -95,6 +95,8 @@ The included synthetic Windows triage case contains three normalized events:
 
 The agent intentionally starts with an unsupported draft claim. The verifier rejects it because it has no evidence ID. The correction pass searches events, attaches exact event records, and produces confirmed findings only for the two supported behaviors.
 
+Accuracy claims are intentionally scoped to the mini-case: 3 synthetic Windows events plus a negative control. They prove the verifier boundary and fail-closed behavior, not corpus-level DFIR accuracy.
+
 ## Judge Fast Path
 
 If you only have a few minutes, inspect these artifacts:

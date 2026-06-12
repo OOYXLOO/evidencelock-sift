@@ -10,6 +10,10 @@
         {
           "evidence_id": "windows_triage_events:1024",
           "matched_fields": {
+            "CommandLine": "powershell.exe -NoProfile -EncodedCommand SQBFAFgA",
+            "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "User": "ACME\\analyst",
             "event_id": "4688",
             "message": "A new process has been created.",
             "tags": [
@@ -53,6 +57,9 @@
         {
           "evidence_id": "windows_triage_events:2048",
           "matched_fields": {
+            "AccountName": "LocalSystem",
+            "ImagePath": "C:\\Users\\Public\\Temp\\winupdate.exe",
+            "ServiceName": "WinUpdateSvc",
             "event_id": "7045",
             "message": "A service was installed in the system.",
             "tags": [
