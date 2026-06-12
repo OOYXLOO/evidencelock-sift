@@ -74,6 +74,7 @@ If you only have a few minutes, inspect these artifacts:
 - `docs/fail_closed_negative_control.md`: negative-control case proving unsupported draft claims downgrade to unresolved.
 - `docs/sift_compatibility_runbook.md`: non-claiming path for SIFT, EvtxECmd, Sleuth Kit, and Protocol SIFT-style MCP usage.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
+- `docs/final_submission_operator_runbook.md`: final 10-minute submit runbook with fields, gallery order, video branch, no-go gate, and deadline time zone.
 - `docs/stage_one_preflight.md`: pass/fail Stage One preflight for the organizer submission-check prompt.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `docs/accuracy-card.png`: visual metrics and guardrail/bypass-test summary.
@@ -115,6 +116,7 @@ See:
 - `docs/devpost_gallery_assets.md`
 - `docs/devpost_submission.md`
 - `docs/evidencelock-sift-judge-deck.pptx`
+- `docs/final_submission_operator_runbook.md`
 - `docs/judging_guide.md`
 - `docs/judge_pack.md`
 - `docs/judge_scorecard.md`

@@ -29,6 +29,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Judge scorecard: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md
 - Human submission gate pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/human_submission_gate.md
 - Stage One preflight: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/stage_one_preflight.md
+- Final submission operator runbook: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/final_submission_operator_runbook.md
 - Judge smoke test: https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
@@ -89,6 +90,7 @@ Expected smoke-test highlights: `draft_rejected_with_three_issues: true`, `final
 ## Final Submit Checks
 
 - Use the one-minute human submission gate pack if Devpost project creation was just unblocked: `docs/human_submission_gate.md`.
+- Use the final 10-minute operator runbook before pressing submit: `docs/final_submission_operator_runbook.md`.
 - Run the Stage One preflight before final submit: `docs/stage_one_preflight.md`. The organizer forum says Stage One is pass/fail and missing required components can eliminate the entry after the deadline.
 - Confirm Devpost project belongs to FIND EVIL, not another hackathon.
 - Do not import `prizepilot-qwen-cloud` into FIND EVIL.

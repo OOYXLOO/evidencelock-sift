@@ -17,6 +17,7 @@
 - [x] Demo WebM generated and public in GitHub raw.
 - [x] Devpost submission text drafted.
 - [x] Devpost field pack drafted.
+- [x] Final submit operator runbook drafted.
 - [ ] Devpost project draft created.
 - [ ] Devpost-supported hosted video URL accepted.
 - [ ] Additional info fields completed.
