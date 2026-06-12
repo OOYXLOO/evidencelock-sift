@@ -143,10 +143,11 @@
       </div>
       <div class="panel">
         <h2>Smoke-Test Proof</h2>
-        <p>The smoke test only returns <code>ok: true</code> after the unsafe draft is rejected, the final verifier has zero issues, the manifest verifies, and both confirmed findings have exact proof traces.</p>
+        <p>The smoke test only returns <code>ok: true</code> after the unsafe draft is rejected, the final verifier has zero issues, the manifest verifies, and both confirmed findings have exact proof traces produced by matching successful tool calls.</p>
         <ul>
           <li><code>F-001</code>: <code>windows_triage_events:1024</code> -> <code>cmd-0003 search_events</code>.</li>
           <li><code>F-002</code>: <code>windows_triage_events:2048</code> -> <code>cmd-0004 search_events</code>.</li>
+          <li><code>proof_trace_tool_results_match: true</code>: cited commands returned the cited evidence IDs.</li>
           <li><code>negative_control_downgrades_to_unresolved: true</code> and <code>negative_manifest_ok: true</code>.</li>
         </ul>
         <p><a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md#expected-smoke-test-highlights">Open expected smoke-test highlights</a></p>
