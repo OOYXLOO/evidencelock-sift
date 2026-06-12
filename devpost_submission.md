@@ -87,6 +87,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
+- `docs/human_submission_gate.md`: one-minute Devpost project-creation and final-submit checklist for the human verification gate.
 - `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks and `proof_trace` evidence/tool-call IDs.
 - `docs/fail_closed_negative_control.md`: negative-control case proving unsupported claims downgrade to unresolved.
 - `docs/sift_compatibility_runbook.md`: non-claiming SIFT/Sleuth Kit migration path.
@@ -100,6 +101,8 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - `reports/analyst_handoff.md`: MITRE, priority, evidence, tool-call, and response-action handoff.
 - `reports/integrity_manifest.json`: SHA-256 hashes for the input evidence file and generated outputs.
 
+Smoke-test highlights to paste into Additional info: `draft_rejected_with_three_issues: true`, `final_verifier_zero_issues: true`, exact `F-001` proof trace (`windows_triage_events:1024` + `cmd-0003 search_events`), exact `F-002` proof trace (`windows_triage_events:2048` + `cmd-0004 search_events`), `manifest_ok: true`, `negative_control_downgrades_to_unresolved: true`, and `negative_manifest_ok: true`.
+
 ## Links
 
 - Repository: https://github.com/OOYXLOO/evidencelock-sift
@@ -110,6 +113,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - Judge smoke test: https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Devpost field pack: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/devpost_field_pack.md
+- Human submission gate pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/human_submission_gate.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
 - Fail-closed negative control: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/fail_closed_negative_control.md
 - SIFT compatibility runbook: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/sift_compatibility_runbook.md
