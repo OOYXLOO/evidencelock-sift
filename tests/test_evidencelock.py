@@ -226,6 +226,7 @@ class EvidenceLockTests(unittest.TestCase):
             "EvidenceLock SIFT Judge Pack",
             "docs/index.html",
             "docs/demo.html",
+            "docs/human_submission_gate.md",
             "docs/demo-video/evidencelock-sift-demo.webm",
             "docs/evidencelock-sift-judge-deck.pptx",
             "reports/investigation_report.md",
@@ -258,6 +259,7 @@ class EvidenceLockTests(unittest.TestCase):
             "judge_scorecard.md",
             "judge_smoke_test.py",
             "agent_trace.md",
+            "human_submission_gate.md",
             "fail_closed_negative_control.md",
             "sift_compatibility_runbook.md",
             "claim_verification_table.md",
@@ -270,12 +272,14 @@ class EvidenceLockTests(unittest.TestCase):
             "proof-card.png",
             "accuracy-card.png",
             "Smoke-Test Proof",
+            "Submission Gate",
             "draft is rejected",
             "negative_control_downgrades_to_unresolved: true",
         ]:
             self.assertIn(fragment, judge_hub)
         self.assertNotIn("../reports/", judge_hub)
         self.assertTrue((ROOT / "docs" / "demo.html").is_file())
+        self.assertTrue((ROOT / "docs" / "human_submission_gate.md").is_file())
         self.assertTrue((ROOT / "docs" / "evidencelock-sift-judge-deck.pptx").is_file())
 
     def test_judge_smoke_test_passes(self) -> None:

@@ -87,6 +87,7 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
+- `docs/human_submission_gate.md`: one-minute Devpost project-creation and final-submit checklist for the human verification gate.
 - `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks and `proof_trace` evidence/tool-call IDs.
 - `docs/fail_closed_negative_control.md`: negative-control case proving unsupported claims downgrade to unresolved.
 - `docs/sift_compatibility_runbook.md`: non-claiming SIFT/Sleuth Kit migration path.
@@ -112,6 +113,7 @@ Smoke-test highlights to paste into Additional info: `draft_rejected_with_three_
 - Judge smoke test: https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Devpost field pack: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/devpost_field_pack.md
+- Human submission gate pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/human_submission_gate.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
 - Fail-closed negative control: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/fail_closed_negative_control.md
 - SIFT compatibility runbook: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/sift_compatibility_runbook.md

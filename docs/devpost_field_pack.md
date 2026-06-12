@@ -27,6 +27,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Accuracy card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-card.png
 - Judge pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md
 - Judge scorecard: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md
+- Human submission gate pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/human_submission_gate.md
 - Judge smoke test: https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py
 - Judging guide: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/judging_guide.md
 - Required components checklist: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/required_components_checklist.md
@@ -86,7 +87,10 @@ Expected smoke-test highlights: `draft_rejected_with_three_issues: true`, `final
 
 ## Final Submit Checks
 
+- Use the one-minute human submission gate pack if Devpost project creation was just unblocked: `docs/human_submission_gate.md`.
 - Confirm Devpost project belongs to FIND EVIL, not another hackathon.
+- Do not import `prizepilot-qwen-cloud` into FIND EVIL.
+- Do not treat `https://devpost.com/software/evidence-locked-dfir-agent` as ours; it is a competitor project.
 - Use `https://ooyxloo.github.io/evidencelock-sift/` as the `Try it out` link only after GitHub Pages returns HTTP 200. Until then, use the GitHub-rendered judge hub source link.
 - Put `https://ooyxloo.github.io/evidencelock-sift/demo.html` in supporting links near the video field. If Devpost requires YouTube/Vimeo for the dedicated video field, use the raw WebM as the upload source and keep `demo.html` as a project link.
 - Upload `proof-card.png` first and `architecture.png` second.
