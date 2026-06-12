@@ -12,17 +12,18 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 2. Watch the embedded demo page: [`docs/demo.html`](demo.html). Raw fallback: [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm).
 3. Open the 5-slide presentation deck: [`docs/evidencelock-sift-judge-deck.pptx`](evidencelock-sift-judge-deck.pptx).
 4. Open the one-minute submission gate pack: [`docs/human_submission_gate.md`](human_submission_gate.md).
-5. Open the proof trace: [`docs/proof-card.png`](proof-card.png).
-6. Open the accuracy summary: [`docs/accuracy-card.png`](accuracy-card.png).
-7. Read the judging criteria scorecard: [`docs/judge_scorecard.md`](judge_scorecard.md).
-8. Run the smoke test: `python tools/judge_smoke_test.py`.
-9. Check the before/after claim verification table: [`docs/claim_verification_table.md`](claim_verification_table.md).
-10. Check the negative-control downgrade: [`docs/fail_closed_negative_control.md`](fail_closed_negative_control.md).
-11. Check the SIFT compatibility runbook: [`docs/sift_compatibility_runbook.md`](sift_compatibility_runbook.md).
-12. Read the annotated agent trace: [`reports/agent_trace.md`](../reports/agent_trace.md).
-13. Read the final report: [`reports/investigation_report.md`](../reports/investigation_report.md).
-14. Read the responder handoff: [`reports/analyst_handoff.md`](../reports/analyst_handoff.md).
-15. Verify integrity: `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`
+5. Check the Stage One preflight: [`docs/stage_one_preflight.md`](stage_one_preflight.md).
+6. Open the proof trace: [`docs/proof-card.png`](proof-card.png).
+7. Open the accuracy summary: [`docs/accuracy-card.png`](accuracy-card.png).
+8. Read the judging criteria scorecard: [`docs/judge_scorecard.md`](judge_scorecard.md).
+9. Run the smoke test: `python tools/judge_smoke_test.py`.
+10. Check the before/after claim verification table: [`docs/claim_verification_table.md`](claim_verification_table.md).
+11. Check the negative-control downgrade: [`docs/fail_closed_negative_control.md`](fail_closed_negative_control.md).
+12. Check the SIFT compatibility runbook: [`docs/sift_compatibility_runbook.md`](sift_compatibility_runbook.md).
+13. Read the annotated agent trace: [`reports/agent_trace.md`](../reports/agent_trace.md).
+14. Read the final report: [`reports/investigation_report.md`](../reports/investigation_report.md).
+15. Read the responder handoff: [`reports/analyst_handoff.md`](../reports/analyst_handoff.md).
+16. Verify integrity: `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`
 
 ## FIND EVIL Requirements Map
 
@@ -30,6 +31,7 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 | --- | --- | --- |
 | Public repository | <https://github.com/OOYXLOO/evidencelock-sift> | Ready |
 | Human submission gate pack | [`docs/human_submission_gate.md`](human_submission_gate.md) | Ready |
+| Stage One preflight | [`docs/stage_one_preflight.md`](stage_one_preflight.md) | Ready; final Devpost URL and hosted video URL still require the human gate |
 | Demo video | [`docs/demo.html`](demo.html), [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm) | Ready |
 | Presentation deck | [`docs/evidencelock-sift-judge-deck.pptx`](evidencelock-sift-judge-deck.pptx) | Ready |
 | Architecture diagram | [`docs/architecture.png`](architecture.png), [`docs/architecture.md`](architecture.md) | Ready |

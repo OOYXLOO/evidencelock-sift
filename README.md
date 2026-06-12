@@ -74,6 +74,7 @@ If you only have a few minutes, inspect these artifacts:
 - `docs/fail_closed_negative_control.md`: negative-control case proving unsupported draft claims downgrade to unresolved.
 - `docs/sift_compatibility_runbook.md`: non-claiming path for SIFT, EvtxECmd, Sleuth Kit, and Protocol SIFT-style MCP usage.
 - `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
+- `docs/stage_one_preflight.md`: pass/fail Stage One preflight for the organizer submission-check prompt.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `docs/accuracy-card.png`: visual metrics and guardrail/bypass-test summary.
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
@@ -123,6 +124,7 @@ See:
 - `docs/proof-card.png`
 - `docs/proof-card.svg`
 - `docs/required_components_checklist.md`
+- `docs/stage_one_preflight.md`
 - `docs/submission_checklist.md`
 - `docs/accuracy_method.md`
 - `reports/analyst_handoff.md`

@@ -14,6 +14,7 @@ Use this page only after the FIND EVIL Devpost project draft exists. The current
 8. Add deck link: `https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/evidencelock-sift-judge-deck.pptx`.
 9. Upload gallery images in this order: `docs/proof-card.png`, `docs/architecture.png`, `docs/accuracy-card.png`.
 10. If Devpost rejects the raw GitHub WebM as the dedicated video URL, upload `docs/demo-video/evidencelock-sift-demo.webm` to a supported host and keep `demo.html` as a supporting link.
+11. Run the Stage One preflight from `docs/stage_one_preflight.md` before final submit.
 
 ## Copy Blocks
 
@@ -45,6 +46,7 @@ The first report draft intentionally fails verification. The final report only k
 
 ## Final Safety Checks
 
+- The organizer forum says Stage One is pass/fail; missing required components can eliminate the submission after the deadline. Use `docs/stage_one_preflight.md` before final submit.
 - Confirm the Devpost target is FIND EVIL, not the Qwen project and not another competitor's project.
 - Do not import `prizepilot-qwen-cloud` into FIND EVIL.
 - Do not treat `https://devpost.com/software/evidence-locked-dfir-agent` as ours; it is a competitor project.
