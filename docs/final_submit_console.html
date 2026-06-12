@@ -48,15 +48,17 @@
   <main>
     <p class="eyebrow">FIND EVIL final submit console</p>
     <h1>EvidenceLock SIFT copy deck for the last Devpost pass.</h1>
-    <p class="dek">Use this after the FIND EVIL Devpost project draft exists and the hosted YouTube, Vimeo, or Youku video URL is ready. It keeps the manual submission step short and reduces wrong-project or raw-video mistakes.</p>
+    <p class="dek">Use this as a post-submit edit console for the submitted FIND EVIL Devpost project. It keeps the live project URL, hosted Vimeo demo, judge links, and no-go checks in one place.</p>
 
     <section class="status" aria-label="Submission state">
-      <div><strong>Still needed</strong><span>Real FIND EVIL Devpost project URL plus hosted public video URL.</span></div>
-      <div><strong>Ready now</strong><span>Public repo, judge hub, MP4 source, WebM backup, gallery assets, deck, smoke test, and runbooks.</span></div>
+      <div><strong>Submitted</strong><span>Devpost project: devpost.com/software/evidencelock-sift-verifier-first-protocol-triage.</span></div>
+      <div><strong>Hosted video</strong><span>Official Vimeo demo: vimeo.com/1200810741.</span></div>
       <div><strong>Deadline</strong><span>2026-06-15 23:45 EDT / 2026-06-16 11:45 GMT+8.</span></div>
     </section>
 
     <nav class="actions" aria-label="Fast links">
+      <a href="https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage">Devpost Project</a>
+      <a href="https://vimeo.com/1200810741">Hosted Vimeo</a>
       <a href="./">Judge Hub</a>
       <a href="demo.html">Demo Page</a>
       <a href="video_upload_pack.md">Video Upload Pack</a>
@@ -99,14 +101,17 @@ Expected smoke-test highlights: draft_rejected_with_three_issues: true, final_ve
       </div>
       <div class="card links">
         <div class="copy-row"><strong>Project Links</strong><button data-copy="#project-links">Copy</button></div>
-        <textarea id="project-links" readonly>Repository: https://github.com/OOYXLOO/evidencelock-sift
+        <textarea id="project-links" readonly>Devpost project: https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage
+Repository: https://github.com/OOYXLOO/evidencelock-sift
 Judge hub: https://ooyxloo.github.io/evidencelock-sift/
 Final submit console: https://ooyxloo.github.io/evidencelock-sift/final_submit_console.html
+Official hosted demo video: https://vimeo.com/1200810741
 Embedded demo: https://ooyxloo.github.io/evidencelock-sift/demo.html
 Preferred MP4 upload source: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.mp4
 WebM backup upload source: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 Judge pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md
 Scorecard: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md
+Smoke proof snapshot: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/smoke_proof.md
 Smoke test: https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py
 Stage One preflight: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/stage_one_preflight.md
 Final runbook: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/final_submission_operator_runbook.md
@@ -129,7 +134,7 @@ https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-c
       </div>
       <div class="card checks">
         <div class="copy-row"><strong>Video Field Rule</strong><button data-copy="#video-rule">Copy</button></div>
-        <textarea id="video-rule" readonly>Upload docs/demo-video/evidencelock-sift-demo.mp4 to YouTube, Vimeo, or Youku and paste that hosted public URL into the Devpost video field. Use docs/demo-video/evidencelock-sift-demo.webm only if the host rejects MP4 processing. Keep https://ooyxloo.github.io/evidencelock-sift/demo.html as a supporting project link. Do not use a raw GitHub video URL as the official Devpost video field.</textarea>
+        <textarea id="video-rule" readonly>Official FIND EVIL rules allow a public YouTube, Vimeo, or Youku video with audio narration; this submitted project uses Vimeo. Keep https://vimeo.com/1200810741 in the official Devpost video field. Keep https://ooyxloo.github.io/evidencelock-sift/demo.html as a supporting project link. Use docs/demo-video/evidencelock-sift-demo.mp4 or docs/demo-video/evidencelock-sift-demo.webm only if a future edit requires re-uploading. Do not use a raw GitHub video URL as the official Devpost video field.</textarea>
       </div>
       <div class="card danger">
         <div class="copy-row"><strong>No-Go Gate</strong><button data-copy="#no-go">Copy</button></div>
@@ -137,7 +142,7 @@ https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-c
 - The project URL is not under FIND EVIL.
 - The project was imported from prizepilot-qwen-cloud.
 - The project page is https://devpost.com/software/evidence-locked-dfir-agent; that is a competitor project, not this submission.
-- The video field is empty, private, silent, raw-GitHub-only, or not hosted on YouTube, Vimeo, or Youku.
+- The video field is empty, private, silent, raw-GitHub-only, or no longer points to https://vimeo.com/1200810741.
 - The hosted video is still processing or fails in a logged-out browser.
 - The repo is private or the MIT license is not visible.
 - Additional info omits the judge pack, scorecard, smoke test, Stage One preflight, or honest scope boundary.
@@ -147,7 +152,7 @@ https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-c
       <div class="card">
         <h2>Before Final Submit</h2>
         <ol>
-          <li>Hosted video opens logged-out and has audible narration.</li>
+          <li>Hosted Vimeo opens logged-out and has audible narration.</li>
           <li>Devpost project is for FIND EVIL, not Qwen or a competitor page.</li>
           <li>Gallery images follow the proof, architecture, accuracy order.</li>
           <li>Run the <a href="stage_one_preflight.md">Stage One preflight</a>.</li>

@@ -4,6 +4,17 @@ EvidenceLock SIFT is a verifier-first DFIR triage agent for the FIND EVIL! hacka
 
 In one sentence: it is a verifier-first custom MCP-style boundary for Protocol SIFT triage, not a prompt-only forensic chatbot.
 
+## Judge In 2 Minutes
+
+- Devpost: <https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage>
+- Judge hub: <https://ooyxloo.github.io/evidencelock-sift/>
+- Hosted demo: <https://vimeo.com/1200810741>
+- Repository: <https://github.com/OOYXLOO/evidencelock-sift>
+- Smoke proof: [`docs/smoke_proof.md`](docs/smoke_proof.md)
+- Reproduce: `python tools/judge_smoke_test.py`
+
+No account, API key, private log, or real incident data is required for the smoke path. The demo uses a synthetic Windows EVTX-style mini-case and keeps full-disk SIFT execution as an honest future integration boundary.
+
 The project does not try to be a broad forensic chatbot. It implements a narrow, auditable loop:
 
 1. Load a case manifest and normalized Windows event evidence.
@@ -54,7 +65,10 @@ Generated outputs:
 - `reports/agent_trace.md`
 - `reports/execution_log.jsonl`
 - `reports/integrity_manifest.json`
-- `docs/demo-video/evidencelock-sift-demo.mp4` (preferred narrated upload source; the official Devpost video field still needs a public YouTube, Vimeo, or Youku URL)
+- Public Devpost project: <https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage>
+- Public Vimeo demo video: <https://vimeo.com/1200810741>
+- Official rules allow a public YouTube, Vimeo, or Youku video with audio narration; the submitted field uses Vimeo.
+- `docs/demo-video/evidencelock-sift-demo.mp4` (narrated upload source used for the hosted video)
 - `docs/demo-video/evidencelock-sift-demo.webm` (narrated browser-playback backup)
 
 ## Protocol SIFT Fit
@@ -79,19 +93,23 @@ The agent intentionally starts with an unsupported draft claim. The verifier rej
 
 If you only have a few minutes, inspect these artifacts:
 
+- Devpost project: <https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage>
+- Hosted demo video: <https://vimeo.com/1200810741>
+- Judge hub: <https://ooyxloo.github.io/evidencelock-sift/>
 - `docs/index.html`: static judge hub for GitHub Pages or local browser review.
 - `docs/demo.html`: embedded browser playback page for the narrated MP4/WebM upload sources.
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
+- `docs/smoke_proof.md`: checked-in smoke proof snapshot for reviewers who want the `ok: true` signal before running code.
 - `docs/evidencelock-sift-judge-deck.pptx`: editable 5-slide presentation deck for judge review and Devpost supporting links.
 - `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks, finding-to-evidence/tool proof trace, and negative-control status.
 - `docs/fail_closed_negative_control.md`: negative-control case proving unsupported draft claims downgrade to unresolved.
 - `docs/sift_compatibility_runbook.md`: non-claiming path for SIFT, EvtxECmd, Sleuth Kit, and Protocol SIFT-style MCP usage.
-- `docs/required_components_checklist.md`: final submission checklist for the required FIND EVIL artifacts.
-- `docs/final_submission_operator_runbook.md`: final 10-minute submit runbook with fields, gallery order, video branch, no-go gate, and deadline time zone.
-- `docs/final_submit_console.html`: copy-ready final Devpost submit console for the project name, tagline, description, links, video rule, gallery order, and no-go gate.
-- `docs/stage_one_preflight.md`: pass/fail Stage One preflight for the organizer submission-check prompt.
+- `docs/required_components_checklist.md`: submitted FIND EVIL artifact checklist.
+- `docs/final_submission_operator_runbook.md`: archived final-submit runbook and post-submit verification notes.
+- `docs/final_submit_console.html`: copy-ready Devpost edit console for preserving the submitted fields.
+- `docs/stage_one_preflight.md`: submitted Stage One preflight record for the organizer submission-check prompt.
 - `docs/proof-card.png`: visual proof trace for finding `F-001`.
 - `docs/accuracy-card.png`: visual metrics and guardrail/bypass-test summary.
 - `reports/execution_log.jsonl`: command IDs for hashing, parsing, searches, and both verifier passes.
@@ -146,6 +164,7 @@ See:
 - `docs/required_components_checklist.md`
 - `docs/stage_one_preflight.md`
 - `docs/submission_checklist.md`
+- `docs/smoke_proof.md`
 - `docs/accuracy_method.md`
 - `reports/analyst_handoff.md`
 - `reports/agent_trace.md`

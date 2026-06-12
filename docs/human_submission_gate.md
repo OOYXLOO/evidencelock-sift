@@ -1,12 +1,12 @@
 # EvidenceLock SIFT Human Submission Gate
 
-Use this page only after the FIND EVIL Devpost project draft exists. The current blocker is Devpost human verification / project creation; do not treat this file as proof that the Devpost submission is complete.
+This page is now a completed human-gate record. The FIND EVIL Devpost project and hosted Vimeo video are live; use this only if a post-submit edit must preserve the same fields.
 
 For the final 10-minute submit flow, use `docs/final_submit_console.html` and `docs/final_submission_operator_runbook.md` after this one-minute field order.
 
 ## One-Minute Field Order
 
-1. Create or open the FIND EVIL project draft at Devpost.
+1. Open the submitted FIND EVIL project: `https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage`.
 2. Use project name: `EvidenceLock SIFT: Verifier-First Protocol SIFT Triage`.
 3. Use tagline: `Verifier-first custom MCP-style boundary for Protocol SIFT triage: every confirmed finding must prove itself with evidence refs, tool-call logs, verifier correction, and integrity hashes.`
 4. Use try-it-out link: `https://ooyxloo.github.io/evidencelock-sift/`.
@@ -15,8 +15,8 @@ For the final 10-minute submit flow, use `docs/final_submit_console.html` and `d
 7. Add judge pack link: `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md`.
 8. Add deck link: `https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/evidencelock-sift-judge-deck.pptx`.
 9. Upload gallery images in this order: `docs/proof-card.png`, `docs/architecture.png`, `docs/accuracy-card.png`.
-10. Upload the narrated `docs/demo-video/evidencelock-sift-demo.mp4` to YouTube, Vimeo, or Youku using `docs/video_upload_pack.md`, paste that hosted URL into the dedicated video field, and keep `demo.html` as a supporting link. Use the WebM backup only if the host rejects MP4 processing.
-11. Open `docs/final_submission_operator_runbook.md` for the final no-go gate, video branch, and deadline time-zone check.
+10. Official FIND EVIL rules allow a public YouTube, Vimeo, or Youku video with audio narration; this submission uses Vimeo. Keep the official hosted video field as `https://vimeo.com/1200810741` and keep `demo.html` as a supporting link. Use the MP4/WebM backups only if a future edit requires re-uploading.
+11. Open `docs/final_submission_operator_runbook.md` for the archived no-go gate, video branch, and deadline time-zone record.
 12. Open `docs/final_submit_console.html` if you want copy-ready fields in one browser page.
 13. Run the Stage One preflight from `docs/stage_one_preflight.md` before final submit.
 
@@ -54,7 +54,7 @@ The first report draft intentionally fails verification. The final report only k
 - Confirm the Devpost target is FIND EVIL, not the Qwen project and not another competitor's project.
 - Do not import `prizepilot-qwen-cloud` into FIND EVIL.
 - Do not treat `https://devpost.com/software/evidence-locked-dfir-agent` as ours; it is a competitor project.
-- Verify the hosted YouTube/Vimeo/Youku video has audio narration and works in a logged-out browser before pasting it into Devpost.
+- Verify the hosted Vimeo video has audio narration and works in a logged-out browser before any future Devpost edit.
 - Do not paste private logs, real victim data, passwords, API keys, payout details, tax data, KYC data, or bank/card data.
 - State the honest boundary: synthetic Windows EVTX-style vertical slice, no live SIFT workstation claim, no full-disk processing claim, no real victim data claim.
 

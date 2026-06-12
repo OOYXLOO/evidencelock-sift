@@ -1,6 +1,6 @@
 # Devpost Field Pack
 
-Use this pack after the FIND EVIL Devpost project draft is created.
+Use this pack to preserve or edit the submitted FIND EVIL Devpost entry.
 
 ## Project Name
 
@@ -16,20 +16,23 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 
 ## Project Links
 
+- Devpost project: https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage
 - Repository: https://github.com/OOYXLOO/evidencelock-sift
 - Judge hub source: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/index.html
-- Judge hub Pages URL, use only after it returns HTTP 200: https://ooyxloo.github.io/evidencelock-sift/
+- Judge hub Pages URL: https://ooyxloo.github.io/evidencelock-sift/
+- Official hosted demo video: https://vimeo.com/1200810741
 - Final submit console: https://ooyxloo.github.io/evidencelock-sift/final_submit_console.html
 - Embedded demo playback page: https://ooyxloo.github.io/evidencelock-sift/demo.html
 - Preferred MP4 upload source, not the official Devpost video field: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.mp4
 - WebM backup upload source, not the official Devpost video field: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
-- Official video field: paste the public YouTube, Vimeo, or Youku URL after uploading the narrated MP4 or WebM backup
+- Official video field: https://vimeo.com/1200810741
 - Presentation deck: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/evidencelock-sift-judge-deck.pptx
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
 - Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
 - Accuracy card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-card.png
 - Judge pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md
 - Judge scorecard: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md
+- Smoke proof snapshot: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/smoke_proof.md
 - Human submission gate pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/human_submission_gate.md
 - Stage One preflight: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/stage_one_preflight.md
 - Final submission operator runbook: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/final_submission_operator_runbook.md
@@ -78,6 +81,7 @@ Expected smoke-test highlights: `draft_rejected_with_three_issues: true`, `final
 - The editable presentation deck gives a compact 5-slide judge path: verifier boundary, proof chain, architecture, evaluation, and Devpost close.
 - The judge scorecard maps the package directly to the FIND EVIL criteria: autonomous execution quality, IR accuracy, depth, constraint implementation, audit trail quality, and usability.
 - The judge smoke test gives reviewers one command that returns JSON `ok: true` only if the rejected draft, corrected verifier, manifest check, generated outputs, and exact `F-001`/`F-002` evidence/tool-call IDs match expectations.
+- `docs/smoke_proof.md` gives reviewers a checked-in `ok: true` smoke snapshot before they decide whether to run the command locally.
 - The smoke test also runs a negative-control case and requires `negative_control_downgrades_to_unresolved: true` plus `negative_manifest_ok: true`.
 - The SIFT compatibility runbook gives a concrete, non-claiming migration path for EvtxECmd exports, Sleuth Kit wrappers, typed MCP tools, and integrity manifests.
 - The annotated agent trace explains each execution-log tool call and states that the deterministic demo uses no external LLM call, private data, or API key.
@@ -90,17 +94,18 @@ Expected smoke-test highlights: `draft_rejected_with_three_issues: true`, `final
 - Accuracy evidence includes a metrics table, before/after claim table, and bypass tests for unsupported claims, path escapes, tampered reports, and unsafe manifest paths.
 - Analyst handoff maps confirmed findings to MITRE techniques, primary evidence, command IDs, priority, and concrete response actions.
 
-## Final Submit Checks
+## Post-Submit Checks
 
-- Use the one-minute human submission gate pack if Devpost project creation was just unblocked: `docs/human_submission_gate.md`.
-- Use the final submit console when manually copying fields into Devpost: `docs/final_submit_console.html`.
-- Use the final 10-minute operator runbook before pressing submit: `docs/final_submission_operator_runbook.md`.
-- Run the Stage One preflight before final submit: `docs/stage_one_preflight.md`. The organizer forum says Stage One is pass/fail and missing required components can eliminate the entry after the deadline.
+- Devpost project is `https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage`.
+- Official video field is `https://vimeo.com/1200810741`.
+- Keep the one-minute human submission gate pack as a completed record: `docs/human_submission_gate.md`.
+- Use the final submit console only if Devpost fields need a post-submit edit: `docs/final_submit_console.html`.
+- Keep the Stage One preflight updated with the final URLs: `docs/stage_one_preflight.md`.
 - Confirm Devpost project belongs to FIND EVIL, not another hackathon.
 - Do not import `prizepilot-qwen-cloud` into FIND EVIL.
 - Do not treat `https://devpost.com/software/evidence-locked-dfir-agent` as ours; it is a competitor project.
-- Use `https://ooyxloo.github.io/evidencelock-sift/` as the `Try it out` link only after GitHub Pages returns HTTP 200. Until then, use the GitHub-rendered judge hub source link.
-- Upload the narrated MP4 to YouTube, Vimeo, or Youku for the dedicated video field. If the host rejects it, use the WebM backup. Put `https://ooyxloo.github.io/evidencelock-sift/demo.html` in supporting links near the video field as the embedded playback backup.
+- Use `https://ooyxloo.github.io/evidencelock-sift/` as the `Try it out` link.
+- Keep `https://ooyxloo.github.io/evidencelock-sift/demo.html` in supporting links near the Vimeo field as the embedded playback backup.
 - Upload `proof-card.png` first and `architecture.png` second.
 - Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` after any report regeneration.
 - Include the presentation deck link in supporting links after the judge hub and demo video.

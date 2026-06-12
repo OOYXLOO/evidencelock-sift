@@ -1,6 +1,6 @@
 # FIND EVIL Final Submission Operator Runbook
 
-Use this only after the account owner has passed Devpost human verification and the FIND EVIL project draft exists. It is a last-mile checklist for the final 10 minutes before submit.
+This is now an archived last-mile checklist plus post-submit verification record. The account owner completed the Devpost project creation and hosted video step; use this file only to preserve the submitted URLs or to avoid regressions during any post-submit edit.
 
 Public deadline check: the FIND EVIL Devpost page exposes `2026-06-15T23:45:00-04:00`, which is `2026-06-16 11:45 GMT+8`. Do not wait for the final hour.
 
@@ -10,6 +10,8 @@ Public deadline check: the FIND EVIL Devpost page exposes `2026-06-15T23:45:00-0
 | --- | --- |
 | Project name | `EvidenceLock SIFT: Verifier-First Protocol SIFT Triage` |
 | Tagline | `Verifier-first custom MCP-style boundary for Protocol SIFT triage: every confirmed finding must prove itself with evidence refs, tool-call logs, verifier correction, and integrity hashes.` |
+| Devpost project | `https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage` |
+| Official hosted video | `https://vimeo.com/1200810741` |
 | Try it out | `https://ooyxloo.github.io/evidencelock-sift/` |
 | Repository | `https://github.com/OOYXLOO/evidencelock-sift` |
 | Supporting demo page | `https://ooyxloo.github.io/evidencelock-sift/demo.html` |
@@ -47,7 +49,13 @@ https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video
 https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 ```
 
-Upload the narrated MP4 to YouTube, Vimeo, or Youku, then paste that hosted URL into the video field. Keep `https://ooyxloo.github.io/evidencelock-sift/demo.html` as a supporting project link.
+The submitted official video field is:
+
+```text
+https://vimeo.com/1200810741
+```
+
+Keep `https://ooyxloo.github.io/evidencelock-sift/demo.html` as a supporting project link.
 
 Use `docs/video_upload_pack.md` for the exact hosted-video title, description, tags, settings, and logged-out playback checks. Do not use a private, silent, still-processing, or raw GitHub-only video URL.
 
@@ -56,10 +64,13 @@ Use `docs/video_upload_pack.md` for the exact hosted-video title, description, t
 Paste the short description and judging hook from `docs/devpost_field_pack.md`, then include these links near the top:
 
 - Judge hub: `https://ooyxloo.github.io/evidencelock-sift/`
+- Devpost project: `https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage`
+- Official Vimeo demo: `https://vimeo.com/1200810741`
 - Final submit console: `https://ooyxloo.github.io/evidencelock-sift/final_submit_console.html`
 - Embedded demo: `https://ooyxloo.github.io/evidencelock-sift/demo.html`
 - Judge pack: `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md`
 - Judge scorecard: `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md`
+- Smoke proof snapshot: `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/smoke_proof.md`
 - Stage One preflight: `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/stage_one_preflight.md`
 - Smoke test: `https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py`
 - Agent trace: `https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/agent_trace.md`
@@ -117,4 +128,4 @@ Do not press final submit if any item is true:
 
 ## Final Success Signal
 
-After submit, save the real Devpost project URL and a public video URL in the local money-goal handoff. The goal is still not complete until a prize, bounty, or claimable payout is verified.
+Submitted URLs have been saved above. The money goal is still not complete until a prize, bounty, or claimable payout is verified.
