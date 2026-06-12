@@ -7,6 +7,8 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 | Public repository | `https://github.com/OOYXLOO/evidencelock-sift` | ready |
 | Open-source license | `LICENSE` | ready |
 | One-page judge pack | `docs/judge_pack.md` | ready |
+| Final submit operator runbook | `docs/final_submission_operator_runbook.md` | ready |
+| Stage One preflight | `docs/stage_one_preflight.md` | ready; final Devpost URL and hosted video URL still require the human gate |
 | Judging criteria scorecard | `docs/judge_scorecard.md` | ready |
 | Presentation deck | `docs/evidencelock-sift-judge-deck.pptx` | ready |
 | Demo video, five minutes or less | `docs/demo-video/evidencelock-sift-demo.webm` | ready; upload to a supported video host if Devpost does not accept raw GitHub WebM |
@@ -23,6 +25,8 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 
 ## Submission Emphasis
 
+- Run `docs/stage_one_preflight.md` after the Devpost project exists and before final submit. The organizer forum says Stage One is pass/fail and missing required components can eliminate the entry.
+- Use `docs/final_submission_operator_runbook.md` during the final submit window so the video branch, gallery order, Additional info links, and no-go gate are all on one page.
 - Lead with the verifier-first trust boundary: the agent can draft quickly, but confirmed findings must pass mechanical evidence and tool-reference checks.
 - Include `docs/judge_pack.md` early in Additional info because it is the shortest route through the full evidence package.
 - Include `docs/judge_scorecard.md` near the judge pack so reviewers can map each FIND EVIL criterion to evidence without hunting through the repo.
