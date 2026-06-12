@@ -19,6 +19,7 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Repository: https://github.com/OOYXLOO/evidencelock-sift
 - Judge hub source: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/index.html
 - Judge hub Pages URL, use only after it returns HTTP 200: https://ooyxloo.github.io/evidencelock-sift/
+- Final submit console: https://ooyxloo.github.io/evidencelock-sift/final_submit_console.html
 - Embedded demo playback page: https://ooyxloo.github.io/evidencelock-sift/demo.html
 - Preferred MP4 upload source, not the official Devpost video field: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.mp4
 - WebM backup upload source, not the official Devpost video field: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
@@ -92,6 +93,7 @@ Expected smoke-test highlights: `draft_rejected_with_three_issues: true`, `final
 ## Final Submit Checks
 
 - Use the one-minute human submission gate pack if Devpost project creation was just unblocked: `docs/human_submission_gate.md`.
+- Use the final submit console when manually copying fields into Devpost: `docs/final_submit_console.html`.
 - Use the final 10-minute operator runbook before pressing submit: `docs/final_submission_operator_runbook.md`.
 - Run the Stage One preflight before final submit: `docs/stage_one_preflight.md`. The organizer forum says Stage One is pass/fail and missing required components can eliminate the entry after the deadline.
 - Confirm Devpost project belongs to FIND EVIL, not another hackathon.

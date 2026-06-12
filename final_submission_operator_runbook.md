@@ -15,6 +15,7 @@ Public deadline check: the FIND EVIL Devpost page exposes `2026-06-15T23:45:00-0
 | Supporting demo page | `https://ooyxloo.github.io/evidencelock-sift/demo.html` |
 | Judge pack | `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md` |
 | Scorecard | `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md` |
+| Final submit console | `https://ooyxloo.github.io/evidencelock-sift/final_submit_console.html` |
 | Stage One preflight | `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/stage_one_preflight.md` |
 | Deck | `https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/evidencelock-sift-judge-deck.pptx` |
 | Video upload pack | `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/video_upload_pack.md` |
@@ -55,6 +56,7 @@ Use `docs/video_upload_pack.md` for the exact hosted-video title, description, t
 Paste the short description and judging hook from `docs/devpost_field_pack.md`, then include these links near the top:
 
 - Judge hub: `https://ooyxloo.github.io/evidencelock-sift/`
+- Final submit console: `https://ooyxloo.github.io/evidencelock-sift/final_submit_console.html`
 - Embedded demo: `https://ooyxloo.github.io/evidencelock-sift/demo.html`
 - Judge pack: `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md`
 - Judge scorecard: `https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md`

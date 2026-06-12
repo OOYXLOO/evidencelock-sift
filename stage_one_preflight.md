@@ -12,6 +12,7 @@ Organizer forum topic:
 | FIND EVIL Devpost project URL | Not available until the Devpost project draft is created | Complete Devpost human verification / project creation, then paste the final Devpost project URL into the official check prompt |
 | Public code repository | `https://github.com/OOYXLOO/evidencelock-sift` | Confirm the repo is public and the MIT license is visible |
 | Public demo video URL | Narrated MP4/WebM upload sources and public playback page exist | Upload `docs/demo-video/evidencelock-sift-demo.mp4` to YouTube, Vimeo, or Youku; use that hosted URL in the official Devpost video field |
+| Copy-ready final submit console | `docs/final_submit_console.html` exists | Use it only as an operator aid; it is not a substitute for the real Devpost project URL or hosted video URL |
 | Try-it-out / local run path | `https://ooyxloo.github.io/evidencelock-sift/` and README quick start | Use the GitHub Pages judge hub as the Devpost try-it-out link |
 | Setup instructions | `README.md` quick start | Keep the standard-library Python path visible in the README |
 | Architecture diagram | `docs/architecture.png` and `docs/architecture.md` | Upload `docs/architecture.png` second in Devpost gallery |

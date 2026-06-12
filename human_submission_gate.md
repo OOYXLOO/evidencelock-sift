@@ -2,7 +2,7 @@
 
 Use this page only after the FIND EVIL Devpost project draft exists. The current blocker is Devpost human verification / project creation; do not treat this file as proof that the Devpost submission is complete.
 
-For the final 10-minute submit flow, use `docs/final_submission_operator_runbook.md` after this one-minute field order.
+For the final 10-minute submit flow, use `docs/final_submit_console.html` and `docs/final_submission_operator_runbook.md` after this one-minute field order.
 
 ## One-Minute Field Order
 
@@ -17,7 +17,8 @@ For the final 10-minute submit flow, use `docs/final_submission_operator_runbook
 9. Upload gallery images in this order: `docs/proof-card.png`, `docs/architecture.png`, `docs/accuracy-card.png`.
 10. Upload the narrated `docs/demo-video/evidencelock-sift-demo.mp4` to YouTube, Vimeo, or Youku using `docs/video_upload_pack.md`, paste that hosted URL into the dedicated video field, and keep `demo.html` as a supporting link. Use the WebM backup only if the host rejects MP4 processing.
 11. Open `docs/final_submission_operator_runbook.md` for the final no-go gate, video branch, and deadline time-zone check.
-12. Run the Stage One preflight from `docs/stage_one_preflight.md` before final submit.
+12. Open `docs/final_submit_console.html` if you want copy-ready fields in one browser page.
+13. Run the Stage One preflight from `docs/stage_one_preflight.md` before final submit.
 
 ## Copy Blocks
 

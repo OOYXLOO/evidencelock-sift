@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EvidenceLock SIFT Final Submit Console</title>
+  <meta name="description" content="Copy-ready FIND EVIL Devpost submission console for EvidenceLock SIFT.">
+  <style>
+    :root { color-scheme: light; --ink:#17202a; --muted:#536273; --line:#d7dde5; --paper:#fff; --wash:#f4f7fa; --blue:#2563eb; --green:#047857; --red:#b91c1c; --amber:#b45309; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: var(--wash); }
+    main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 34px 0 60px; }
+    .eyebrow { margin: 0 0 10px; color: var(--blue); font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    h1 { max-width: 920px; margin: 0; font-size: 44px; line-height: 1.1; letter-spacing: 0; }
+    .dek { max-width: 880px; margin: 14px 0 0; color: var(--muted); font-size: 18px; line-height: 1.55; }
+    .status { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
+    .status div, .card { min-width: 0; background: var(--paper); border: 1px solid var(--line); padding: 16px; }
+    .status strong { display: block; margin-bottom: 6px; }
+    .status span, .card p, li { color: var(--muted); line-height: 1.5; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .actions a { display: inline-flex; align-items: center; min-height: 42px; border: 1px solid var(--line); background: var(--paper); padding: 10px 14px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+    .card h2 { margin: 0 0 10px; font-size: 22px; letter-spacing: 0; }
+    .card p { margin: 0 0 12px; }
+    .copy-row { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-bottom: 8px; }
+    .copy-row strong { min-width: 0; }
+    button { min-height: 36px; border: 1px solid var(--line); background: #eef4ff; color: var(--blue); font-weight: 700; padding: 8px 12px; cursor: pointer; }
+    button:focus { outline: 3px solid #bfdbfe; outline-offset: 2px; }
+    textarea { width: 100%; border: 1px solid var(--line); background: #fbfdff; color: var(--ink); font: 14px/1.45 Consolas, "Courier New", monospace; padding: 10px; resize: vertical; min-height: 104px; }
+    .short textarea { min-height: 52px; }
+    .links textarea { min-height: 210px; }
+    .checks { border-left: 4px solid var(--amber); }
+    .danger { border-left: 4px solid var(--red); }
+    a { color: var(--blue); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+    code { background: #e8eef6; padding: 2px 5px; }
+    .ok { color: var(--green); font-weight: 700; }
+    .toast { position: fixed; right: 18px; bottom: 18px; max-width: calc(100% - 36px); background: #17202a; color: #fff; padding: 10px 12px; opacity: 0; pointer-events: none; transition: opacity .16s ease; }
+    .toast.show { opacity: 1; }
+    @media (max-width: 820px) {
+      h1 { font-size: 32px; }
+      .status, .grid { grid-template-columns: 1fr; }
+      .copy-row { align-items: flex-start; flex-direction: column; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">FIND EVIL final submit console</p>
+    <h1>EvidenceLock SIFT copy deck for the last Devpost pass.</h1>
+    <p class="dek">Use this after the FIND EVIL Devpost project draft exists and the hosted YouTube, Vimeo, or Youku video URL is ready. It keeps the manual submission step short and reduces wrong-project or raw-video mistakes.</p>
+
+    <section class="status" aria-label="Submission state">
+      <div><strong>Still needed</strong><span>Real FIND EVIL Devpost project URL plus hosted public video URL.</span></div>
+      <div><strong>Ready now</strong><span>Public repo, judge hub, MP4 source, WebM backup, gallery assets, deck, smoke test, and runbooks.</span></div>
+      <div><strong>Deadline</strong><span>2026-06-15 23:45 EDT / 2026-06-16 11:45 GMT+8.</span></div>
+    </section>
+
+    <nav class="actions" aria-label="Fast links">
+      <a href="./">Judge Hub</a>
+      <a href="demo.html">Demo Page</a>
+      <a href="video_upload_pack.md">Video Upload Pack</a>
+      <a href="human_submission_gate.md">Submission Gate</a>
+      <a href="final_submission_operator_runbook.md">Final Runbook</a>
+      <a href="stage_one_preflight.md">Stage One Preflight</a>
+      <a href="https://github.com/OOYXLOO/evidencelock-sift">Repository</a>
+    </nav>
+
+    <section class="grid" aria-label="Copy fields">
+      <div class="card short">
+        <div class="copy-row"><strong>Project Name</strong><button data-copy="#project-name">Copy</button></div>
+        <textarea id="project-name" readonly>EvidenceLock SIFT: Verifier-First Protocol SIFT Triage</textarea>
+      </div>
+      <div class="card short">
+        <div class="copy-row"><strong>Tagline</strong><button data-copy="#tagline">Copy</button></div>
+        <textarea id="tagline" readonly>Verifier-first custom MCP-style boundary for Protocol SIFT triage: every confirmed finding must prove itself with evidence refs, tool-call logs, verifier correction, and integrity hashes.</textarea>
+      </div>
+      <div class="card short">
+        <div class="copy-row"><strong>Built With</strong><button data-copy="#built-with">Copy</button></div>
+        <textarea id="built-with" readonly>Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triage, SHA-256 integrity manifest, Sleuth Kit wrapper pattern, HTML/CSS demo recording, browser MediaRecorder, narrated MP4/WebM upload sources.</textarea>
+      </div>
+      <div class="card short">
+        <div class="copy-row"><strong>Try It Out</strong><button data-copy="#try-it-out">Copy</button></div>
+        <textarea id="try-it-out" readonly>https://ooyxloo.github.io/evidencelock-sift/</textarea>
+      </div>
+      <div class="card">
+        <div class="copy-row"><strong>Short Description</strong><button data-copy="#short-description">Copy</button></div>
+        <textarea id="short-description" readonly>EvidenceLock SIFT is a verifier-first incident-response agent pattern for SANS SIFT / Protocol SIFT workflows. It lets an agent move quickly through evidence collection and report drafting, but blocks the dangerous part: confident conclusions that are not tied to reproducible evidence.
+
+Judge fast path: run one command, watch the first verifier pass reject an unsafe confirmed claim, inspect the corrected pass and proof_trace IDs, then verify the report hashes with the integrity manifest.
+
+The demo runs a complete vertical slice on a synthetic Windows EVTX-style mini-case: hash evidence, parse/search normalized Windows event records, draft findings, reject unsupported confirmed claims, repair the report with evidence IDs and tool-call IDs, and emit an investigation report, timeline report, accuracy report, execution log, and integrity manifest.</textarea>
+      </div>
+      <div class="card">
+        <div class="copy-row"><strong>Judging Hook</strong><button data-copy="#judging-hook">Copy</button></div>
+        <textarea id="judging-hook" readonly>The first report draft intentionally fails verification. The final report only keeps confirmed findings when they include evidence references and reproducible tool references. The proof-card image shows the whole chain: finding F-001 -> event record 1024 -> cmd-0003 search_events -> failed verifier pass cmd-0005 -> corrected verifier pass cmd-0006 -> SHA-256 integrity manifest.
+
+Expected smoke-test highlights: draft_rejected_with_three_issues: true, final_verifier_zero_issues: true, manifest_ok: true, negative_control_downgrades_to_unresolved: true, negative_manifest_ok: true, and exact proof traces for F-001 (windows_triage_events:1024 + cmd-0003 search_events) and F-002 (windows_triage_events:2048 + cmd-0004 search_events).</textarea>
+      </div>
+      <div class="card links">
+        <div class="copy-row"><strong>Project Links</strong><button data-copy="#project-links">Copy</button></div>
+        <textarea id="project-links" readonly>Repository: https://github.com/OOYXLOO/evidencelock-sift
+Judge hub: https://ooyxloo.github.io/evidencelock-sift/
+Final submit console: https://ooyxloo.github.io/evidencelock-sift/final_submit_console.html
+Embedded demo: https://ooyxloo.github.io/evidencelock-sift/demo.html
+Preferred MP4 upload source: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.mp4
+WebM backup upload source: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
+Judge pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md
+Scorecard: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md
+Smoke test: https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py
+Stage One preflight: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/stage_one_preflight.md
+Final runbook: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/final_submission_operator_runbook.md
+SIFT compatibility runbook: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/sift_compatibility_runbook.md
+Fail-closed negative control: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/fail_closed_negative_control.md
+Accuracy report: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/accuracy_report.md
+Agent trace: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/agent_trace.md
+Integrity manifest: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/reports/integrity_manifest.json</textarea>
+      </div>
+      <div class="card links">
+        <div class="copy-row"><strong>Gallery Order</strong><button data-copy="#gallery-order">Copy</button></div>
+        <textarea id="gallery-order" readonly>1. docs/proof-card.png
+2. docs/architecture.png
+3. docs/accuracy-card.png
+
+Raw image links:
+https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
+https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
+https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/accuracy-card.png</textarea>
+      </div>
+      <div class="card checks">
+        <div class="copy-row"><strong>Video Field Rule</strong><button data-copy="#video-rule">Copy</button></div>
+        <textarea id="video-rule" readonly>Upload docs/demo-video/evidencelock-sift-demo.mp4 to YouTube, Vimeo, or Youku and paste that hosted public URL into the Devpost video field. Use docs/demo-video/evidencelock-sift-demo.webm only if the host rejects MP4 processing. Keep https://ooyxloo.github.io/evidencelock-sift/demo.html as a supporting project link. Do not use a raw GitHub video URL as the official Devpost video field.</textarea>
+      </div>
+      <div class="card danger">
+        <div class="copy-row"><strong>No-Go Gate</strong><button data-copy="#no-go">Copy</button></div>
+        <textarea id="no-go" readonly>Do not press final submit if any item is true:
+- The project URL is not under FIND EVIL.
+- The project was imported from prizepilot-qwen-cloud.
+- The project page is https://devpost.com/software/evidence-locked-dfir-agent; that is a competitor project, not this submission.
+- The video field is empty, private, silent, raw-GitHub-only, or not hosted on YouTube, Vimeo, or Youku.
+- The hosted video is still processing or fails in a logged-out browser.
+- The repo is private or the MIT license is not visible.
+- Additional info omits the judge pack, scorecard, smoke test, Stage One preflight, or honest scope boundary.
+- The text claims live full-disk SIFT execution, real victim data, or live external LLM/API usage.
+- Any password, OTP, API key, private log, payout, bank, tax, KYC, or identity document is present.</textarea>
+      </div>
+      <div class="card">
+        <h2>Before Final Submit</h2>
+        <ol>
+          <li>Hosted video opens logged-out and has audible narration.</li>
+          <li>Devpost project is for FIND EVIL, not Qwen or a competitor page.</li>
+          <li>Gallery images follow the proof, architecture, accuracy order.</li>
+          <li>Run the <a href="stage_one_preflight.md">Stage One preflight</a>.</li>
+          <li>Run or cite the smoke-test proof if reports were regenerated.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h2>Expected Proof Signals</h2>
+        <ul>
+          <li><span class="ok">draft_rejected_with_three_issues: true</span></li>
+          <li><span class="ok">final_verifier_zero_issues: true</span></li>
+          <li><span class="ok">manifest_ok: true</span></li>
+          <li><code>F-001</code>: <code>windows_triage_events:1024</code> + <code>cmd-0003 search_events</code></li>
+          <li><code>F-002</code>: <code>windows_triage_events:2048</code> + <code>cmd-0004 search_events</code></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+  <script>
+    const toast = document.querySelector("#toast");
+    function showToast(text) {
+      toast.textContent = text;
+      toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 1400);
+    }
+    async function copyFromSelector(selector) {
+      const element = document.querySelector(selector);
+      const value = element ? element.value : "";
+      if (!value) return;
+      try {
+        await navigator.clipboard.writeText(value);
+        showToast("Copied");
+      } catch {
+        element.focus();
+        element.select();
+        document.execCommand("copy");
+        showToast("Copied");
+      }
+    }
+    document.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-copy]");
+      if (!button) return;
+      copyFromSelector(button.getAttribute("data-copy"));
+    });
+  </script>
+</body>
+</html>
