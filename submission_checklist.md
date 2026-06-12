@@ -15,6 +15,7 @@
 - [x] Timeline report present.
 - [x] Integrity manifest verification command present.
 - [x] Demo WebM generated and public in GitHub raw.
+- [x] Hosted-video upload pack drafted for YouTube/Vimeo/Youku fallback.
 - [x] Devpost submission text drafted.
 - [x] Devpost field pack drafted.
 - [x] Final submit operator runbook drafted.
