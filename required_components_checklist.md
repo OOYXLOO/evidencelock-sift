@@ -11,7 +11,7 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 | Stage One preflight | `docs/stage_one_preflight.md` | ready; final Devpost URL and hosted video URL still require the human gate |
 | Judging criteria scorecard | `docs/judge_scorecard.md` | ready |
 | Presentation deck | `docs/evidencelock-sift-judge-deck.pptx` | ready |
-| Demo video, five minutes or less | `docs/demo-video/evidencelock-sift-demo.webm` | narrated upload source ready; final Devpost video field requires a public YouTube, Vimeo, or Youku URL |
+| Demo video, five minutes or less | `docs/demo-video/evidencelock-sift-demo.mp4` preferred; `docs/demo-video/evidencelock-sift-demo.webm` backup | narrated upload sources ready; final Devpost video field requires a public YouTube, Vimeo, or Youku URL |
 | Architecture / trust-boundary diagram | `docs/architecture.png`, `docs/architecture.md` | ready |
 | Dataset documentation | `docs/dataset.md` | ready |
 | Accuracy / evaluation report | `reports/accuracy_report.md`, `docs/accuracy_method.md` | ready |
@@ -46,4 +46,4 @@ Use this checklist before final Devpost submission. It maps the EvidenceLock SIF
 - Do not submit a project attached to the wrong hackathon.
 - Do not claim live SIFT workstation execution unless a live SIFT transcript has been added.
 - Do not include private incident data, credentials, API keys, account tokens, payout data, tax data, KYC data, or identity documents.
-- Do not rely on a raw WebM URL for the official video field; upload the narrated WebM to YouTube, Vimeo, or Youku first and verify logged-out playback.
+- Do not rely on a raw GitHub video URL for the official video field; upload the narrated MP4 to YouTube, Vimeo, or Youku first and verify logged-out playback.

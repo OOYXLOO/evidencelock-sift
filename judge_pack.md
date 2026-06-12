@@ -9,7 +9,7 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 ## Two-Minute Review Path
 
 1. Open the static judge hub: [`docs/index.html`](index.html).
-2. Watch the embedded demo page: [`docs/demo.html`](demo.html). Upload source: [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm).
+2. Watch the embedded demo page: [`docs/demo.html`](demo.html). Preferred upload source: [`docs/demo-video/evidencelock-sift-demo.mp4`](demo-video/evidencelock-sift-demo.mp4). Backup source: [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm).
 3. The official Devpost video field must use a public YouTube, Vimeo, or Youku URL with audio narration; use the upload copy pack: [`docs/video_upload_pack.md`](video_upload_pack.md).
 4. Open the 5-slide presentation deck: [`docs/evidencelock-sift-judge-deck.pptx`](evidencelock-sift-judge-deck.pptx).
 5. Open the one-minute submission gate pack: [`docs/human_submission_gate.md`](human_submission_gate.md).
@@ -33,7 +33,7 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 | Public repository | <https://github.com/OOYXLOO/evidencelock-sift> | Ready |
 | Human submission gate pack | [`docs/human_submission_gate.md`](human_submission_gate.md) | Ready |
 | Stage One preflight | [`docs/stage_one_preflight.md`](stage_one_preflight.md) | Ready; final Devpost URL and hosted video URL still require the human gate |
-| Demo video | [`docs/demo.html`](demo.html), [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm) | Narrated upload source ready; final Devpost video URL must be public YouTube, Vimeo, or Youku |
+| Demo video | [`docs/demo.html`](demo.html), [`docs/demo-video/evidencelock-sift-demo.mp4`](demo-video/evidencelock-sift-demo.mp4), [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm) | Narrated upload sources ready; final Devpost video URL must be public YouTube, Vimeo, or Youku |
 | Hosted-video upload pack | [`docs/video_upload_pack.md`](video_upload_pack.md) | Ready; use for the required public video host upload |
 | Presentation deck | [`docs/evidencelock-sift-judge-deck.pptx`](evidencelock-sift-judge-deck.pptx) | Ready |
 | Architecture diagram | [`docs/architecture.png`](architecture.png), [`docs/architecture.md`](architecture.md) | Ready |

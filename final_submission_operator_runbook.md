@@ -27,19 +27,26 @@ Public deadline check: the FIND EVIL Devpost page exposes `2026-06-15T23:45:00-0
 
 ## Video Branch
 
-Official FIND EVIL rules require a demo video that is publicly visible on YouTube, Vimeo, or Youku. Use the WebM only as the upload source:
+Official FIND EVIL rules require a demo video that is publicly visible on YouTube, Vimeo, or Youku. Use the MP4 as the preferred upload source:
+
+```text
+docs/demo-video/evidencelock-sift-demo.mp4
+```
+
+If the host rejects MP4 processing, use the WebM backup:
 
 ```text
 docs/demo-video/evidencelock-sift-demo.webm
 ```
 
-Do not use the raw GitHub WebM URL as the official Devpost video field. Keep it only as a backup/source link:
+Do not use raw GitHub video URLs as the official Devpost video field. Keep them only as backup/source links:
 
 ```text
+https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.mp4
 https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 ```
 
-Upload the narrated WebM to YouTube, Vimeo, or Youku, then paste that hosted URL into the video field. Keep `https://ooyxloo.github.io/evidencelock-sift/demo.html` as a supporting project link.
+Upload the narrated MP4 to YouTube, Vimeo, or Youku, then paste that hosted URL into the video field. Keep `https://ooyxloo.github.io/evidencelock-sift/demo.html` as a supporting project link.
 
 Use `docs/video_upload_pack.md` for the exact hosted-video title, description, tags, settings, and logged-out playback checks. Do not use a private, silent, still-processing, or raw GitHub-only video URL.
 
