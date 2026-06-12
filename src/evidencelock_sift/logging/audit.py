@@ -34,6 +34,6 @@ class AuditLogger:
             "error": error,
         }
         self.entries.append(entry)
-        with self.output_path.open("a", encoding="utf-8") as handle:
-            handle.write(json.dumps(entry, sort_keys=True) + "\n")
+        with self.output_path.open("ab") as handle:
+            handle.write((json.dumps(entry, sort_keys=True) + "\n").encode("utf-8"))
         return command_id

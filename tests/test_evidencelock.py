@@ -230,6 +230,26 @@ class EvidenceLockTests(unittest.TestCase):
             self.assertIn("analyst_handoff.md", {entry["path"] for entry in manifest["outputs"]})
             self.assertIn("agent_trace.md", {entry["path"] for entry in manifest["outputs"]})
 
+    def test_generated_integrity_outputs_use_lf_bytes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            run_case(CASE, tmp_path)
+
+            for name in [
+                "investigation_report.md",
+                "investigation_report.json",
+                "accuracy_report.md",
+                "timeline_report.md",
+                "analyst_handoff.md",
+                "agent_trace.md",
+                "execution_log.jsonl",
+                "integrity_manifest.json",
+            ]:
+                data = (tmp_path / name).read_bytes()
+                self.assertNotIn(b"\r\n", data, name)
+
+            self.assertEqual(verify_integrity_manifest(tmp_path / "integrity_manifest.json", ROOT), [])
+
     def test_run_case_downgrades_unsupported_claim_when_evidence_missing(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)

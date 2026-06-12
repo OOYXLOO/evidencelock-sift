@@ -33,6 +33,12 @@ def _tool_ref(command_id: str, tool_name: str, args: dict[str, Any]) -> ToolRef:
     return ToolRef(command_id=command_id, tool_name=tool_name, args=args, status="success")
 
 
+def _write_text_lf(path: Path, text: str) -> None:
+    path.write_bytes(text.encode("utf-8"))
+
+def _write_json_lf(path: Path, payload: Any) -> None:
+    _write_text_lf(path, json.dumps(payload, indent=2, sort_keys=True))
+
 def _evidence_ref(event) -> EvidenceRef:
     return EvidenceRef(
         evidence_id=event.evidence_id,
@@ -197,8 +203,7 @@ def run_case(case_path: Path, out_dir: Path) -> InvestigationReport:
 
 
 def _write_report(report: InvestigationReport, out_dir: Path) -> None:
-    with (out_dir / "investigation_report.json").open("w", encoding="utf-8") as handle:
-        json.dump(report.to_dict(), handle, indent=2, sort_keys=True)
+    _write_json_lf(out_dir / "investigation_report.json", report.to_dict())
     lines = [
         f"# {report.title}",
         "",
@@ -236,7 +241,7 @@ def _write_report(report: InvestigationReport, out_dir: Path) -> None:
             for note in finding.correction_notes:
                 lines.append(f"- {note}")
         lines.append("")
-    (out_dir / "investigation_report.md").write_text("\n".join(lines), encoding="utf-8")
+    _write_text_lf(out_dir / "investigation_report.md", "\n".join(lines))
 
 
 def _write_accuracy_report(case: dict[str, Any], events, findings: list[Finding], first_issues, final_issues, out_dir: Path) -> None:
@@ -320,7 +325,7 @@ def _write_accuracy_report(case: dict[str, Any], events, findings: list[Finding]
             "The first draft is intentionally under-evidenced. The verifier requires confirmed findings to contain both evidence references and tool references. The correction pass either attaches exact event evidence or would downgrade the finding if evidence is unavailable.",
         ]
     )
-    (out_dir / "accuracy_report.md").write_text("\n".join(lines), encoding="utf-8")
+    _write_text_lf(out_dir / "accuracy_report.md", "\n".join(lines))
 
 def _write_timeline_report(case_id: str, events, out_dir: Path) -> None:
     lines = [
@@ -336,7 +341,7 @@ def _write_timeline_report(case_id: str, events, out_dir: Path) -> None:
         lines.append(
             f"| `{event.timestamp}` | `{event.event_id}` | `{event.evidence_id}` | `{event.host}` | {message} |"
         )
-    (out_dir / "timeline_report.md").write_text("\n".join(lines), encoding="utf-8")
+    _write_text_lf(out_dir / "timeline_report.md", "\n".join(lines))
 
 def _response_actions(finding: Finding) -> list[str]:
     if "T1059.001" in finding.mitre_techniques:
@@ -412,7 +417,7 @@ def _write_analyst_handoff(report: InvestigationReport, out_dir: Path) -> None:
             "- If a future analyst adds claims without evidence refs and tool refs, the verifier should reject or downgrade them before publication.",
         ]
     )
-    (out_dir / "analyst_handoff.md").write_text("\n".join(lines), encoding="utf-8")
+    _write_text_lf(out_dir / "analyst_handoff.md", "\n".join(lines))
 
 def _trace_purpose(entry: dict[str, Any]) -> str:
     tool_name = entry.get("tool_name")
@@ -484,7 +489,7 @@ def _write_agent_trace(case_id: str, out_dir: Path) -> None:
             "- `cmd-0006` verifies the corrected report with zero issues before analyst-facing reports are written.",
         ]
     )
-    (out_dir / "agent_trace.md").write_text("\n".join(lines), encoding="utf-8")
+    _write_text_lf(out_dir / "agent_trace.md", "\n".join(lines))
 
 def _write_integrity_manifest(case_id: str, artifact, event_label: str, out_dir: Path) -> None:
     output_names = [
@@ -514,5 +519,4 @@ def _write_integrity_manifest(case_id: str, artifact, event_label: str, out_dir:
             for name in output_names
         ],
     }
-    with (out_dir / "integrity_manifest.json").open("w", encoding="utf-8") as handle:
-        json.dump(manifest, handle, indent=2, sort_keys=True)
+    _write_json_lf(out_dir / "integrity_manifest.json", manifest)

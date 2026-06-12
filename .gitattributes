@@ -1,0 +1,19 @@
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.html text eol=lf
+*.svg text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+
+examples/cases/* text eol=lf
+reports/* text eol=lf
+docs/*.md text eol=lf
+docs/*.html text eol=lf
+
+*.png binary
+*.pptx binary
+*.mp4 binary
+*.webm binary
+*.wav binary
