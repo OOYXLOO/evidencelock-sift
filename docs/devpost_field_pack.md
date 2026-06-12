@@ -60,6 +60,8 @@ The demo runs a complete vertical slice on a synthetic Windows EVTX-style mini-c
 
 The first report draft intentionally fails verification. The final report only keeps confirmed findings when they include evidence references and reproducible tool references. The proof-card image shows the whole chain: finding `F-001` -> event record `1024` -> `cmd-0003 search_events` -> failed verifier pass `cmd-0005` -> corrected verifier pass `cmd-0006` -> SHA-256 integrity manifest.
 
+Expected smoke-test highlights: `draft_rejected_with_three_issues: true`, `final_verifier_zero_issues: true`, `manifest_ok: true`, `negative_control_downgrades_to_unresolved: true`, and exact proof traces for `F-001` (`windows_triage_events:1024` + `cmd-0003 search_events`) and `F-002` (`windows_triage_events:2048` + `cmd-0004 search_events`).
+
 ## Differentiators
 
 - Built around Protocol SIFT-style typed tool boundaries, not a broad forensic chatbot.

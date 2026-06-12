@@ -240,6 +240,14 @@ class EvidenceLockTests(unittest.TestCase):
             "verify-manifest",
             "T1059.001",
             "T1543.003",
+            "Expected Smoke-Test Highlights",
+            "draft_rejected_with_three_issues",
+            "final_verifier_zero_issues",
+            "windows_triage_events:1024",
+            "cmd-0003 search_events",
+            "windows_triage_events:2048",
+            "cmd-0004 search_events",
+            "negative_control_downgrades_to_unresolved",
         ]
         for fragment in required_fragments:
             self.assertIn(fragment, judge_pack)
@@ -261,6 +269,9 @@ class EvidenceLockTests(unittest.TestCase):
             "proof_trace",
             "proof-card.png",
             "accuracy-card.png",
+            "Smoke-Test Proof",
+            "draft is rejected",
+            "negative_control_downgrades_to_unresolved: true",
         ]:
             self.assertIn(fragment, judge_hub)
         self.assertNotIn("../reports/", judge_hub)

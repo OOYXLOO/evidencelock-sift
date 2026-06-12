@@ -100,6 +100,8 @@ The most important lesson is that DFIR agents need verifiers as architecture, no
 - `reports/analyst_handoff.md`: MITRE, priority, evidence, tool-call, and response-action handoff.
 - `reports/integrity_manifest.json`: SHA-256 hashes for the input evidence file and generated outputs.
 
+Smoke-test highlights to paste into Additional info: `draft_rejected_with_three_issues: true`, `final_verifier_zero_issues: true`, exact `F-001` proof trace (`windows_triage_events:1024` + `cmd-0003 search_events`), exact `F-002` proof trace (`windows_triage_events:2048` + `cmd-0004 search_events`), `manifest_ok: true`, `negative_control_downgrades_to_unresolved: true`, and `negative_manifest_ok: true`.
+
 ## Links
 
 - Repository: https://github.com/OOYXLOO/evidencelock-sift

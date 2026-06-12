@@ -45,6 +45,20 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 | MCP-style tool boundary | [`docs/mcp_tool_schema.json`](mcp_tool_schema.json) | Ready |
 | One-command smoke test | [`tools/judge_smoke_test.py`](../tools/judge_smoke_test.py) | Ready |
 
+## Expected Smoke-Test Highlights
+
+`python tools/judge_smoke_test.py` should return `ok: true` only when these proof checks pass:
+
+| Check | Expected value | Why it matters |
+| --- | --- | --- |
+| `draft_rejected_with_three_issues` | `true` | The first unsafe draft is not accepted as a confirmed incident report. |
+| `final_verifier_zero_issues` | `true` | The corrected report has no verifier issues after evidence/tool refs are added. |
+| `proof_trace.F-001` | `windows_triage_events:1024` + `cmd-0003 search_events` | PowerShell execution finding is locked to an evidence row and reproducible tool call. |
+| `proof_trace.F-002` | `windows_triage_events:2048` + `cmd-0004 search_events` | Service-persistence finding is locked to an evidence row and reproducible tool call. |
+| `manifest_ok` | `true` | Evidence and generated reports still match the integrity manifest. |
+| `negative_control_downgrades_to_unresolved` | `true` | A no-evidence case downgrades to `unresolved` instead of becoming a false positive. |
+| `negative_manifest_ok` | `true` | The negative-control evidence and outputs are also hash-verified. |
+
 ## What Judges Should Notice
 
 - The first draft intentionally fails verification because it lacks evidence and tool references.

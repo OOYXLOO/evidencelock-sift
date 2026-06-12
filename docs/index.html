@@ -94,6 +94,16 @@
         <p><a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/fail_closed_negative_control.md">Open the negative control</a></p>
       </div>
       <div class="panel">
+        <h2>Smoke-Test Proof</h2>
+        <p>The smoke test only returns <code>ok: true</code> after the unsafe draft is rejected, the final verifier has zero issues, the manifest verifies, and both confirmed findings have exact proof traces.</p>
+        <ul>
+          <li><code>F-001</code>: <code>windows_triage_events:1024</code> -> <code>cmd-0003 search_events</code>.</li>
+          <li><code>F-002</code>: <code>windows_triage_events:2048</code> -> <code>cmd-0004 search_events</code>.</li>
+          <li><code>negative_control_downgrades_to_unresolved: true</code> and <code>negative_manifest_ok: true</code>.</li>
+        </ul>
+        <p><a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md#expected-smoke-test-highlights">Open expected smoke-test highlights</a></p>
+      </div>
+      <div class="panel">
         <h2>Reproduce Locally</h2>
         <p>Clone the repo and run the verifier. The smoke test prints a `proof_trace` that locks each confirmed finding to its evidence ID and tool-call ID.</p>
         <code class="command">git clone https://github.com/OOYXLOO/evidencelock-sift
