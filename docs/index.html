@@ -18,13 +18,18 @@
     .eyebrow { margin: 0 0 12px; color: var(--blue); font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
     h1 { max-width: 920px; margin: 0; font-size: 52px; line-height: 1.08; letter-spacing: 0; }
     .dek { max-width: 840px; margin: 18px 0 0; color: var(--muted); font-size: 18px; line-height: 1.6; }
-    .metrics, .cards, .proofs { display: grid; gap: 14px; margin-top: 26px; }
+    .metrics, .cards, .proofs, .primary-actions, .scope-grid { display: grid; gap: 14px; margin-top: 26px; }
     .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .proofs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .primary-actions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .scope-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 14px; }
     .tile, .panel { min-width: 0; background: var(--paper); border: 1px solid var(--line); padding: 18px; }
     .tile strong { display: block; margin-bottom: 8px; color: var(--green); font-size: 34px; line-height: 1; }
     .tile span, .panel p, li { color: var(--muted); line-height: 1.55; }
+    .primary-actions a, .scope-item { min-width: 0; border: 1px solid var(--line); background: var(--paper); padding: 16px; }
+    .primary-actions strong, .scope-item strong { display: block; margin-bottom: 8px; color: var(--ink); font-size: 18px; }
+    .primary-actions span, .scope-item span { display: block; color: var(--muted); line-height: 1.45; }
     .panel h2 { margin: 0 0 12px; font-size: 24px; letter-spacing: 0; }
     .panel p { margin: 0 0 12px; }
     .panel img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: #fff; }
@@ -45,7 +50,7 @@
     .boundary { border-left: 4px solid var(--amber); }
     @media (max-width: 860px) {
       h1 { font-size: 36px; }
-      .metrics, .cards, .proofs { grid-template-columns: 1fr; }
+      .metrics, .cards, .proofs, .primary-actions, .scope-grid { grid-template-columns: 1fr; }
       .status-strip { grid-template-columns: 1fr; }
       .alignment { grid-template-columns: 1fr; }
     }
@@ -56,6 +61,11 @@
     <p class="eyebrow">FIND EVIL judge hub</p>
     <h1>EvidenceLock SIFT is a verifier-first MCP-style boundary for Protocol SIFT triage.</h1>
     <p class="dek">The demo proves a narrow, auditable DFIR loop: an unsupported confirmed claim fails, the agent corrects it with evidence and tool-call IDs, and published reports are checked against a SHA-256 integrity manifest.</p>
+    <nav class="primary-actions" aria-label="Three-step judge path">
+      <a href="demo.html"><strong>Watch Demo</strong><span>See the verifier reject an unsupported draft and accept only evidence-backed findings.</span></a>
+      <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py"><strong>Run Smoke Test</strong><span>One command checks proof traces, fail-closed behavior, and manifest integrity.</span></a>
+      <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/reports/investigation_report.md"><strong>Open One-Page Proof Trace</strong><span>Read findings with key fields, evidence IDs, tool calls, and correction notes in one place.</span></a>
+    </nav>
     <section class="status-strip" aria-label="Submission status">
       <div class="status-item"><strong>Submitted on Devpost</strong><span>Project page is live at devpost.com/software/evidencelock-sift-verifier-first-protocol-triage.</span></div>
       <div class="status-item"><strong>Hosted Video Live</strong><span>Official Vimeo demo is public at vimeo.com/1200810741, with local MP4/WebM backups retained.</span></div>
@@ -65,6 +75,10 @@
       <div class="alignment-item"><strong>SIFT concern</strong><span>Agents can summarize forensic output faster than humans can verify it.</span></div>
       <div class="alignment-item"><strong>EvidenceLock proof</strong><span>Confirmed findings must cite evidence IDs, tool-call IDs, verifier correction, and SHA-256 manifests.</span></div>
       <div class="alignment-item"><strong>Not claimed</strong><span>No broad forensic coverage, live victim data, full-disk SIFT execution, or endpoint containment claim.</span></div>
+    </section>
+    <section class="scope-grid" aria-label="Implemented and not claimed scope">
+      <div class="scope-item"><strong>Implemented now</strong><span>Normalized EVTX-style mini-case, typed read-only tools, verifier enforcement, proof trace, negative control, LF-stable manifest, and judge smoke test.</span></div>
+      <div class="scope-item"><strong>Not yet claimed</strong><span>Live SIFT workstation execution, full disk image processing, endpoint containment, public corpus benchmark, or real victim data handling.</span></div>
     </section>
     <nav class="actions" aria-label="Judge shortcuts">
       <a href="demo.html">Watch Demo</a>
