@@ -1,5 +1,9 @@
 # EvidenceLock SIFT
 
+[![Verify EvidenceLock SIFT](https://github.com/OOYXLOO/evidencelock-sift/actions/workflows/verify.yml/badge.svg)](https://github.com/OOYXLOO/evidencelock-sift/actions/workflows/verify.yml)
+[![Judge hub](https://img.shields.io/badge/Judge%20hub-GitHub%20Pages-0969da)](https://ooyxloo.github.io/evidencelock-sift/)
+[![Devpost](https://img.shields.io/badge/Devpost-submitted-003e54)](https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage)
+
 EvidenceLock SIFT is a verifier-first DFIR triage agent for the FIND EVIL! hackathon. It is built for Protocol SIFT-style workflows where an AI agent can use incident-response tools, but every confirmed conclusion must remain tied to reproducible evidence, tool-call IDs, and integrity hashes.
 
 In one sentence: agent-speed DFIR triage with verifier-locked evidence proof, not a prompt-only forensic chatbot.
