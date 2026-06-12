@@ -2,7 +2,7 @@
 
 EvidenceLock SIFT is a verifier-first DFIR triage agent for the FIND EVIL! hackathon. It is built for Protocol SIFT-style workflows where an AI agent can use incident-response tools, but every confirmed conclusion must remain tied to reproducible evidence, tool-call IDs, and integrity hashes.
 
-In one sentence: it is a verifier-first custom MCP-style boundary for Protocol SIFT triage, not a prompt-only forensic chatbot.
+In one sentence: agent-speed DFIR triage with verifier-locked evidence proof, not a prompt-only forensic chatbot.
 
 ## Judge In 2 Minutes
 
@@ -76,6 +76,12 @@ Generated outputs:
 EvidenceLock is designed to sit beside Protocol SIFT as a custom MCP-style tool boundary. Instead of exposing raw shell commands to the agent, it exposes typed functions such as `list_evidence`, `hash_evidence`, `parse_evtx`, `search_events`, `extract_event_evidence`, and `verify_report_claims`.
 
 The current implementation runs without external dependencies for the demo. On a SIFT workstation it can be extended to call tools such as `EvtxECmd`, `mmls`, `fls`, `istat`, and `icat` through the same typed wrapper pattern.
+
+| SIFT concern | EvidenceLock proof | Honest boundary |
+| --- | --- | --- |
+| Agent writes a confident report from weak evidence | `verify_report_claims` rejects confirmed findings without evidence refs and tool refs | The demo proves the trust boundary, not broad forensic coverage |
+| Tool output cannot be audited later | `reports/execution_log.jsonl` and `reports/agent_trace.md` preserve command IDs and proof trace | The current tool calls are standard-library vertical-slice wrappers |
+| Report artifacts drift after generation | `reports/integrity_manifest.json` locks inputs and outputs with SHA-256 | Full-disk SIFT evidence remains a documented extension path |
 
 See `docs/sift_compatibility_runbook.md` for the non-claiming migration path from this public vertical slice to SIFT-derived evidence and Sleuth Kit wrappers.
 

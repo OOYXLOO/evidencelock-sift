@@ -9,7 +9,7 @@ Public deadline check: the FIND EVIL Devpost page exposes `2026-06-15T23:45:00-0
 | Field | Value |
 | --- | --- |
 | Project name | `EvidenceLock SIFT: Verifier-First Protocol SIFT Triage` |
-| Tagline | `Verifier-first custom MCP-style boundary for Protocol SIFT triage: every confirmed finding must prove itself with evidence refs, tool-call logs, verifier correction, and integrity hashes.` |
+| Tagline | `Evidence-locked DFIR triage: agent speed with verifier-enforced proof.` |
 | Devpost project | `https://devpost.com/software/evidencelock-sift-verifier-first-protocol-triage` |
 | Official hosted video | `https://vimeo.com/1200810741` |
 | Try it out | `https://ooyxloo.github.io/evidencelock-sift/` |

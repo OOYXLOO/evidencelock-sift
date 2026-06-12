@@ -6,7 +6,7 @@ EvidenceLock SIFT: Verifier-First Protocol SIFT Triage
 
 ## Tagline
 
-Verifier-first custom MCP-style boundary for Protocol SIFT triage: every confirmed finding must prove itself with evidence refs, tool-call logs, verifier correction, and integrity hashes.
+Evidence-locked DFIR triage: agent speed with verifier-enforced proof.
 
 ## Built With
 

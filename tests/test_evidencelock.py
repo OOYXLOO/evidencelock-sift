@@ -309,6 +309,9 @@ class EvidenceLockTests(unittest.TestCase):
             "EvidenceLock SIFT Judge Hub",
             "Verifier-first Protocol SIFT triage demo",
             "og:image",
+            "SIFT concern",
+            "EvidenceLock proof",
+            "Not claimed",
             "demo.html",
             "evidencelock-sift-judge-deck.pptx",
             "judge_scorecard.md",
@@ -343,6 +346,16 @@ class EvidenceLockTests(unittest.TestCase):
         ]:
             self.assertIn(fragment, judge_hub)
         self.assertNotIn("../reports/", judge_hub)
+        for path in [
+            ROOT / "docs" / "devpost_field_pack.md",
+            ROOT / "docs" / "devpost_submission.md",
+            ROOT / "docs" / "human_submission_gate.md",
+            ROOT / "docs" / "final_submission_operator_runbook.md",
+            ROOT / "docs" / "final_submit_console.html",
+        ]:
+            text = path.read_text(encoding="utf-8")
+            self.assertIn("Evidence-locked DFIR triage: agent speed with verifier-enforced proof.", text)
+            self.assertNotIn("every confirmed finding must prove itself with evidence refs", text)
         self.assertTrue((ROOT / "docs" / "demo.html").is_file())
         self.assertTrue((ROOT / "docs" / "human_submission_gate.md").is_file())
         self.assertTrue((ROOT / "docs" / "final_submit_console.html").is_file())
