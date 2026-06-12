@@ -17,7 +17,15 @@ This runbook explains how the submitted EvidenceLock vertical slice maps onto a 
 2. Keep raw evidence read-only and record its original path, acquisition note, and hash.
 3. Convert selected EVTX records into the normalized JSONL schema used by `examples/cases/windows_triage_events.jsonl`.
 4. Create a case manifest that points to the normalized export and lists expected behaviors only when ground truth is known.
-5. Run:
+5. Run on a Linux / SIFT workstation shell:
+
+```bash
+export PYTHONPATH=src
+python3 -m evidencelock_sift.cli run-case --case <case-manifest> --out reports-sift
+python3 -m evidencelock_sift.cli verify-manifest --manifest reports-sift/integrity_manifest.json --repo-root .
+```
+
+Windows PowerShell equivalent:
 
 ```powershell
 $env:PYTHONPATH="src"

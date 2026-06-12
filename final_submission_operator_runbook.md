@@ -27,21 +27,21 @@ Public deadline check: the FIND EVIL Devpost page exposes `2026-06-15T23:45:00-0
 
 ## Video Branch
 
-Use the raw WebM only as the upload source if Devpost requires a hosted provider:
+Official FIND EVIL rules require a demo video that is publicly visible on YouTube, Vimeo, or Youku. Use the WebM only as the upload source:
 
 ```text
 docs/demo-video/evidencelock-sift-demo.webm
 ```
 
-If Devpost accepts a raw URL in the video field, use:
+Do not use the raw GitHub WebM URL as the official Devpost video field. Keep it only as a backup/source link:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 ```
 
-If Devpost rejects raw GitHub video URLs, upload the WebM to YouTube, Vimeo, or Youku, then paste that hosted URL into the video field. Keep `https://ooyxloo.github.io/evidencelock-sift/demo.html` as a supporting project link either way.
+Upload the narrated WebM to YouTube, Vimeo, or Youku, then paste that hosted URL into the video field. Keep `https://ooyxloo.github.io/evidencelock-sift/demo.html` as a supporting project link.
 
-Use `docs/video_upload_pack.md` for the exact hosted-video title, description, tags, settings, and logged-out playback checks. Do not use a private video URL.
+Use `docs/video_upload_pack.md` for the exact hosted-video title, description, tags, settings, and logged-out playback checks. Do not use a private, silent, still-processing, or raw GitHub-only video URL.
 
 ## Additional Info Must Include
 
@@ -63,6 +63,17 @@ Paste the short description and judging hook from `docs/devpost_field_pack.md`, 
 ## Run Before Final Submit
 
 From the repo root:
+
+Linux / SIFT workstation shell:
+
+```bash
+export PYTHONPATH=src
+python3 -m unittest discover -s tests -v
+python3 tools/judge_smoke_test.py
+python3 -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .
+```
+
+Windows PowerShell:
 
 ```powershell
 $env:PYTHONPATH="src"
@@ -88,7 +99,7 @@ Do not press final submit if any item is true:
 - The project URL is not under FIND EVIL.
 - The project was imported from `prizepilot-qwen-cloud`.
 - The project page is `https://devpost.com/software/evidence-locked-dfir-agent`; that is a competitor project, not this submission.
-- The video field is empty or points to a private/unaccepted video.
+- The video field is empty, private, silent, raw-GitHub-only, or not hosted on YouTube, Vimeo, or Youku.
 - The hosted video is still processing or fails in a logged-out browser.
 - The repo is private or the MIT license is not visible.
 - Additional info omits the judge pack, scorecard, smoke test, Stage One preflight, or honest scope boundary.

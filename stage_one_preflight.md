@@ -11,7 +11,7 @@ Organizer forum topic:
 | --- | --- | --- |
 | FIND EVIL Devpost project URL | Not available until the Devpost project draft is created | Complete Devpost human verification / project creation, then paste the final Devpost project URL into the official check prompt |
 | Public code repository | `https://github.com/OOYXLOO/evidencelock-sift` | Confirm the repo is public and the MIT license is visible |
-| Public demo video URL | Local WebM and public playback page exist | Upload `docs/demo-video/evidencelock-sift-demo.webm` to YouTube, Vimeo, or Youku if Devpost does not accept the raw GitHub WebM as the official video field |
+| Public demo video URL | Narrated WebM upload source and public playback page exist | Upload `docs/demo-video/evidencelock-sift-demo.webm` to YouTube, Vimeo, or Youku; use that hosted URL in the official Devpost video field |
 | Try-it-out / local run path | `https://ooyxloo.github.io/evidencelock-sift/` and README quick start | Use the GitHub Pages judge hub as the Devpost try-it-out link |
 | Setup instructions | `README.md` quick start | Keep the standard-library Python path visible in the README |
 | Architecture diagram | `docs/architecture.png` and `docs/architecture.md` | Upload `docs/architecture.png` second in Devpost gallery |
@@ -33,7 +33,7 @@ Devpost project page URL:
 [PASTE FINAL FIND EVIL DEVPOST PROJECT URL HERE]
 
 Demo video URL:
-[PASTE YOUTUBE / VIMEO / YOUKU URL HERE]
+[PASTE PUBLIC YOUTUBE / VIMEO / YOUKU URL WITH AUDIO NARRATION HERE]
 
 Try-it-out URL:
 https://ooyxloo.github.io/evidencelock-sift/
@@ -54,7 +54,7 @@ https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/stage_one_preflight.
 ## Do Not Submit Until These Are True
 
 - The Devpost URL is a FIND EVIL project owned by `OOYXLOO`.
-- The video URL is public and hosted on a provider accepted by the rules if the Devpost video field requires one.
+- The video URL is public, includes audio narration, and is hosted on YouTube, Vimeo, or Youku.
 - The project is not imported from `prizepilot-qwen-cloud`.
 - The project is not confused with the competitor page `https://devpost.com/software/evidence-locked-dfir-agent`.
 - The final Additional info includes the judge pack, scorecard, smoke-test highlights, negative control, SIFT compatibility runbook, accuracy report, analyst handoff, and integrity manifest.

@@ -18,7 +18,7 @@ Use these assets in this order when the Devpost project draft is available:
    - Use as a screenshot or linked artifact.
    - Shows command IDs for hash, parse, search, failed verification, and successful verification.
 6. `docs/video_upload_pack.md`
-   - Use only if Devpost requires a hosted video provider.
-   - Contains copy-paste title, description, tags, upload settings, and logged-out playback checks.
+   - Use for the required YouTube, Vimeo, or Youku demo video upload.
+   - Contains copy-paste title, description, tags, upload settings, audio-narration checks, and logged-out playback checks.
 
 Prefer PNG uploads for Devpost gallery compatibility. Keep the public raw SVG/Markdown links in the project description even if the gallery upload succeeds.

@@ -37,11 +37,11 @@
   <main>
     <p class="eyebrow">EvidenceLock SIFT demo</p>
     <h1>Watch the verifier reject an unsupported finding, then accept the corrected proof trace.</h1>
-    <p class="dek">This silent demo is generated from public project assets only. It shows the judge path for FIND EVIL: run the vertical slice, inspect the proof card, verify the manifest, and check the honest SIFT boundary.</p>
+    <p class="dek">This narrated demo is generated from public project assets only. It shows the judge path for FIND EVIL: run the vertical slice, inspect the proof card, verify the manifest, and check the honest SIFT boundary.</p>
 
     <nav class="actions" aria-label="Demo shortcuts">
       <a href="./">Back to Judge Hub</a>
-      <a href="https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm">Open Raw WebM</a>
+      <a href="https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm">Open WebM Upload Source</a>
       <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md">Open Judge Pack</a>
       <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py">Run Smoke Test</a>
     </nav>
@@ -49,7 +49,7 @@
     <div class="video-shell">
       <video controls preload="metadata" poster="proof-card.png">
         <source src="demo-video/evidencelock-sift-demo.webm" type="video/webm">
-        Your browser cannot play this WebM file. Use the raw WebM link above.
+        Your browser cannot play this WebM file. Use the WebM upload-source link above.
       </video>
     </div>
 
@@ -66,8 +66,8 @@
       <div class="panel">
         <h2>One Command</h2>
         <p>Judges can reproduce the core proof without accounts, keys, or private data.</p>
-        <code class="command">$env:PYTHONPATH="src"
-python tools/judge_smoke_test.py</code>
+        <code class="command">export PYTHONPATH=src
+python3 tools/judge_smoke_test.py</code>
       </div>
       <div class="panel boundary">
         <h2>Safety Boundary</h2>

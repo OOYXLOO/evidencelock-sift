@@ -20,7 +20,8 @@ Python, Protocol SIFT design pattern, MCP-style typed tools, Windows event triag
 - Judge hub source: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/index.html
 - Judge hub Pages URL, use only after it returns HTTP 200: https://ooyxloo.github.io/evidencelock-sift/
 - Embedded demo playback page: https://ooyxloo.github.io/evidencelock-sift/demo.html
-- Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
+- Demo WebM upload source, not the official Devpost video field: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
+- Official video field: paste the public YouTube, Vimeo, or Youku URL after uploading the narrated WebM
 - Presentation deck: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/evidencelock-sift-judge-deck.pptx
 - Proof card PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/proof-card.png
 - Architecture PNG: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/architecture.png
@@ -96,9 +97,9 @@ Expected smoke-test highlights: `draft_rejected_with_three_issues: true`, `final
 - Do not import `prizepilot-qwen-cloud` into FIND EVIL.
 - Do not treat `https://devpost.com/software/evidence-locked-dfir-agent` as ours; it is a competitor project.
 - Use `https://ooyxloo.github.io/evidencelock-sift/` as the `Try it out` link only after GitHub Pages returns HTTP 200. Until then, use the GitHub-rendered judge hub source link.
-- Put `https://ooyxloo.github.io/evidencelock-sift/demo.html` in supporting links near the video field. If Devpost requires YouTube/Vimeo for the dedicated video field, use the raw WebM as the upload source and keep `demo.html` as a project link.
+- Upload the narrated WebM to YouTube, Vimeo, or Youku for the dedicated video field. Put `https://ooyxloo.github.io/evidencelock-sift/demo.html` in supporting links near the video field as the embedded playback backup.
 - Upload `proof-card.png` first and `architecture.png` second.
 - Run `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .` after any report regeneration.
 - Include the presentation deck link in supporting links after the judge hub and demo video.
-- Use the hosted video field only if Devpost accepts the raw GitHub WebM; otherwise upload the WebM to a supported video host first.
+- Do not use the raw GitHub WebM as the official video field; the official field should be a public YouTube, Vimeo, or Youku URL with audible narration.
 - Do not add API keys, private logs, real incident data, payout details, tax data, KYC data, or private account information.

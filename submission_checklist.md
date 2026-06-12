@@ -14,13 +14,13 @@
 - [x] Investigation report present.
 - [x] Timeline report present.
 - [x] Integrity manifest verification command present.
-- [x] Demo WebM generated and public in GitHub raw.
-- [x] Hosted-video upload pack drafted for YouTube/Vimeo/Youku fallback.
+- [x] Narrated demo WebM generated and public in GitHub raw as the upload source.
+- [x] Hosted-video upload pack drafted for required YouTube/Vimeo/Youku upload.
 - [x] Devpost submission text drafted.
 - [x] Devpost field pack drafted.
 - [x] Final submit operator runbook drafted.
 - [ ] Devpost project draft created.
-- [ ] Devpost-supported hosted video URL accepted.
+- [ ] Public YouTube/Vimeo/Youku video URL with audio narration accepted.
 - [ ] Additional info fields completed.
 - [ ] Final submit completed before 2026-06-16 11:45 GMT+8.
 
