@@ -66,6 +66,7 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 | `final_verifier_zero_issues` | `true` | The corrected report has no verifier issues after evidence/tool refs are added. |
 | `proof_trace.F-001` | `windows_triage_events:1024` + `cmd-0003 search_events` | PowerShell execution finding is locked to an evidence row and reproducible tool call. |
 | `proof_trace.F-002` | `windows_triage_events:2048` + `cmd-0004 search_events` | Service-persistence finding is locked to an evidence row and reproducible tool call. |
+| `proof_trace_tool_results_match` | `true` | The cited successful tool calls actually produced the cited evidence IDs, so a finding cannot borrow unrelated evidence. |
 | `manifest_ok` | `true` | Evidence and generated reports still match the integrity manifest. |
 | `negative_control_downgrades_to_unresolved` | `true` | A no-evidence case downgrades to `unresolved` instead of becoming a false positive. |
 | `negative_manifest_ok` | `true` | The negative-control evidence and outputs are also hash-verified. |
@@ -78,6 +79,7 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 - `docs/judge_scorecard.md` maps the package to autonomous execution quality, IR accuracy, depth, constraint implementation, audit trail quality, and usability.
 - `docs/evidencelock-sift-judge-deck.pptx` gives a 5-slide judge-ready presentation layer without adding any unproven live SIFT claims.
 - `tools/judge_smoke_test.py` returns JSON with `ok: true` only when the rejected draft, corrected verifier, manifest check, generated outputs, and exact finding-to-evidence/tool IDs all match expectations.
+- `proof_trace_tool_results_match: true` proves the cited command IDs were successful, had matching tool names and args, and returned the cited evidence IDs.
 - The smoke test also requires `negative_control_downgrades_to_unresolved: true` and `negative_manifest_ok: true`, proving no-evidence cases fail closed instead of becoming false positives.
 - `docs/sift_compatibility_runbook.md` gives the exact non-claiming path from normalized EVTX exports to SIFT/Sleuth Kit wrapper evidence.
 - `reports/agent_trace.md` annotates each tool call and makes clear that the deterministic local demo uses no external LLM call or API key.
