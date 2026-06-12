@@ -251,9 +251,26 @@ class EvidenceLockTests(unittest.TestCase):
             "windows_triage_events:2048",
             "cmd-0004 search_events",
             "negative_control_downgrades_to_unresolved",
+            "YouTube, Vimeo, or Youku",
+            "audio narration",
+            "export PYTHONPATH=src",
         ]
         for fragment in required_fragments:
             self.assertIn(fragment, judge_pack)
+        for path in [
+            ROOT / "README.md",
+            ROOT / "docs" / "final_submission_operator_runbook.md",
+            ROOT / "docs" / "human_submission_gate.md",
+            ROOT / "docs" / "stage_one_preflight.md",
+            ROOT / "docs" / "required_components_checklist.md",
+            ROOT / "docs" / "video_upload_pack.md",
+            ROOT / "docs" / "demo_recording.md",
+        ]:
+            text = path.read_text(encoding="utf-8")
+            self.assertIn("YouTube", text, path.as_posix())
+            self.assertIn("Vimeo", text, path.as_posix())
+            self.assertIn("Youku", text, path.as_posix())
+            self.assertNotIn("silent demo", text.lower(), path.as_posix())
         for fragment in [
             "EvidenceLock SIFT Judge Hub",
             "Verifier-first Protocol SIFT triage demo",

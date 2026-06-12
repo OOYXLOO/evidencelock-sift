@@ -10,7 +10,7 @@ Verifier-first custom MCP-style boundary for Protocol SIFT triage: every confirm
 
 ## Built With
 
-Python, Protocol SIFT design pattern, Model Context Protocol-style typed tools, Windows event triage, SHA-256 integrity manifest, Sleuth Kit wrapper pattern, HTML/CSS demo recording, browser MediaRecorder.
+Python, Protocol SIFT design pattern, Model Context Protocol-style typed tools, Windows event triage, SHA-256 integrity manifest, Sleuth Kit wrapper pattern, HTML/CSS demo recording, browser MediaRecorder, narrated WebM upload source.
 
 ## What It Does
 
@@ -68,7 +68,7 @@ Another challenge was keeping the demo honest without redistributing third-party
 - The `verify-manifest` CLI command checks that evidence and output hashes still match and returns `"ok": true` for the published report set.
 - The proof-card visual gives judges a one-screen trace from finding to evidence, tool call, verifier correction, and integrity hash.
 - The project runs with the Python standard library for the demo path.
-- The repository includes tests, reports, dataset documentation, architecture diagram, and a generated WebM demo asset.
+- The repository includes tests, reports, dataset documentation, architecture diagram, and a narrated WebM upload source for the required YouTube/Vimeo/Youku video.
 
 ## What We Learned
 
@@ -106,7 +106,8 @@ Smoke-test highlights to paste into Additional info: `draft_rejected_with_three_
 ## Links
 
 - Repository: https://github.com/OOYXLOO/evidencelock-sift
-- Demo WebM: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
+- Embedded demo page: https://ooyxloo.github.io/evidencelock-sift/demo.html
+- Narrated WebM upload source, not the official Devpost video field: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 - Presentation deck: https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/evidencelock-sift-judge-deck.pptx
 - Judge pack: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md
 - Judge scorecard: https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md
@@ -134,4 +135,4 @@ Smoke-test highlights to paste into Additional info: `draft_rejected_with_three_
 
 ## Final Submission Reminder
 
-Do not submit until the Devpost project draft exists, video URL requirements are satisfied, and all FIND EVIL additional-info fields are reviewed.
+Do not submit until the Devpost project draft exists, the official video field points to a public YouTube/Vimeo/Youku URL with audio narration, and all FIND EVIL additional-info fields are reviewed.

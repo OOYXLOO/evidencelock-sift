@@ -9,8 +9,8 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 ## Two-Minute Review Path
 
 1. Open the static judge hub: [`docs/index.html`](index.html).
-2. Watch the embedded demo page: [`docs/demo.html`](demo.html). Raw fallback: [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm).
-3. If Devpost requires hosted video, use the upload copy pack: [`docs/video_upload_pack.md`](video_upload_pack.md).
+2. Watch the embedded demo page: [`docs/demo.html`](demo.html). Upload source: [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm).
+3. The official Devpost video field must use a public YouTube, Vimeo, or Youku URL with audio narration; use the upload copy pack: [`docs/video_upload_pack.md`](video_upload_pack.md).
 4. Open the 5-slide presentation deck: [`docs/evidencelock-sift-judge-deck.pptx`](evidencelock-sift-judge-deck.pptx).
 5. Open the one-minute submission gate pack: [`docs/human_submission_gate.md`](human_submission_gate.md).
 6. Check the Stage One preflight: [`docs/stage_one_preflight.md`](stage_one_preflight.md).
@@ -33,8 +33,8 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 | Public repository | <https://github.com/OOYXLOO/evidencelock-sift> | Ready |
 | Human submission gate pack | [`docs/human_submission_gate.md`](human_submission_gate.md) | Ready |
 | Stage One preflight | [`docs/stage_one_preflight.md`](stage_one_preflight.md) | Ready; final Devpost URL and hosted video URL still require the human gate |
-| Demo video | [`docs/demo.html`](demo.html), [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm) | Ready |
-| Hosted-video upload pack | [`docs/video_upload_pack.md`](video_upload_pack.md) | Ready; use if Devpost rejects raw GitHub WebM |
+| Demo video | [`docs/demo.html`](demo.html), [`docs/demo-video/evidencelock-sift-demo.webm`](demo-video/evidencelock-sift-demo.webm) | Narrated upload source ready; final Devpost video URL must be public YouTube, Vimeo, or Youku |
+| Hosted-video upload pack | [`docs/video_upload_pack.md`](video_upload_pack.md) | Ready; use for the required public video host upload |
 | Presentation deck | [`docs/evidencelock-sift-judge-deck.pptx`](evidencelock-sift-judge-deck.pptx) | Ready |
 | Architecture diagram | [`docs/architecture.png`](architecture.png), [`docs/architecture.md`](architecture.md) | Ready |
 | Dataset description | [`docs/dataset.md`](dataset.md) | Ready |
@@ -82,6 +82,20 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 - `reports/integrity_manifest.json` hashes the input evidence and generated outputs so tampering is visible.
 
 ## Reproduce Locally
+
+Linux / SIFT workstation shell:
+
+```bash
+git clone https://github.com/OOYXLOO/evidencelock-sift.git
+cd evidencelock-sift
+export PYTHONPATH=src
+python3 -m unittest discover -s tests -v
+python3 tools/judge_smoke_test.py
+python3 -m evidencelock_sift.cli run-case --case examples/cases/windows_triage_case.json --out reports
+python3 -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .
+```
+
+Windows PowerShell:
 
 ```powershell
 git clone https://github.com/OOYXLOO/evidencelock-sift.git

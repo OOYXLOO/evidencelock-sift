@@ -20,6 +20,20 @@ Protocol SIFT demonstrates how AI agents can drive SIFT workstation tools throug
 
 ## Quick Start
 
+Linux / SIFT workstation shell:
+
+```bash
+git clone https://github.com/OOYXLOO/evidencelock-sift.git
+cd evidencelock-sift
+export PYTHONPATH=src
+python3 -m unittest discover -s tests -v
+python3 tools/judge_smoke_test.py
+python3 -m evidencelock_sift.cli run-case --case examples/cases/windows_triage_case.json --out reports
+python3 -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .
+```
+
+Windows PowerShell:
+
 ```powershell
 git clone https://github.com/OOYXLOO/evidencelock-sift.git
 cd evidencelock-sift
@@ -40,7 +54,7 @@ Generated outputs:
 - `reports/agent_trace.md`
 - `reports/execution_log.jsonl`
 - `reports/integrity_manifest.json`
-- `docs/demo-video/evidencelock-sift-demo.webm`
+- `docs/demo-video/evidencelock-sift-demo.webm` (narrated upload source; the official Devpost video field still needs a public YouTube, Vimeo, or Youku URL)
 
 ## Protocol SIFT Fit
 
@@ -65,7 +79,7 @@ The agent intentionally starts with an unsupported draft claim. The verifier rej
 If you only have a few minutes, inspect these artifacts:
 
 - `docs/index.html`: static judge hub for GitHub Pages or local browser review.
-- `docs/demo.html`: embedded browser playback page for the silent WebM demo.
+- `docs/demo.html`: embedded browser playback page for the narrated WebM upload source.
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.

@@ -8,6 +8,7 @@ const { chromium } = require("playwright");
 
 const root = fileURLToPath(new URL("..", import.meta.url));
 const demoPage = path.join(root, "docs", "demo-recording-page.html");
+const narration = path.join(root, "docs", "demo-video", "evidencelock-sift-narration.wav");
 const output = path.join(root, "docs", "demo-video", "evidencelock-sift-demo.webm");
 const viewport = { width: 1280, height: 720 };
 const chapterCount = 5;
@@ -33,6 +34,16 @@ async function findBrowserExecutable() {
   return undefined;
 }
 
+async function readNarrationDataUrl() {
+  try {
+    const buffer = await fs.readFile(narration);
+    return `data:audio/wav;base64,${buffer.toString("base64")}`;
+  } catch (error) {
+    if (error.code === "ENOENT") return null;
+    throw error;
+  }
+}
+
 async function captureChapterFrames(page) {
   const frames = [];
   const chapters = page.locator(".chapter");
@@ -45,9 +56,9 @@ async function captureChapterFrames(page) {
   return frames;
 }
 
-async function encodeFrames(page, frames) {
+async function encodeFrames(page, frames, narrationDataUrl) {
   return page.evaluate(
-    async ({ frames: frameUrls, width, height, holdSeconds, fps }) => {
+    async ({ frames: frameUrls, narrationDataUrl, width, height, holdSeconds, fps }) => {
       const mimeCandidates = ["video/webm;codecs=vp9", "video/webm;codecs=vp8", "video/webm"];
       const mimeType = mimeCandidates.find((candidate) => MediaRecorder.isTypeSupported(candidate));
       if (!mimeType) throw new Error("No supported MediaRecorder WebM MIME type is available.");
@@ -56,7 +67,28 @@ async function encodeFrames(page, frames) {
       canvas.width = width;
       canvas.height = height;
       const context = canvas.getContext("2d");
-      const stream = canvas.captureStream(fps);
+      const canvasStream = canvas.captureStream(fps);
+      let audioContext = null;
+      let narrationSource = null;
+      let audioDurationMs = 0;
+      let stream = canvasStream;
+
+      if (narrationDataUrl) {
+        audioContext = new AudioContext();
+        const audioBuffer = await fetch(narrationDataUrl)
+          .then((response) => response.arrayBuffer())
+          .then((buffer) => audioContext.decodeAudioData(buffer));
+        const destination = audioContext.createMediaStreamDestination();
+        narrationSource = audioContext.createBufferSource();
+        narrationSource.buffer = audioBuffer;
+        narrationSource.connect(destination);
+        audioDurationMs = audioBuffer.duration * 1000;
+        stream = new MediaStream([
+          ...canvasStream.getVideoTracks(),
+          ...destination.stream.getAudioTracks(),
+        ]);
+      }
+
       const chunks = [];
       const recorder = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 3_500_000 });
       recorder.ondataavailable = (event) => {
@@ -75,23 +107,36 @@ async function encodeFrames(page, frames) {
       for (const frameUrl of frameUrls) images.push(await loadImage(frameUrl));
 
       recorder.start(250);
-      for (const image of images) {
-        for (let frame = 0; frame < holdSeconds * fps; frame += 1) {
-          context.fillStyle = "#eef4f8";
-          context.fillRect(0, 0, width, height);
-          context.drawImage(image, 0, 0, width, height);
-          await wait(1000 / fps);
-        }
+      if (audioContext) await audioContext.resume();
+      if (narrationSource) narrationSource.start();
+
+      const videoDurationMs = images.length * holdSeconds * 1000;
+      const totalDurationMs = Math.max(videoDurationMs, audioDurationMs + 750);
+      const totalFrames = Math.ceil((totalDurationMs / 1000) * fps);
+      const framesPerImage = holdSeconds * fps;
+
+      for (let frame = 0; frame < totalFrames; frame += 1) {
+        const image = images[Math.min(Math.floor(frame / framesPerImage), images.length - 1)];
+        context.fillStyle = "#eef4f8";
+        context.fillRect(0, 0, width, height);
+        context.drawImage(image, 0, 0, width, height);
+        await wait(1000 / fps);
       }
       await new Promise((resolve) => {
         recorder.onstop = resolve;
         recorder.stop();
       });
       stream.getTracks().forEach((track) => track.stop());
+      canvasStream.getTracks().forEach((track) => track.stop());
+      if (audioContext) await audioContext.close();
       const blob = new Blob(chunks, { type: mimeType });
-      return { mimeType, bytes: Array.from(new Uint8Array(await blob.arrayBuffer())) };
+      return {
+        hasAudio: Boolean(narrationDataUrl),
+        mimeType,
+        bytes: Array.from(new Uint8Array(await blob.arrayBuffer())),
+      };
     },
-    { frames, width: viewport.width, height: viewport.height, holdSeconds, fps },
+    { frames, narrationDataUrl, width: viewport.width, height: viewport.height, holdSeconds, fps },
   );
 }
 
@@ -104,10 +149,11 @@ async function main() {
     await page.goto(pathToFileURL(demoPage).href, { waitUntil: "load" });
     await page.waitForSelector(".chapter");
     const frames = await captureChapterFrames(page);
-    const result = await encodeFrames(page, frames);
+    const narrationDataUrl = await readNarrationDataUrl();
+    const result = await encodeFrames(page, frames, narrationDataUrl);
     await fs.writeFile(output, Buffer.from(result.bytes));
     const stats = await fs.stat(output);
-    console.log(JSON.stringify({ output, mimeType: result.mimeType, bytes: stats.size }, null, 2));
+    console.log(JSON.stringify({ output, narration, hasAudio: result.hasAudio, mimeType: result.mimeType, bytes: stats.size }, null, 2));
   } finally {
     await browser.close();
   }

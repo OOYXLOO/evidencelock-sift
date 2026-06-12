@@ -1,14 +1,14 @@
 # EvidenceLock SIFT Video Upload Pack
 
-Use this pack only if Devpost rejects the raw GitHub WebM URL and requires a hosted video provider such as YouTube, Vimeo, or Youku.
+Use this pack for the required public demo video upload. FIND EVIL's official rules require a public YouTube, Vimeo, or Youku video with audio narration; do not use the raw GitHub WebM as the official Devpost video field.
 
-Source video:
+Narrated source video:
 
 ```text
 docs/demo-video/evidencelock-sift-demo.webm
 ```
 
-Public raw fallback:
+Public raw backup/source link, not the official Devpost video field:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
@@ -29,6 +29,7 @@ https://ooyxloo.github.io/evidencelock-sift/demo.html
 - Monetization: off.
 - Thumbnail: use `docs/proof-card.png` if the host allows a custom thumbnail.
 - Description links: include the judge hub, repo, judge pack, and smoke test.
+- Audio: verify the narration is audible before submitting.
 
 ## Title
 
@@ -67,6 +68,7 @@ DFIR, incident response, SANS SIFT, Protocol SIFT, MCP, AI agent, verifier, evid
 - The hosted video URL opens in a logged-out browser.
 - The host does not require a password, account membership, or age gate.
 - The video plays from the first frame and is not still processing.
+- The narration audio is present and understandable.
 - The title does not claim live SIFT workstation execution or real victim evidence.
 - The description includes the honest scope boundary.
 - The Devpost video field accepts the hosted URL.
@@ -74,5 +76,4 @@ DFIR, incident response, SANS SIFT, Protocol SIFT, MCP, AI agent, verifier, evid
 
 ## If WebM Upload Fails
 
-If the host refuses WebM, use a local screen recorder or video editor to export the same `docs/demo-recording-page.html` playback to MP4. Keep the same title, description, and honest-scope language above. Do not add private desktop, email, account, API key, payout, bank, tax, KYC, or identity-document footage.
-
+If the host refuses WebM, use a local screen recorder or video editor to export the same `docs/demo-recording-page.html` playback to MP4 with the same narration. Keep the same title, description, and honest-scope language above. Do not add private desktop, email, account, API key, payout, bank, tax, KYC, or identity-document footage.
