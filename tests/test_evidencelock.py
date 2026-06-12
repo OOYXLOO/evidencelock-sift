@@ -227,6 +227,7 @@ class EvidenceLockTests(unittest.TestCase):
             "docs/index.html",
             "docs/demo.html",
             "docs/human_submission_gate.md",
+            "docs/final_submit_console.html",
             "docs/stage_one_preflight.md",
             "docs/video_upload_pack.md",
             "docs/demo-video/evidencelock-sift-demo.mp4",
@@ -261,6 +262,7 @@ class EvidenceLockTests(unittest.TestCase):
         for path in [
             ROOT / "README.md",
             ROOT / "docs" / "final_submission_operator_runbook.md",
+            ROOT / "docs" / "final_submit_console.html",
             ROOT / "docs" / "human_submission_gate.md",
             ROOT / "docs" / "stage_one_preflight.md",
             ROOT / "docs" / "required_components_checklist.md",
@@ -297,6 +299,8 @@ class EvidenceLockTests(unittest.TestCase):
             "accuracy-card.png",
             "Smoke-Test Proof",
             "Submission Gate",
+            "Final Submit Console",
+            "final_submit_console.html",
             "Stage One Preflight",
             "Ready for Devpost",
             "Human gate remains",
@@ -308,6 +312,7 @@ class EvidenceLockTests(unittest.TestCase):
         self.assertNotIn("../reports/", judge_hub)
         self.assertTrue((ROOT / "docs" / "demo.html").is_file())
         self.assertTrue((ROOT / "docs" / "human_submission_gate.md").is_file())
+        self.assertTrue((ROOT / "docs" / "final_submit_console.html").is_file())
         self.assertTrue((ROOT / "docs" / "stage_one_preflight.md").is_file())
         self.assertTrue((ROOT / "docs" / "video_upload_pack.md").is_file())
         self.assertTrue((ROOT / "docs" / "demo-video" / "evidencelock-sift-demo.mp4").is_file())
