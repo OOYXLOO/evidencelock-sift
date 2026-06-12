@@ -18,15 +18,16 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 8. Open the proof trace: [`docs/proof-card.png`](proof-card.png).
 9. Open the accuracy summary: [`docs/accuracy-card.png`](accuracy-card.png).
 10. Open the checked-in smoke proof: [`docs/smoke_proof.md`](smoke_proof.md).
-11. Read the judging criteria scorecard: [`docs/judge_scorecard.md`](judge_scorecard.md).
-12. Run the smoke test: `python tools/judge_smoke_test.py`.
-13. Check the before/after claim verification table: [`docs/claim_verification_table.md`](claim_verification_table.md).
-14. Check the negative-control downgrade: [`docs/fail_closed_negative_control.md`](fail_closed_negative_control.md).
-15. Check the SIFT compatibility runbook: [`docs/sift_compatibility_runbook.md`](sift_compatibility_runbook.md).
-16. Read the annotated agent trace: [`reports/agent_trace.md`](../reports/agent_trace.md).
-17. Read the final report: [`reports/investigation_report.md`](../reports/investigation_report.md).
-18. Read the responder handoff: [`reports/analyst_handoff.md`](../reports/analyst_handoff.md).
-19. Verify integrity: `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`
+11. Open the terminal proof page: [`docs/terminal-proof/`](terminal-proof/) and [`docs/terminal_proof.md`](terminal_proof.md).
+12. Read the judging criteria scorecard: [`docs/judge_scorecard.md`](judge_scorecard.md).
+13. Run the smoke test: `python tools/judge_smoke_test.py`.
+14. Check the before/after claim verification table: [`docs/claim_verification_table.md`](claim_verification_table.md).
+15. Check the negative-control downgrade: [`docs/fail_closed_negative_control.md`](fail_closed_negative_control.md).
+16. Check the SIFT compatibility runbook: [`docs/sift_compatibility_runbook.md`](sift_compatibility_runbook.md).
+17. Read the annotated agent trace: [`reports/agent_trace.md`](../reports/agent_trace.md).
+18. Read the final report: [`reports/investigation_report.md`](../reports/investigation_report.md).
+19. Read the responder handoff: [`reports/analyst_handoff.md`](../reports/analyst_handoff.md).
+20. Verify integrity: `python -m evidencelock_sift.cli verify-manifest --manifest reports/integrity_manifest.json --repo-root .`
 
 ## FIND EVIL Requirements Map
 
@@ -47,6 +48,7 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 | SIFT compatibility runbook | [`docs/sift_compatibility_runbook.md`](sift_compatibility_runbook.md) | Ready |
 | Judging criteria scorecard | [`docs/judge_scorecard.md`](judge_scorecard.md) | Ready |
 | Checked-in smoke proof | [`docs/smoke_proof.md`](smoke_proof.md) | Ready |
+| Terminal proof | [`docs/terminal-proof/`](terminal-proof/), [`docs/terminal_proof.md`](terminal_proof.md) | Ready |
 | Accuracy/evaluation | [`reports/accuracy_report.md`](../reports/accuracy_report.md), [`docs/accuracy_method.md`](accuracy_method.md) | Ready |
 | Before/after claim verification | [`docs/claim_verification_table.md`](claim_verification_table.md) | Ready |
 | Execution/tool-call log | [`reports/execution_log.jsonl`](../reports/execution_log.jsonl) | Ready |
@@ -81,6 +83,7 @@ EvidenceLock SIFT is a verifier-first Protocol SIFT triage boundary: the agent c
 - `tools/judge_smoke_test.py` returns JSON with `ok: true` only when the rejected draft, corrected verifier, manifest check, generated outputs, and exact finding-to-evidence/tool IDs all match expectations.
 - `proof_trace_tool_results_match: true` proves the cited command IDs were successful, had matching tool names and args, and returned the cited evidence IDs.
 - The smoke test also requires `negative_control_downgrades_to_unresolved: true` and `negative_manifest_ok: true`, proving no-evidence cases fail closed instead of becoming false positives.
+- `docs/terminal_proof.md` and `docs/terminal-proof/` show the observed command outputs for 15 tests, judge smoke `ok: true`, manifest verification `ok: true`, and compileall exit code 0.
 - `docs/sift_compatibility_runbook.md` gives the exact non-claiming path from normalized EVTX exports to SIFT/Sleuth Kit wrapper evidence.
 - `reports/agent_trace.md` annotates each tool call and makes clear that the deterministic local demo uses no external LLM call or API key.
 - Confirmed finding `F-001` maps to MITRE `T1059.001` and cites event `windows_triage_events:1024` plus tool call `cmd-0003`.

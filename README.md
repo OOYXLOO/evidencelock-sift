@@ -11,6 +11,7 @@ In one sentence: agent-speed DFIR triage with verifier-locked evidence proof, no
 - Hosted demo: <https://vimeo.com/1200810741>
 - Repository: <https://github.com/OOYXLOO/evidencelock-sift>
 - Smoke proof: [`docs/smoke_proof.md`](docs/smoke_proof.md)
+- Terminal proof: [`docs/terminal_proof.md`](docs/terminal_proof.md)
 - Reproduce: `python tools/judge_smoke_test.py`
 
 No account, API key, private log, or real incident data is required for the smoke path. The demo uses a synthetic Windows EVTX-style mini-case and keeps full-disk SIFT execution as an honest future integration boundary.
@@ -110,6 +111,7 @@ If you only have a few minutes, inspect these artifacts:
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
 - `docs/smoke_proof.md`: checked-in smoke proof snapshot for reviewers who want the `ok: true` signal before running code.
+- `docs/terminal_proof.md`: terminal-style command evidence for 15 tests, judge smoke, manifest verification, and compileall.
 - `docs/evidencelock-sift-judge-deck.pptx`: editable 5-slide presentation deck for judge review and Devpost supporting links.
 - `tools/judge_smoke_test.py`: one-command judge smoke test with exact expected checks, finding-to-evidence/tool proof trace, and negative-control status.
 - `docs/fail_closed_negative_control.md`: negative-control case proving unsupported draft claims downgrade to unresolved.

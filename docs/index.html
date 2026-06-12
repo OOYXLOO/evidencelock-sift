@@ -22,7 +22,7 @@
     .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .proofs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .primary-actions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .primary-actions { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .scope-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 14px; }
     .tile, .panel { min-width: 0; background: var(--paper); border: 1px solid var(--line); padding: 18px; }
     .tile strong { display: block; margin-bottom: 8px; color: var(--green); font-size: 34px; line-height: 1; }
@@ -65,6 +65,7 @@
       <a href="demo.html"><strong>Watch Demo</strong><span>See the verifier reject an unsupported draft and accept only evidence-backed findings.</span></a>
       <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py"><strong>Run Smoke Test</strong><span>One command checks proof traces, fail-closed behavior, and manifest integrity.</span></a>
       <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/reports/investigation_report.md"><strong>Open One-Page Proof Trace</strong><span>Read findings with key fields, evidence IDs, tool calls, and correction notes in one place.</span></a>
+      <a href="terminal-proof/"><strong>Open Terminal Proof</strong><span>Inspect exact command outputs for tests, smoke, manifest verification, and compileall.</span></a>
     </nav>
     <section class="status-strip" aria-label="Submission status">
       <div class="status-item"><strong>Submitted on Devpost</strong><span>Project page is live at devpost.com/software/evidencelock-sift-verifier-first-protocol-triage.</span></div>
@@ -84,6 +85,7 @@
       <a href="demo.html">Watch Demo</a>
       <a href="https://github.com/OOYXLOO/evidencelock-sift">Repository</a>
       <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/smoke_proof.md">Smoke Proof</a>
+      <a href="terminal-proof/">Terminal Proof</a>
       <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/tools/judge_smoke_test.py">Run Smoke Test</a>
       <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_scorecard.md">Open Scorecard</a>
       <a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md">Judge Pack</a>
@@ -166,6 +168,11 @@
           <li><code>negative_control_downgrades_to_unresolved: true</code> and <code>negative_manifest_ok: true</code>.</li>
         </ul>
         <p><a href="https://github.com/OOYXLOO/evidencelock-sift/blob/main/docs/judge_pack.md#expected-smoke-test-highlights">Open expected smoke-test highlights</a></p>
+      </div>
+      <div class="panel">
+        <h2>Terminal Proof</h2>
+        <p>The terminal proof page shows the observed command outputs behind the demo: 15 passing tests, judge smoke <code>ok: true</code>, manifest verification <code>ok: true</code>, and compileall exit code 0.</p>
+        <p><a href="terminal-proof/">Open terminal proof</a></p>
       </div>
       <div class="panel">
         <h2>Reproduce Locally</h2>

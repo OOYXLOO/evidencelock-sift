@@ -380,6 +380,8 @@ class EvidenceLockTests(unittest.TestCase):
             "docs/final_submit_console.html",
             "docs/stage_one_preflight.md",
             "docs/video_upload_pack.md",
+            "docs/terminal-proof/",
+            "docs/terminal_proof.md",
             "docs/demo-video/evidencelock-sift-demo.mp4",
             "docs/demo-video/evidencelock-sift-demo.webm",
             "docs/evidencelock-sift-judge-deck.pptx",
@@ -437,6 +439,7 @@ class EvidenceLockTests(unittest.TestCase):
             "Watch Demo",
             "Run Smoke Test",
             "Open One-Page Proof Trace",
+            "Open Terminal Proof",
             "Implemented now",
             "Normalized EVTX-style mini-case",
             "Not yet claimed",
@@ -463,6 +466,10 @@ class EvidenceLockTests(unittest.TestCase):
             "accuracy-card.png",
             "Smoke-Test Proof",
             "Smoke Proof",
+            "Terminal Proof",
+            "terminal-proof/",
+            "15 passing tests",
+            "compileall exit code 0",
             "proof_trace_tool_results_match: true",
             "cited commands returned the cited evidence IDs",
             "mini-case N=3 synthetic Windows events",
@@ -493,10 +500,46 @@ class EvidenceLockTests(unittest.TestCase):
         self.assertTrue((ROOT / "docs" / "human_submission_gate.md").is_file())
         self.assertTrue((ROOT / "docs" / "final_submit_console.html").is_file())
         self.assertTrue((ROOT / "docs" / "stage_one_preflight.md").is_file())
+        self.assertTrue((ROOT / "docs" / "terminal_proof.md").is_file())
+        self.assertTrue((ROOT / "docs" / "terminal-proof" / "index.html").is_file())
         self.assertTrue((ROOT / "docs" / "video_upload_pack.md").is_file())
         self.assertTrue((ROOT / "docs" / "demo-video" / "evidencelock-sift-demo.mp4").is_file())
         self.assertTrue((ROOT / "tools" / "record_demo_mp4.mjs").is_file())
         self.assertTrue((ROOT / "docs" / "evidencelock-sift-judge-deck.pptx").is_file())
+
+    def test_terminal_proof_captures_command_outputs(self) -> None:
+        markdown = (ROOT / "docs" / "terminal_proof.md").read_text(encoding="utf-8")
+        page = (ROOT / "docs" / "terminal-proof" / "index.html").read_text(encoding="utf-8")
+        workflow = (ROOT / ".github" / "workflows" / "verify.yml").read_text(encoding="utf-8")
+
+        for fragment in [
+            "EvidenceLock SIFT Terminal Proof",
+            "python -m unittest discover -s tests -v",
+            "Ran 15 tests ... OK",
+            "\"proof_trace_tool_results_match\": true",
+            "\"negative_control_downgrades_to_unresolved\": true",
+            "\"F-001\"",
+            "windows_triage_events:1024",
+            "cmd-0003",
+            "{ \"issues\": [], \"ok\": true }",
+            "compileall",
+        ]:
+            self.assertIn(fragment, markdown)
+        for fragment in [
+            "EvidenceLock SIFT Terminal Proof",
+            "15 passing tests",
+            "judge smoke `ok: true`",
+            "manifest verification `ok: true`",
+            "full-disk SIFT workstation execution",
+        ]:
+            self.assertIn(fragment, page)
+        for fragment in [
+            "python -m unittest discover -s tests -v",
+            "python tools/judge_smoke_test.py",
+            "verify-manifest",
+            "python -m compileall -q src tests tools",
+        ]:
+            self.assertIn(fragment, workflow)
 
     def test_judge_smoke_test_passes(self) -> None:
         result = subprocess.run(
