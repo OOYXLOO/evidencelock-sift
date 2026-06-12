@@ -1,16 +1,23 @@
 # EvidenceLock SIFT Video Upload Pack
 
-Use this pack for the required public demo video upload. FIND EVIL's official rules require a public YouTube, Vimeo, or Youku video with audio narration; do not use the raw GitHub WebM as the official Devpost video field.
+Use this pack for the required public demo video upload. FIND EVIL's official rules require a public YouTube, Vimeo, or Youku video with audio narration; do not use a raw GitHub video file as the official Devpost video field.
 
-Narrated source video:
+Preferred narrated upload source:
+
+```text
+docs/demo-video/evidencelock-sift-demo.mp4
+```
+
+Backup narrated source:
 
 ```text
 docs/demo-video/evidencelock-sift-demo.webm
 ```
 
-Public raw backup/source link, not the official Devpost video field:
+Public raw source links, not the official Devpost video field:
 
 ```text
+https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.mp4
 https://raw.githubusercontent.com/OOYXLOO/evidencelock-sift/main/docs/demo-video/evidencelock-sift-demo.webm
 ```
 
@@ -74,6 +81,6 @@ DFIR, incident response, SANS SIFT, Protocol SIFT, MCP, AI agent, verifier, evid
 - The Devpost video field accepts the hosted URL.
 - `https://ooyxloo.github.io/evidencelock-sift/demo.html` remains in the project links even after the hosted URL is accepted.
 
-## If WebM Upload Fails
+## If Upload Fails
 
-If the host refuses WebM, use a local screen recorder or video editor to export the same `docs/demo-recording-page.html` playback to MP4 with the same narration. Keep the same title, description, and honest-scope language above. Do not add private desktop, email, account, API key, payout, bank, tax, KYC, or identity-document footage.
+Use the MP4 first. If a host still refuses the file while processing, try the WebM backup or regenerate both files from `docs/demo-recording-page.html` with the same narration. Keep the same title, description, and honest-scope language above. Do not add private desktop, email, account, API key, payout, bank, tax, KYC, or identity-document footage.

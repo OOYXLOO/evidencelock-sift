@@ -1,10 +1,11 @@
 # Demo Recording
 
-The narrated demo video is generated from `docs/demo-recording-page.html`. If `docs/demo-video/evidencelock-sift-narration.wav` exists, `tools/record_demo_webm.mjs` muxes that audio into the WebM.
+The narrated demo video is generated from `docs/demo-recording-page.html`. If `docs/demo-video/evidencelock-sift-narration.wav` exists, the recording tools mux that audio into the generated video.
 
 Output:
 
-- `docs/demo-video/evidencelock-sift-demo.webm`
+- `docs/demo-video/evidencelock-sift-demo.mp4` (preferred hosted-video upload source)
+- `docs/demo-video/evidencelock-sift-demo.webm` (browser-playback backup)
 - 1280 x 720
 - audio narration required for the final hosted YouTube/Vimeo/Youku upload
 - Browser playback verified locally
@@ -13,6 +14,7 @@ Output:
 Run:
 
 ```powershell
+node tools/record_demo_mp4.mjs
 node tools/record_demo_webm.mjs
 ```
 
@@ -27,4 +29,4 @@ If Node cannot resolve Playwright in a bundled runtime, set `NODE_PATH` to a Nod
 
 The generated video is safe to publish because it is rendered from local public project assets only. It does not contain credentials, email, API tokens, private incident data, or payout information.
 
-The official Devpost video field should use a public YouTube, Vimeo, or Youku URL. Use `docs/video_upload_pack.md` for the exact title, description, tags, upload settings, logged-out checks, and MP4 fallback.
+The official Devpost video field should use a public YouTube, Vimeo, or Youku URL. Use `docs/video_upload_pack.md` for the exact title, description, tags, upload settings, logged-out checks, and hosted-video fallback.

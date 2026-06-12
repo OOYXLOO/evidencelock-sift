@@ -229,6 +229,7 @@ class EvidenceLockTests(unittest.TestCase):
             "docs/human_submission_gate.md",
             "docs/stage_one_preflight.md",
             "docs/video_upload_pack.md",
+            "docs/demo-video/evidencelock-sift-demo.mp4",
             "docs/demo-video/evidencelock-sift-demo.webm",
             "docs/evidencelock-sift-judge-deck.pptx",
             "reports/investigation_report.md",
@@ -309,6 +310,8 @@ class EvidenceLockTests(unittest.TestCase):
         self.assertTrue((ROOT / "docs" / "human_submission_gate.md").is_file())
         self.assertTrue((ROOT / "docs" / "stage_one_preflight.md").is_file())
         self.assertTrue((ROOT / "docs" / "video_upload_pack.md").is_file())
+        self.assertTrue((ROOT / "docs" / "demo-video" / "evidencelock-sift-demo.mp4").is_file())
+        self.assertTrue((ROOT / "tools" / "record_demo_mp4.mjs").is_file())
         self.assertTrue((ROOT / "docs" / "evidencelock-sift-judge-deck.pptx").is_file())
 
     def test_judge_smoke_test_passes(self) -> None:

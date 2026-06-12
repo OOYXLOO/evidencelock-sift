@@ -54,7 +54,8 @@ Generated outputs:
 - `reports/agent_trace.md`
 - `reports/execution_log.jsonl`
 - `reports/integrity_manifest.json`
-- `docs/demo-video/evidencelock-sift-demo.webm` (narrated upload source; the official Devpost video field still needs a public YouTube, Vimeo, or Youku URL)
+- `docs/demo-video/evidencelock-sift-demo.mp4` (preferred narrated upload source; the official Devpost video field still needs a public YouTube, Vimeo, or Youku URL)
+- `docs/demo-video/evidencelock-sift-demo.webm` (narrated browser-playback backup)
 
 ## Protocol SIFT Fit
 
@@ -79,7 +80,7 @@ The agent intentionally starts with an unsupported draft claim. The verifier rej
 If you only have a few minutes, inspect these artifacts:
 
 - `docs/index.html`: static judge hub for GitHub Pages or local browser review.
-- `docs/demo.html`: embedded browser playback page for the narrated WebM upload source.
+- `docs/demo.html`: embedded browser playback page for the narrated MP4/WebM upload sources.
 - `docs/judging_guide.md`: FIND EVIL judging matrix, proof card, demo path, and limitations.
 - `docs/judge_pack.md`: shortest judge path with requirements map, evidence links, and reproduction command.
 - `docs/judge_scorecard.md`: direct map from FIND EVIL judging criteria to public evidence.
